@@ -12,68 +12,61 @@
     body { margin: 0; background: #f3f3f1; color: #17191c; font-family: 'Manrope', system-ui, sans-serif; font-size: 14px; }
     a { color: #17191c; } a:hover { opacity: .8; }
     .num { font-weight: 800; line-height: 1; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
-    .k { font-size: 12px; color: #6f747b; font-weight: 500; }
-    .tile { background: #ffffff; border-radius: 22px; padding: 18px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 6px 22px rgba(23,25,28,.09); }
-    .pill { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+    .k { font-size: 12px; color: #5f646b; font-weight: 500; }
+    .tile { background: #ffffff; border: 1px solid #e4e4e1; border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+    .pill { font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 6px; }
     svg.ic { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
   </style>
 </helmet>
 <div style="position: relative; width: 390px; height: 844px; overflow: hidden; background: #f3f3f1; display: flex; flex-direction: column;">
-  <div style="display: flex; align-items: flex-end; justify-content: space-between; padding: 24px 22px 14px;">
-    <div style="display: flex; flex-direction: column; gap: 2px;"><span class="k">HM Build · week 5 of 8</span><span class="num" style="font-size: 28px;">Plan</span></div>
-    <div style="width: 40px; height: 40px; border-radius: 50%; background: #ffffff; box-shadow: 0 6px 22px rgba(23,25,28,.09); display: flex; align-items: center; justify-content: center; color: #6f747b;"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 22px 20px 14px;">
+    <div style="display: flex; align-items: center; gap: 12px;"><div style="width: 34px; height: 34px; border-radius: 50%; background: #17191c; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; flex-shrink: 0;">RM</div><div style="display: flex; flex-direction: column; gap: 2px;"><span class="k">Thursday 20 August</span><span class="num" style="font-size: 26px;">Plan</span></div></div>
+    
   </div>
-  <div style="flex: 1; overflow: hidden; padding: 0 16px 90px; display: flex; flex-direction: column; gap: 12px;">
-  <div class="tile" style="gap: 10px;">
-    <div style="display: flex; justify-content: space-between; align-items: baseline;"><span class="num" style="font-size: 22px;">137 <span style="font-size: 13px; font-weight: 500; color: #6f747b;">/ 210 km</span></span><span class="k">Benchmark · HM · 13 Sep</span></div>
-    <div style="height: 8px; background: #f3f3f1; border-radius: 4px; overflow: hidden;"><div style="width: 65%; height: 100%; background: linear-gradient(90deg, #23272e, #4b535e); border-radius: 4px;"></div></div>
+  <div style="flex: 1; overflow: hidden; padding: 0 16px 88px; display: flex; flex-direction: column; gap: 12px;">
+  <div style="border-radius: 12px; padding: 18px 20px; background: linear-gradient(135deg, {GA} 0%, {GB} 100%); color: #fff; display: flex; flex-direction: column; gap: 12px;">
+    <div style="display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 12px; font-weight: 700; opacity: .85;">HM BUILD · WEEK 5 OF 8</span><span class="pill" style="background: rgba(255,255,255,.18);">HM · 13 Sep</span></div>
+    <div style="display: flex; align-items: baseline; gap: 8px;"><span class="num" style="font-size: 40px;">141</span><span style="font-size: 14px; opacity: .8;">of 300 km · 24 days to go</span></div>
+    <div style="height: 8px; background: rgba(255,255,255,.18); border-radius: 4px; overflow: hidden;"><div style="width: 47%; height: 100%; background: #e0a830; border-radius: 4px;"></div></div>
   </div>
-  <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 6px;"><span style="font-weight: 800;">This week · 17–23 Aug</span><span class="k">47 km · 2 of 2 at effort</span></div>
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 6px;"><span style="font-weight: 800;">This week · 17–23 Aug</span><span class="k">39 km · 2 of 2 at effort</span></div>
   <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px;">
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;"><span class="k">M</span><div style="width: 38px; height: 38px; border-radius: 50%; background: #8a929c; opacity: 1; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff;">17</div></div>
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;"><span class="k">T</span><div style="width: 38px; height: 38px; border-radius: 50%; background: #ffffff; opacity: 1; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #6f747b;">18</div></div>
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;"><span class="k">W</span><div style="width: 38px; height: 38px; border-radius: 50%; background: #e0a830; opacity: 1; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff;">19</div></div>
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;"><span class="k">T</span><div style="width: 38px; height: 38px; border-radius: 50%; background: #8a929c; opacity: 1; box-shadow: 0 0 0 3px #f3f3f1, 0 0 0 5px #17191c; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff;">20</div></div>
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;"><span class="k">F</span><div style="width: 38px; height: 38px; border-radius: 50%; background: #ffffff; opacity: 1; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #6f747b;">21</div></div>
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;"><span class="k">S</span><div style="width: 38px; height: 38px; border-radius: 50%; background: #5b7ba8; opacity: .35; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff;">22</div></div>
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;"><span class="k">S</span><div style="width: 38px; height: 38px; border-radius: 50%; background: #2f9d6b; opacity: .35; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff;">23</div></div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;"><span class="k">M</span><div style="width: 38px; height: 38px; border-radius: 50%; box-sizing: border-box; background: #6b737d; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800;">17</div></div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;"><span class="k">T</span><div style="width: 38px; height: 38px; border-radius: 50%; box-sizing: border-box; background: #ffffff; border: 1px solid #e4e4e1; color: #5f646b; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800;">18</div></div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;"><span class="k">W</span><div style="width: 38px; height: 38px; border-radius: 50%; box-sizing: border-box; background: #e0a830; color: #17191c; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800;">19</div></div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;"><span class="k">T</span><div style="width: 38px; height: 38px; border-radius: 50%; box-sizing: border-box; background: #6b737d; color: #fff; box-shadow: 0 0 0 3px #f3f3f1, 0 0 0 5px #17191c; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800;">20</div></div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;"><span class="k">F</span><div style="width: 38px; height: 38px; border-radius: 50%; box-sizing: border-box; background: #ffffff; border: 1px solid #e4e4e1; color: #5f646b; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800;">21</div></div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;"><span class="k">S</span><div style="width: 38px; height: 38px; border-radius: 50%; box-sizing: border-box; background: #ffffff; border: 2px solid #5b7ba8; color: #5b7ba8; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800;">22</div></div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;"><span class="k">S</span><div style="width: 38px; height: 38px; border-radius: 50%; box-sizing: border-box; background: #ffffff; border: 2px solid #2f9d6b; color: #2f9d6b; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800;">23</div></div>
   </div>
-  <div class="tile" style="flex-direction: row; align-items: center; gap: 14px; padding: 14px 16px;">
-    <div style="width: 6px; height: 40px; border-radius: 3px; background: #8a929c; flex-shrink: 0;"></div>
-    <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;"><span class="k">Mon 17</span><span style="font-weight: 800;">Easy</span></div><div style="font-size: 12px; color: #6f747b; margin-top: 2px;">8 km · Z2 · ran 8.1 km at 6:08, 144 bpm</div></div>
-    <div style="text-align: right;"><div class="num" style="font-size: 22px;">8.1</div><div style="font-size: 10px; font-weight: 700; color: #2f9d6b;">On target</div></div>
+  <div class="tile" style="flex-direction: row; align-items: center; gap: 14px; padding: 12px 16px;">
+    <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;"><span class="k">Mon 17</span><span class="pill" style="background: #6b737d26; color: #5f646b; text-transform: capitalize;">easy</span></div><div style="font-size: 12px; color: #5f646b; margin-top: 4px;">6 km Z2 · ran 6.1 at 6:08, 144 bpm</div></div>
+    <div style="text-align: right;"><div class="num" style="font-size: 22px;">6.1</div><div style="font-size: 10px; font-weight: 700; color: #1f7a4f;">On target</div></div>
   </div>
-  <div class="tile" style="flex-direction: row; align-items: center; gap: 14px; padding: 14px 16px;">
-    <div style="width: 6px; height: 40px; border-radius: 3px; background: #e0a830; flex-shrink: 0;"></div>
-    <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;"><span class="k">Wed 19</span><span style="font-weight: 800;">Tempo</span></div><div style="font-size: 12px; color: #6f747b; margin-top: 2px;">3 km @ 4:50–5:10 inside 7 km · ran 7.4</div></div>
-    <div style="text-align: right;"><div class="num" style="font-size: 22px;">7.4</div><div style="font-size: 10px; font-weight: 700; color: #2f9d6b;">On target</div></div>
+  <div class="tile" style="flex-direction: row; align-items: center; gap: 14px; padding: 12px 16px;">
+    <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;"><span class="k">Wed 19</span><span class="pill" style="background: #e0a83026; color: #a8740f; text-transform: capitalize;">tempo</span></div><div style="font-size: 12px; color: #5f646b; margin-top: 4px;">3 km @ 4:50–5:10 · ran 7.4</div></div>
+    <div style="text-align: right;"><div class="num" style="font-size: 22px;">7.4</div><div style="font-size: 10px; font-weight: 700; color: #1f7a4f;">On target</div></div>
   </div>
-  <div class="tile" style="flex-direction: row; align-items: center; gap: 14px; padding: 14px 16px;">
-    <div style="width: 6px; height: 40px; border-radius: 3px; background: #8a929c; flex-shrink: 0;"></div>
-    <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;"><span class="k">Thu 20</span><span style="font-weight: 800;">Easy</span></div><div style="font-size: 12px; color: #6f747b; margin-top: 2px;">8 km · Z2 · under 145 bpm</div></div>
-    <div style="text-align: right;"><div class="num" style="font-size: 22px;">8</div><div style="font-size: 10px; font-weight: 700; color: #17191c;">Today</div></div>
+  <div class="tile" style="flex-direction: row; align-items: center; gap: 14px; padding: 12px 16px;">
+    <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;"><span class="k">Thu 20</span><span class="pill" style="background: #6b737d26; color: #5f646b; text-transform: capitalize;">easy</span></div><div style="font-size: 12px; color: #5f646b; margin-top: 4px;">6 km Z2 · under 145 bpm</div></div>
+    <div style="text-align: right;"><div class="num" style="font-size: 22px;">6</div><div style="font-size: 10px; font-weight: 700; color: #17191c;">Today</div></div>
   </div>
-  <div class="tile" style="flex-direction: row; align-items: center; gap: 14px; padding: 14px 16px;">
-    <div style="width: 6px; height: 40px; border-radius: 3px; background: #5b7ba8; flex-shrink: 0;"></div>
-    <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;"><span class="k">Sat 22</span><span style="font-weight: 800;">Medium</span></div><div style="font-size: 12px; color: #6f747b; margin-top: 2px;">10 km · Z3 · 5:35–5:45 /km</div></div>
-    <div style="text-align: right;"><div class="num" style="font-size: 22px;">10</div><div style="font-size: 10px; font-weight: 700; color: #6f747b;">Planned</div></div>
+  <div class="tile" style="flex-direction: row; align-items: center; gap: 14px; padding: 12px 16px;">
+    <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;"><span class="k">Sat 22</span><span class="pill" style="background: #5b7ba826; color: #3f5f8a; text-transform: capitalize;">medium</span></div><div style="font-size: 12px; color: #5f646b; margin-top: 4px;">8 km Z3 · 5:35–5:45 /km</div></div>
+    <div style="text-align: right;"><div class="num" style="font-size: 22px;">8</div><div style="font-size: 10px; font-weight: 700; color: #5f646b;">Planned</div></div>
   </div>
-  <div class="tile" style="flex-direction: row; align-items: center; gap: 14px; padding: 14px 16px;">
-    <div style="width: 6px; height: 40px; border-radius: 3px; background: #2f9d6b; flex-shrink: 0;"></div>
-    <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;"><span class="k">Sun 23</span><span style="font-weight: 800;">Long</span></div><div style="font-size: 12px; color: #6f747b; margin-top: 2px;">14 km · Z2 · last 3 km at HM effort</div></div>
-    <div style="text-align: right;"><div class="num" style="font-size: 22px;">14</div><div style="font-size: 10px; font-weight: 700; color: #6f747b;">Planned</div></div>
+  <div class="tile" style="flex-direction: row; align-items: center; gap: 14px; padding: 12px 16px;">
+    <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;"><span class="k">Sun 23</span><span class="pill" style="background: #2f9d6b26; color: #1f7a4f; text-transform: capitalize;">long</span></div><div style="font-size: 12px; color: #5f646b; margin-top: 4px;">12 km Z2 · last 3 km at HM effort</div></div>
+    <div style="text-align: right;"><div class="num" style="font-size: 22px;">12</div><div style="font-size: 10px; font-weight: 700; color: #5f646b;">Planned</div></div>
   </div>
-  <div class="tile" style="gap: 10px;">
-    <div style="min-height: 44px; border-radius: 14px; background: #f3f3f1; padding: 13px 14px; font-size: 13px; color: #6f747b;">How are you feeling? e.g. calf tight, away Friday…</div>
-    <div style="height: 46px; display: flex; align-items: center; justify-content: center; background: #17191c; color: #fff; border-radius: 16px; font-weight: 800; font-size: 14px;">Plan week 6</div>
+  <div style="height: 46px; display: flex; align-items: center; justify-content: center; background: #17191c; color: #fff; border-radius: 8px; font-weight: 800; font-size: 14px;">Plan week 6</div>
   </div>
-  </div>
-  <div style="position: absolute; left: 16px; right: 16px; bottom: 18px; height: 64px; background: #ffffff; border-radius: 999px; box-shadow: 0 6px 22px rgba(23,25,28,.09); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: center;">
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #6f747b;"><svg class="ic" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span style="font-size: 10px; font-weight: 700;">Home</span></div>
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 76px; background: #ffffff; border-top: 1px solid #e4e4e1; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: start; padding-top: 10px;">
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #5f646b;"><svg class="ic" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span style="font-size: 10px; font-weight: 700;">Home</span></div>
     <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #17191c;"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span style="font-size: 10px; font-weight: 700;">Plan</span></div>
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #6f747b;"><svg class="ic" viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8"/><path d="M15 8h5v5"/></svg><span style="font-size: 10px; font-weight: 700;">Runs</span></div>
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #6f747b;"><svg class="ic" viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 16l4-6 4 3 6-8"/></svg><span style="font-size: 10px; font-weight: 700;">Trends</span></div>
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #6f747b;"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M9 13l-2 8 5-3 5 3-2-8"/></svg><span style="font-size: 10px; font-weight: 700;">Records</span></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #5f646b;"><svg class="ic" viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8"/><path d="M15 8h5v5"/></svg><span style="font-size: 10px; font-weight: 700;">Runs</span></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #5f646b;"><svg class="ic" viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 16l4-6 4 3 6-8"/></svg><span style="font-size: 10px; font-weight: 700;">Trends</span></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #5f646b;"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M9 13l-2 8 5-3 5 3-2-8"/></svg><span style="font-size: 10px; font-weight: 700;">Records</span></div>
   </div>
 </div>
 </x-dc>
