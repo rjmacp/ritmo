@@ -61,9 +61,15 @@ header icon. Sign-in and first-run Onboarding are separate.
 | **Sign in** | Gate | Email magic link (Auth.js); single allowed email via env |
 | **Onboarding** | First run | Connect Strava → import history (progress) → set max HR → define first block & benchmark |
 
-Visual direction carries over from the MVP: dark theme, orange accent
-(`#FC5200`), Barlow Condensed numerals, Inter body, JetBrains Mono for
-times/dates, session-type colours (easy/medium/tempo/long/race).
+Visual direction — **"Graphite"** (chosen 2026-08-20 from 14 candidates; see
+`design/`): light theme, off-white `#f3f3f1` base, white borderless tiles with
+soft shadow and 22 px radius, charcoal→graphite gradient hero
+(`#23272e`→`#4b535e`) for today's session with a form ring, black primary
+buttons, floating pill tab bar, Manrope (800 for numerals). Colour is reserved
+for data: steel `#5b7ba8` (HR, fitness, medium), amber `#e0a830` (load,
+fatigue, tempo), green `#2f9d6b` (on target, form, long), red `#d9534f`
+(Z5 / too hard), grey `#8a929c` (easy). Reference feel: Apple Health tiles ×
+Oura calm, kept deliberately unfussy.
 
 ## 4. Architecture
 

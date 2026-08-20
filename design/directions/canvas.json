@@ -1,0 +1,240 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "title": "A \u00b7 Paper",
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Track.dc.html",
+      "title": "B \u00b7 Track",
+      "x": 470,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Dusk.dc.html",
+      "title": "C \u00b7 Dusk",
+      "x": 940,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Signal.dc.html",
+      "title": "D \u00b7 Signal",
+      "x": 1410,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Forest.dc.html",
+      "title": "E \u00b7 Forest",
+      "x": 0,
+      "y": 1000,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Plum.dc.html",
+      "title": "F \u00b7 Plum",
+      "x": 470,
+      "y": 1000,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Ink.dc.html",
+      "title": "G \u00b7 Ink",
+      "x": 940,
+      "y": 1000,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Ocean.dc.html",
+      "title": "H \u00b7 Ocean",
+      "x": 1410,
+      "y": 1000,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Glow.dc.html",
+      "title": "I \u00b7 Glow",
+      "x": 0,
+      "y": 2000,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Clay.dc.html",
+      "title": "J \u00b7 Clay",
+      "x": 470,
+      "y": 2000,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Bloom.dc.html",
+      "title": "K \u00b7 Bloom",
+      "x": 940,
+      "y": 2000,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Slate.dc.html",
+      "title": "L \u00b7 Slate",
+      "x": 0,
+      "y": 3000,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Moss.dc.html",
+      "title": "M \u00b7 Moss",
+      "x": 470,
+      "y": 3000,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Graphite.dc.html",
+      "title": "N \u00b7 Graphite",
+      "x": 940,
+      "y": 3000,
+      "w": 390,
+      "h": 844
+    }
+  ],
+  "annotations": [
+    {
+      "id": "a-note",
+      "x": 0,
+      "y": -150,
+      "w": 390,
+      "text": "A \u00b7 Paper\nWarm off-white, italic serif numerals, sage green. Calm training-journal feel. Trade-off: least 'sporty'; serif numbers are less scannable mid-run."
+    },
+    {
+      "id": "b-note",
+      "x": 470,
+      "y": -150,
+      "w": 390,
+      "text": "B \u00b7 Track\nCool light grey, Space Grotesk everywhere, electric blue. Data-first and crisp; closest to a Garmin/Strava sensibility without copying either. Trade-off: most conventional."
+    },
+    {
+      "id": "c-note",
+      "x": 940,
+      "y": -150,
+      "w": 390,
+      "text": "C \u00b7 Dusk\nStill dark, but soft navy instead of black and mint instead of orange. Easiest on the eyes at night, charts pop. Trade-off: dark again \u2014 if the theme itself is the problem, skip."
+    },
+    {
+      "id": "d-note",
+      "x": 1410,
+      "y": -150,
+      "w": 390,
+      "text": "D \u00b7 Signal\nPure white, rounded Outfit type, coral as the one loud colour. Friendly and motivating; most 'consumer app'. Trade-off: coral is in the orange family; the large radii can feel toy-like with dense data."
+    },
+    {
+      "id": "row2",
+      "x": 0,
+      "y": 900,
+      "w": 700,
+      "text": "Round 2 \u2014 light only. Same layout and type as B; only the palette changes.\nStay clear of orange/red so the accent never collides with HR zones or 'too hard' warnings."
+    },
+    {
+      "id": "e-note",
+      "x": 0,
+      "y": 1870,
+      "w": 390,
+      "text": "E \u00b7 Forest\nWarm stone background, deep green accent. Outdoorsy, calm, reads 'trail'. Green also means 'on target' \u2014 accent and success share a hue, which can blur."
+    },
+    {
+      "id": "f-note",
+      "x": 470,
+      "y": 1870,
+      "w": 390,
+      "text": "F \u00b7 Plum\nCool white, violet accent. Distinctive \u2014 no running app uses it \u2014 and fully clear of zone colours. Trade-off: least 'athletic'."
+    },
+    {
+      "id": "g-note",
+      "x": 940,
+      "y": 1870,
+      "w": 390,
+      "text": "G \u00b7 Ink\nNo accent colour at all: black buttons, grey chrome. Colour appears only in data (zones, verdicts, session types), so it always means something. Most editorial; risks feeling austere."
+    },
+    {
+      "id": "h-note",
+      "x": 1410,
+      "y": 1870,
+      "w": 390,
+      "text": "H \u00b7 Ocean\nWarm white, deep teal. Between Forest and Track: sporty but not corporate blue, distinct from the green used for 'on target'. Safest all-rounder."
+    },
+    {
+      "id": "row3",
+      "x": 0,
+      "y": 1900,
+      "w": 760,
+      "text": "Round 3 \u2014 warm, Apple Health \u00d7 Oura. New layout: no borders, soft shadows, gradient hero with a form ring, big coloured numbers (each metric owns a colour), floating pill tab bar."
+    },
+    {
+      "id": "i-note",
+      "x": 0,
+      "y": 2870,
+      "w": 390,
+      "text": "I \u00b7 Glow\nCream base, peach\u2192rose hero, Figtree. Warmest and friendliest; closest to Apple Fitness. Trade-off: the peach is a cousin of orange."
+    },
+    {
+      "id": "j-note",
+      "x": 470,
+      "y": 2870,
+      "w": 390,
+      "text": "J \u00b7 Clay\nSand base, ochre\u2192sage hero, dark text on the gradient, Albert Sans. Earthy and calm, more 'trail journal'. Trade-off: lowest contrast of the three; needs care with small text."
+    },
+    {
+      "id": "k-note",
+      "x": 940,
+      "y": 2870,
+      "w": 390,
+      "text": "K \u00b7 Bloom\nWarm white, lavender\u2192rose hero, plum text, Outfit. The Oura one: soft, premium, nothing orange about it. Trade-off: least obviously 'running'."
+    },
+    {
+      "id": "row4",
+      "x": 0,
+      "y": 2900,
+      "w": 760,
+      "text": "Round 4 \u2014 same layout as round 3, more masculine: deeper cooler hero gradients, heavier numerals (800 weight), stone/grey bases, greeting replaced by the day."
+    },
+    {
+      "id": "l-note",
+      "x": 0,
+      "y": 3870,
+      "w": 390,
+      "text": "L \u00b7 Slate\nStone base, navy\u2192teal hero, Manrope 800. Nautical, solid; teal and amber numbers. The balanced one."
+    },
+    {
+      "id": "m-note",
+      "x": 470,
+      "y": 3870,
+      "w": 390,
+      "text": "M \u00b7 Moss\nWarm grey base, forest\u2192moss hero, Sora 800. Outdoors, trail, Mafra hills. Ochre numbers keep it warm."
+    },
+    {
+      "id": "n-note",
+      "x": 940,
+      "y": 3870,
+      "w": 390,
+      "text": "N \u00b7 Graphite\nNear-monochrome: charcoal hero with one amber ring. The most serious; colour only where it earns it. Risk: a touch austere."
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

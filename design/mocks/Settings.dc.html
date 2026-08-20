@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; background: #12141a; color: #e8eaf0; font-family: 'Inter', system-ui, sans-serif; font-size: 14px; }
+    a { color: #FC5200; } a:hover { color: #ff7a3d; }
+    .num { font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 700; line-height: 1; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    .k { font-size: 11px; color: #6b7080; text-transform: uppercase; letter-spacing: .5px; }
+    svg.ic { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; overflow: hidden; background: #12141a; display: flex; flex-direction: column;">
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 12px;">
+    <div class="num" style="font-size: 22px; color: #FC5200; letter-spacing: .5px;">Settings</div>
+    
+  </div>
+  <div style="flex: 1; overflow: hidden; padding: 0 16px 84px; display: flex; flex-direction: column; gap: 12px;">
+  <div class="k" style="padding: 6px 2px 0;">Data</div>
+  <div style="background: #1a1d26; border: 1px solid #2a2d3a; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
+    <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px;"><div style="display: flex; align-items: center; gap: 10px;"><div style="width: 28px; height: 28px; border-radius: 6px; background: #FC5200; display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: #fff;"><path d="M10 2L4 14h4l2-4 2 4h4z"/><path d="M14 12l-2 4-2-4H7l5 9 5-9z" opacity=".6"/></svg></div><div><div>Strava</div><div style="font-size: 11px; color: #4db87a;">Connected · rjmac</div></div></div><span style="font-size: 12px; color: #6b7080;">Disconnect</span></div>
+    <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px;"><span style="font-size: 14px;">Sync log</span><div style="display: flex; align-items: center; gap: 8px; color: #6b7080; font-size: 13px;"><span class="mono">last ok · 19 Aug 20:14</span><svg class="ic" viewBox="0 0 24 24" style="width: 16px; height: 16px; color: #6b7080;"><path d="M9 6l6 6-6 6"/></svg></div></div>
+    <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px;"><span style="font-size: 14px;">Upload FIT / GPX</span><div style="display: flex; align-items: center; gap: 8px; color: #6b7080; font-size: 13px;"><span class=""></span><svg class="ic" viewBox="0 0 24 24" style="width: 16px; height: 16px; color: #6b7080;"><path d="M9 6l6 6-6 6"/></svg></div></div>
+  </div>
+  <div class="k" style="padding: 6px 2px 0;">Athlete</div>
+  <div style="background: #1a1d26; border: 1px solid #2a2d3a; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
+    <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px;"><span style="font-size: 14px;">Max heart rate</span><div style="display: flex; align-items: center; gap: 8px; color: #6b7080; font-size: 13px;"><span class="mono">196 bpm</span><svg class="ic" viewBox="0 0 24 24" style="width: 16px; height: 16px; color: #6b7080;"><path d="M9 6l6 6-6 6"/></svg></div></div>
+    <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px;"><span style="font-size: 14px;">Resting heart rate</span><div style="display: flex; align-items: center; gap: 8px; color: #6b7080; font-size: 13px;"><span class="mono">48 bpm</span><svg class="ic" viewBox="0 0 24 24" style="width: 16px; height: 16px; color: #6b7080;"><path d="M9 6l6 6-6 6"/></svg></div></div>
+    <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px;"><span style="font-size: 14px;">HR zones</span><div style="display: flex; align-items: center; gap: 8px; color: #6b7080; font-size: 13px;"><span class="mono">118 · 137 · 157 · 176</span><svg class="ic" viewBox="0 0 24 24" style="width: 16px; height: 16px; color: #6b7080;"><path d="M9 6l6 6-6 6"/></svg></div></div>
+    <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px;"><span style="font-size: 14px;">Season starts</span><div style="display: flex; align-items: center; gap: 8px; color: #6b7080; font-size: 13px;"><span class="">1 Jan</span><svg class="ic" viewBox="0 0 24 24" style="width: 16px; height: 16px; color: #6b7080;"><path d="M9 6l6 6-6 6"/></svg></div></div>
+    <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px;"><span style="font-size: 14px;">Units</span><div style="display: flex; align-items: center; gap: 8px; color: #6b7080; font-size: 13px;"><span class="">km</span><svg class="ic" viewBox="0 0 24 24" style="width: 16px; height: 16px; color: #6b7080;"><path d="M9 6l6 6-6 6"/></svg></div></div>
+  </div>
+  <div class="k" style="padding: 6px 2px 0;">Coach</div>
+  <div style="background: #1a1d26; border: 1px solid #2a2d3a; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
+    <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px;"><span style="font-size: 14px;">Runs per week</span><div style="display: flex; align-items: center; gap: 8px; color: #6b7080; font-size: 13px;"><span class="mono">4</span><svg class="ic" viewBox="0 0 24 24" style="width: 16px; height: 16px; color: #6b7080;"><path d="M9 6l6 6-6 6"/></svg></div></div>
+    <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px;"><span style="font-size: 14px;">Long run day</span><div style="display: flex; align-items: center; gap: 8px; color: #6b7080; font-size: 13px;"><span class="">Sunday</span><svg class="ic" viewBox="0 0 24 24" style="width: 16px; height: 16px; color: #6b7080;"><path d="M9 6l6 6-6 6"/></svg></div></div>
+    <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px;"><span style="font-size: 14px;">Block length</span><div style="display: flex; align-items: center; gap: 8px; color: #6b7080; font-size: 13px;"><span class="">8 weeks</span><svg class="ic" viewBox="0 0 24 24" style="width: 16px; height: 16px; color: #6b7080;"><path d="M9 6l6 6-6 6"/></svg></div></div>
+    <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px;"><span style="font-size: 14px;">Debrief after every run</span><div style="display: flex; align-items: center; gap: 8px; color: #6b7080; font-size: 13px;"><span class="">On</span><svg class="ic" viewBox="0 0 24 24" style="width: 16px; height: 16px; color: #6b7080;"><path d="M9 6l6 6-6 6"/></svg></div></div>
+    <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px;"><span style="font-size: 14px;">Block planning model</span><div style="display: flex; align-items: center; gap: 8px; color: #6b7080; font-size: 13px;"><span class="">Opus</span><svg class="ic" viewBox="0 0 24 24" style="width: 16px; height: 16px; color: #6b7080;"><path d="M9 6l6 6-6 6"/></svg></div></div>
+  </div>
+  <div style="display: flex; justify-content: center; font-size: 11px; color: #6b7080; padding-top: 4px;">Powered by Strava</div>
+  </div>
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 72px; background: #1a1d26; border-top: 1px solid #2a2d3a; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding-bottom: 12px;">
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #FC5200;"><svg class="ic" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span style="font-size: 10px; font-weight: 500;">Home</span></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #6b7080;"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span style="font-size: 10px; font-weight: 500;">Plan</span></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #6b7080;"><svg class="ic" viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8"/><path d="M15 8h5v5"/></svg><span style="font-size: 10px; font-weight: 500;">Activities</span></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #6b7080;"><svg class="ic" viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 16l4-6 4 3 6-8"/></svg><span style="font-size: 10px; font-weight: 500;">Trends</span></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #6b7080;"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M9 13l-2 8 5-3 5 3-2-8"/></svg><span style="font-size: 10px; font-weight: 500;">Records</span></div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

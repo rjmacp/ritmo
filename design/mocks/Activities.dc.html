@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; background: #12141a; color: #e8eaf0; font-family: 'Inter', system-ui, sans-serif; font-size: 14px; }
+    a { color: #FC5200; } a:hover { color: #ff7a3d; }
+    .num { font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 700; line-height: 1; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    .k { font-size: 11px; color: #6b7080; text-transform: uppercase; letter-spacing: .5px; }
+    svg.ic { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; overflow: hidden; background: #12141a; display: flex; flex-direction: column;">
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 12px;">
+    <div class="num" style="font-size: 22px; color: #FC5200; letter-spacing: .5px;">Activities</div>
+    <div style="display: flex; align-items: center; gap: 10px;"><div style="font-size: 12px; color: #FC5200; font-weight: 500;">Upload</div><svg class="ic" viewBox="0 0 24 24" style="color: #6b7080;"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></div>
+  </div>
+  <div style="flex: 1; overflow: hidden; padding: 0 16px 84px; display: flex; flex-direction: column; gap: 12px;">
+  <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+    <span style="background: #FC5200; border: 1px solid #FC5200; color: #fff; font-size: 12px; font-weight: 500; padding: 6px 12px; border-radius: 20px;">All</span>
+    <span style="background: #222534; border: 1px solid #2a2d3a; color: #6b7080; font-size: 12px; font-weight: 500; padding: 6px 12px; border-radius: 20px;">Easy</span>
+    <span style="background: #222534; border: 1px solid #2a2d3a; color: #6b7080; font-size: 12px; font-weight: 500; padding: 6px 12px; border-radius: 20px;">Medium</span>
+    <span style="background: #222534; border: 1px solid #2a2d3a; color: #6b7080; font-size: 12px; font-weight: 500; padding: 6px 12px; border-radius: 20px;">Tempo</span>
+    <span style="background: #222534; border: 1px solid #2a2d3a; color: #6b7080; font-size: 12px; font-weight: 500; padding: 6px 12px; border-radius: 20px;">Long</span>
+    <span style="background: #222534; border: 1px solid #2a2d3a; color: #6b7080; font-size: 12px; font-weight: 500; padding: 6px 12px; border-radius: 20px;">Race</span>
+  </div>
+  <div class="k" style="padding: 4px 2px 0;">August · 112 km</div>
+  <div style="background: #1a1d26; border: 1px solid #2a2d3a; border-left: 3px solid #FC5200; border-radius: 8px; padding: 12px 14px; display: flex; align-items: center; gap: 12px;">
+    <div style="flex: 1; min-width: 0;"><div class="mono" style="font-size: 11px; color: #6b7080;">19 Aug · 18:02</div><div style="display: flex; align-items: center; gap: 6px; font-weight: 600; margin-top: 2px;">Mafra Corrida <span style="font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 10px; background: #FC5200; color: #fff;">Tempo</span> <span style="font-size: 10px; color: #c9a227; font-weight: 600;">PB 2 km</span></div></div>
+    <div style="display: flex; gap: 14px;">
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">7.4</div><div class="k">km</div></div>
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">5:26</div><div class="k">/km</div></div>
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">158</div><div class="k">bpm</div></div>
+    </div>
+  </div>
+  <div style="background: #1a1d26; border: 1px solid #2a2d3a; border-left: 3px solid #2d8a5a; border-radius: 8px; padding: 12px 14px; display: flex; align-items: center; gap: 12px;">
+    <div style="flex: 1; min-width: 0;"><div class="mono" style="font-size: 11px; color: #6b7080;">17 Aug · 09:12</div><div style="display: flex; align-items: center; gap: 6px; font-weight: 600; margin-top: 2px;">Mafra Corrida <span style="font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 10px; background: #2d8a5a; color: #fff;">Long</span> </div></div>
+    <div style="display: flex; gap: 14px;">
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">16.1</div><div class="k">km</div></div>
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">5:31</div><div class="k">/km</div></div>
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">153</div><div class="k">bpm</div></div>
+    </div>
+  </div>
+  <div style="background: #1a1d26; border: 1px solid #2a2d3a; border-left: 3px solid #6b7a8a; border-radius: 8px; padding: 12px 14px; display: flex; align-items: center; gap: 12px;">
+    <div style="flex: 1; min-width: 0;"><div class="mono" style="font-size: 11px; color: #6b7080;">14 Aug · 18:40</div><div style="display: flex; align-items: center; gap: 6px; font-weight: 600; margin-top: 2px;">Mafra Corrida <span style="font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 10px; background: #6b7a8a; color: #fff;">Easy</span> </div></div>
+    <div style="display: flex; gap: 14px;">
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">6.5</div><div class="k">km</div></div>
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">6:08</div><div class="k">/km</div></div>
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">144</div><div class="k">bpm</div></div>
+    </div>
+  </div>
+  <div style="background: #1a1d26; border: 1px solid #2a2d3a; border-left: 3px solid #3a6fb5; border-radius: 8px; padding: 12px 14px; display: flex; align-items: center; gap: 12px;">
+    <div style="flex: 1; min-width: 0;"><div class="mono" style="font-size: 11px; color: #6b7080;">12 Aug · 18:21</div><div style="display: flex; align-items: center; gap: 6px; font-weight: 600; margin-top: 2px;">Ferreira do Zêzere <span style="font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 10px; background: #3a6fb5; color: #fff;">Medium</span> </div></div>
+    <div style="display: flex; gap: 14px;">
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">9.0</div><div class="k">km</div></div>
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">5:43</div><div class="k">/km</div></div>
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">157</div><div class="k">bpm</div></div>
+    </div>
+  </div>
+  <div style="background: #1a1d26; border: 1px solid #2a2d3a; border-left: 3px solid #2d8a5a; border-radius: 8px; padding: 12px 14px; display: flex; align-items: center; gap: 12px;">
+    <div style="flex: 1; min-width: 0;"><div class="mono" style="font-size: 11px; color: #6b7080;">10 Aug · 09:05</div><div style="display: flex; align-items: center; gap: 6px; font-weight: 600; margin-top: 2px;">Mafra Corrida <span style="font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 10px; background: #2d8a5a; color: #fff;">Long</span> </div></div>
+    <div style="display: flex; gap: 14px;">
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">14.1</div><div class="k">km</div></div>
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">5:38</div><div class="k">/km</div></div>
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">152</div><div class="k">bpm</div></div>
+    </div>
+  </div>
+  <div style="background: #1a1d26; border: 1px solid #2a2d3a; border-left: 3px solid #6b7a8a; border-radius: 8px; padding: 12px 14px; display: flex; align-items: center; gap: 12px;">
+    <div style="flex: 1; min-width: 0;"><div class="mono" style="font-size: 11px; color: #6b7080;">07 Aug · 18:55</div><div style="display: flex; align-items: center; gap: 6px; font-weight: 600; margin-top: 2px;">Mafra Corrida <span style="font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 10px; background: #6b7a8a; color: #fff;">Easy</span> </div></div>
+    <div style="display: flex; gap: 14px;">
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">6.6</div><div class="k">km</div></div>
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">6:12</div><div class="k">/km</div></div>
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">141</div><div class="k">bpm</div></div>
+    </div>
+  </div>
+  <div style="background: #1a1d26; border: 1px solid #2a2d3a; border-left: 3px solid #FC5200; border-radius: 8px; padding: 12px 14px; display: flex; align-items: center; gap: 12px;">
+    <div style="flex: 1; min-width: 0;"><div class="mono" style="font-size: 11px; color: #6b7080;">05 Aug · 18:31</div><div style="display: flex; align-items: center; gap: 6px; font-weight: 600; margin-top: 2px;">Mafra Corrida <span style="font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 10px; background: #FC5200; color: #fff;">Tempo</span> </div></div>
+    <div style="display: flex; gap: 14px;">
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">7.2</div><div class="k">km</div></div>
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">5:30</div><div class="k">/km</div></div>
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">159</div><div class="k">bpm</div></div>
+    </div>
+  </div>
+  <div class="k" style="padding: 4px 2px 0;">July · 98 km</div>
+  <div style="background: #1a1d26; border: 1px solid #2a2d3a; border-left: 3px solid #6b7a8a; border-radius: 8px; padding: 12px 14px; display: flex; align-items: center; gap: 12px;">
+    <div style="flex: 1; min-width: 0;"><div class="mono" style="font-size: 11px; color: #6b7080;">29 Jul · 09:20</div><div style="display: flex; align-items: center; gap: 6px; font-weight: 600; margin-top: 2px;">Mafra Corrida <span style="font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 10px; background: #6b7a8a; color: #fff;">Easy</span> </div></div>
+    <div style="display: flex; gap: 14px;">
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">6.5</div><div class="k">km</div></div>
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">6:02</div><div class="k">/km</div></div>
+      <div style="text-align: right;"><div class="num" style="font-size: 18px;">142</div><div class="k">bpm</div></div>
+    </div>
+  </div>
+  </div>
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 72px; background: #1a1d26; border-top: 1px solid #2a2d3a; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding-bottom: 12px;">
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #6b7080;"><svg class="ic" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span style="font-size: 10px; font-weight: 500;">Home</span></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #6b7080;"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span style="font-size: 10px; font-weight: 500;">Plan</span></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #FC5200;"><svg class="ic" viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8"/><path d="M15 8h5v5"/></svg><span style="font-size: 10px; font-weight: 500;">Activities</span></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #6b7080;"><svg class="ic" viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 16l4-6 4 3 6-8"/></svg><span style="font-size: 10px; font-weight: 500;">Trends</span></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #6b7080;"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M9 13l-2 8 5-3 5 3-2-8"/></svg><span style="font-size: 10px; font-weight: 500;">Records</span></div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

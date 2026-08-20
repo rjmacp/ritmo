@@ -1,0 +1,67 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "title": "Home",
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Plan.dc.html",
+      "x": 470,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Runs.dc.html",
+      "x": 940,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "RunDetail.dc.html",
+      "title": "Run detail",
+      "x": 1410,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Trends.dc.html",
+      "x": 0,
+      "y": 940,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Records.dc.html",
+      "x": 470,
+      "y": 940,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Settings.dc.html",
+      "x": 940,
+      "y": 940,
+      "w": 390,
+      "h": 844
+    }
+  ],
+  "annotations": [
+    {
+      "id": "note",
+      "x": 1410,
+      "y": 960,
+      "w": 360,
+      "text": "Ritmo \u00b7 Graphite\nTop row is the daily loop (Home \u2192 Plan \u2192 Runs \u2192 Run detail); bottom row the review screens. Settings opens from the profile button.\n\nColour is data only: steel = HR/fitness, amber = load/fatigue/tempo, green = on target/form/long. Charcoal hero and black buttons carry the brand."
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

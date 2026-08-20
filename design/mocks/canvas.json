@@ -1,0 +1,15 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "title": "Home", "x": 0, "y": 0, "w": 390, "h": 844 },
+    { "file": "Plan.dc.html", "x": 470, "y": 0, "w": 390, "h": 844 },
+    { "file": "Activities.dc.html", "x": 940, "y": 0, "w": 390, "h": 844 },
+    { "file": "ActivityDetail.dc.html", "title": "Activity detail", "x": 1410, "y": 0, "w": 390, "h": 844 },
+    { "file": "Trends.dc.html", "x": 0, "y": 940, "w": 390, "h": 844 },
+    { "file": "Records.dc.html", "x": 470, "y": 940, "w": 390, "h": 844 },
+    { "file": "Settings.dc.html", "x": 940, "y": 940, "w": 390, "h": 844 }
+  ],
+  "annotations": [
+    { "id": "flow-note", "x": 1410, "y": 960, "w": 360, "text": "Ritmo v1 screens, 390×844.\nTop row: the daily loop — Home → Plan → Activities → detail.\nBottom row: review screens. Tab bar is shared; Settings opens from the gear.\nCopy is illustrative but uses real runs from the MVP (19 Aug tempo, 17 Aug long)." }
+  ],
+  "launch": { "view": "canvas" }
+}

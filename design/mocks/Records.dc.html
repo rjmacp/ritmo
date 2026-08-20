@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; background: #12141a; color: #e8eaf0; font-family: 'Inter', system-ui, sans-serif; font-size: 14px; }
+    a { color: #FC5200; } a:hover { color: #ff7a3d; }
+    .num { font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 700; line-height: 1; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    .k { font-size: 11px; color: #6b7080; text-transform: uppercase; letter-spacing: .5px; }
+    svg.ic { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; overflow: hidden; background: #12141a; display: flex; flex-direction: column;">
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 12px;">
+    <div class="num" style="font-size: 22px; color: #FC5200; letter-spacing: .5px;">Records</div>
+    <svg class="ic" viewBox="0 0 24 24" style="color: #6b7080;"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+  </div>
+  <div style="flex: 1; overflow: hidden; padding: 0 16px 84px; display: flex; flex-direction: column; gap: 12px;">
+  <div style="display: flex; gap: 6px;">
+    <span style="background: #FC5200; border: 1px solid #FC5200; color: #fff; font-size: 12px; font-weight: 500; padding: 6px 12px; border-radius: 20px;">Best times</span>
+    <span style="background: #222534; border: 1px solid #2a2d3a; color: #6b7080; font-size: 12px; font-weight: 500; padding: 6px 12px; border-radius: 20px;">Benchmarks</span>
+    <span style="background: #222534; border: 1px solid #2a2d3a; color: #6b7080; font-size: 12px; font-weight: 500; padding: 6px 12px; border-radius: 20px;">Predictions</span>
+  </div>
+  <div style="background: #1a1d26; border: 1px solid #2a2d3a; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;"><span class="num" style="font-size: 20px;">5 km</span><span class="k">all-time 23:34 · 19 Aug 2026</span></div>
+    <div style="display: flex; align-items: flex-end; gap: 14px;">
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: 10px;"><span class="mono" style="font-size: 11px; color: #6b7080; width: 32px;">2024</span><div style="flex: 1; height: 6px; background: #222534; border-radius: 3px;"><div style="width: —%; height: 100%; background: #e8eaf0; border-radius: 3px; opacity: .8;"></div></div><span class="mono" style="font-size: 13px; color: #e8eaf0; width: 48px; text-align: right;">26</span><span class="mono" style="font-size: 11px; color: #6b7080; width: 40px; text-align: right;">12</span></div>
+        <div style="display: flex; align-items: center; gap: 10px;"><span class="mono" style="font-size: 11px; color: #6b7080; width: 32px;">2025</span><div style="flex: 1; height: 6px; background: #222534; border-radius: 3px;"><div style="width: -1%; height: 100%; background: #e8eaf0; border-radius: 3px; opacity: .8;"></div></div><span class="mono" style="font-size: 13px; color: #e8eaf0; width: 48px; text-align: right;">24</span><span class="mono" style="font-size: 11px; color: #6b7080; width: 40px; text-align: right;">51</span></div>
+        <div style="display: flex; align-items: center; gap: 10px;"><span class="mono" style="font-size: 11px; color: #6b7080; width: 32px;">2026</span><div style="flex: 1; height: 6px; background: #222534; border-radius: 3px;"><div style="width: -1%; height: 100%; background: #e8eaf0; border-radius: 3px; opacity: .8;"></div></div><span class="mono" style="font-size: 13px; color: #e8eaf0; width: 48px; text-align: right;">23</span><span class="mono" style="font-size: 11px; color: #6b7080; width: 40px; text-align: right;">34</span></div>
+      </div><svg class="ic" viewBox="0 0 24 24" style="width: 16px; height: 16px; color: #6b7080;"><path d="M9 6l6 6-6 6"/></svg></div></div>
+  <div style="background: #1a1d26; border: 1px solid #2a2d3a; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;"><span class="num" style="font-size: 20px;">10 km</span><span class="k">all-time 53:50* · 17 Aug 2026</span></div>
+    <div style="display: flex; align-items: flex-end; gap: 14px;">
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: 10px;"><span class="mono" style="font-size: 11px; color: #6b7080; width: 32px;">2024</span><div style="flex: 1; height: 6px; background: #222534; border-radius: 3px;"><div style="width: —%; height: 100%; background: #e8eaf0; border-radius: 3px; opacity: .8;"></div></div><span class="mono" style="font-size: 13px; color: #e8eaf0; width: 48px; text-align: right;">58</span><span class="mono" style="font-size: 11px; color: #6b7080; width: 40px; text-align: right;">40</span></div>
+        <div style="display: flex; align-items: center; gap: 10px;"><span class="mono" style="font-size: 11px; color: #6b7080; width: 32px;">2025</span><div style="flex: 1; height: 6px; background: #222534; border-radius: 3px;"><div style="width: -3%; height: 100%; background: #e8eaf0; border-radius: 3px; opacity: .8;"></div></div><span class="mono" style="font-size: 13px; color: #e8eaf0; width: 48px; text-align: right;">55</span><span class="mono" style="font-size: 11px; color: #6b7080; width: 40px; text-align: right;">02</span></div>
+        <div style="display: flex; align-items: center; gap: 10px;"><span class="mono" style="font-size: 11px; color: #6b7080; width: 32px;">2026</span><div style="flex: 1; height: 6px; background: #222534; border-radius: 3px;"><div style="width: -1%; height: 100%; background: #e8eaf0; border-radius: 3px; opacity: .8;"></div></div><span class="mono" style="font-size: 13px; color: #e8eaf0; width: 48px; text-align: right;">53</span><span class="mono" style="font-size: 11px; color: #6b7080; width: 40px; text-align: right;">50*</span></div>
+      </div><svg class="ic" viewBox="0 0 24 24" style="width: 16px; height: 16px; color: #6b7080;"><path d="M9 6l6 6-6 6"/></svg></div></div>
+  <div style="background: #1a1d26; border: 1px solid #2a2d3a; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;"><span class="num" style="font-size: 20px;">Half</span><span class="k">all-time 1:58:12 · 14 Sep 2025</span></div>
+    <div style="display: flex; align-items: flex-end; gap: 14px;">
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: 10px;"><span class="mono" style="font-size: 11px; color: #6b7080; width: 32px;">2025</span><div style="flex: 1; height: 6px; background: #222534; border-radius: 3px;"><div style="width: 12%; height: 100%; background: #e8eaf0; border-radius: 3px; opacity: .8;"></div></div><span class="mono" style="font-size: 13px; color: #e8eaf0; width: 48px; text-align: right;">1</span><span class="mono" style="font-size: 11px; color: #6b7080; width: 40px; text-align: right;">58</span></div>
+        <div style="display: flex; align-items: center; gap: 10px;"><span class="mono" style="font-size: 11px; color: #6b7080; width: 32px;">2026</span><div style="flex: 1; height: 6px; background: #222534; border-radius: 3px;"><div style="width: 0%; height: 100%; background: #e8eaf0; border-radius: 3px; opacity: .8;"></div></div><span class="mono" style="font-size: 13px; color: #e8eaf0; width: 48px; text-align: right;">—</span><span class="mono" style="font-size: 11px; color: #6b7080; width: 40px; text-align: right;">—</span></div>
+      </div><svg class="ic" viewBox="0 0 24 24" style="width: 16px; height: 16px; color: #6b7080;"><path d="M9 6l6 6-6 6"/></svg></div></div>
+  <div style="background: #1a1d26; border: 1px solid #2a2d3a; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;"><span class="num" style="font-size: 20px;">1 km</span><span class="k">all-time 4:21 · 26 Jul 2026</span></div>
+    <div style="display: flex; align-items: flex-end; gap: 14px;">
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: 10px;"><span class="mono" style="font-size: 11px; color: #6b7080; width: 32px;">2025</span><div style="flex: 1; height: 6px; background: #222534; border-radius: 3px;"><div style="width: —%; height: 100%; background: #e8eaf0; border-radius: 3px; opacity: .8;"></div></div><span class="mono" style="font-size: 13px; color: #e8eaf0; width: 48px; text-align: right;">4</span><span class="mono" style="font-size: 11px; color: #6b7080; width: 40px; text-align: right;">33</span></div>
+        <div style="display: flex; align-items: center; gap: 10px;"><span class="mono" style="font-size: 11px; color: #6b7080; width: 32px;">2026</span><div style="flex: 1; height: 6px; background: #222534; border-radius: 3px;"><div style="width: -0%; height: 100%; background: #e8eaf0; border-radius: 3px; opacity: .8;"></div></div><span class="mono" style="font-size: 13px; color: #e8eaf0; width: 48px; text-align: right;">4</span><span class="mono" style="font-size: 11px; color: #6b7080; width: 40px; text-align: right;">21</span></div>
+      </div><svg class="ic" viewBox="0 0 24 24" style="width: 16px; height: 16px; color: #6b7080;"><path d="M9 6l6 6-6 6"/></svg></div></div>
+  <div style="font-size: 11px; color: #6b7080; padding: 0 2px;">* estimated from lap splits · season starts 1 Jan</div>
+  </div>
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 72px; background: #1a1d26; border-top: 1px solid #2a2d3a; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding-bottom: 12px;">
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #6b7080;"><svg class="ic" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span style="font-size: 10px; font-weight: 500;">Home</span></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #6b7080;"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span style="font-size: 10px; font-weight: 500;">Plan</span></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #6b7080;"><svg class="ic" viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8"/><path d="M15 8h5v5"/></svg><span style="font-size: 10px; font-weight: 500;">Activities</span></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #6b7080;"><svg class="ic" viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 16l4-6 4 3 6-8"/></svg><span style="font-size: 10px; font-weight: 500;">Trends</span></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #FC5200;"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M9 13l-2 8 5-3 5 3-2-8"/></svg><span style="font-size: 10px; font-weight: 500;">Records</span></div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>
