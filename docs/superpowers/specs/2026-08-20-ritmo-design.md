@@ -28,7 +28,7 @@ chat → Claude rewrites an HTML dashboard → Claude plans runs in chat.
 - Social features (segments, leaderboards, clubs, routes).
 - Free-form chat with the coach.
 - Multi-user sign-up (data model is multi-user ready; auth is single-user).
-- Per-second streams, GAP, running power, VO2max estimates.
+- Per-second streams in v1 (GAP v1 is lap-based), running power, VO2max estimates.
 - Native mobile builds.
 
 ## 2. Decisions made
@@ -132,12 +132,12 @@ refresh_token, expires_at, last_sync_at
 **activities** — id, athlete_id, source (`strava`|`upload`), strava_id
 (unique, nullable), started_at, timezone, name, type
 (`easy`|`medium`|`tempo`|`long`|`race`|`tt`|`other`), surface, distance_m,
-moving_s, elapsed_s, avg_pace_s_per_km, avg_hr, max_hr, avg_cadence,
+moving_s, elapsed_s, avg_pace_s_per_km, avg_gap_s_per_km (nullable), avg_hr, max_hr, avg_cadence,
 elevation_gain_m, calories, training_effect_aerobic (nullable),
 training_effect_anaerobic (nullable), notes, raw_json
 
 **laps** — activity_id, index, distance_m, moving_s, avg_hr,
-elevation_gain_m
+elevation_gain_m, elevation_loss_m (nullable), gap_s_per_km (nullable)
 
 **best_efforts** — activity_id, distance_label (`1k`,`2k`,`5k`,`10k`,`15k`,
 `hm`), elapsed_s, start_lap, estimated (bool). Computed by us (rolling best
@@ -247,6 +247,15 @@ deletes, stay under rate limits (100/15 min, 1000/day).
   the affected date forward after each sync and nightly.
 - **Aerobic efficiency**: `speed (m/min) ÷ avg HR`, charted for easy runs;
   **decoupling** = efficiency second half vs first half (cardiac drift flag).
+- **Grade-adjusted pace (GAP)**: per lap, grade = net elevation change ÷ lap
+  distance; GAP = pace × C(0)/C(grade) using the Minetti cost-of-running
+  curve `C(i) = 155.4i⁵ − 30.4i⁴ − 43.3i³ + 46.3i² + 19.5i + 3.6` (i as a
+  fraction, clamped to ±0.30). v1 uses lap `total_elevation_gain` and lap-end
+  altitude differences from Strava (flagged `estimated`); v2 applies the curve
+  per ~100 m segment of the altitude stream, which also captures rolling
+  terrain that nets to zero. Stored on `laps.gap_s_per_km` and
+  `activities.avg_gap_s_per_km`; shown beside pace on the feed, detail hero
+  and lap table; the coach gives pace targets as GAP on hilly routes.
 - **Best efforts**: rolling fastest 1/2/5/10/15/21.1 km per activity;
   interpolated across laps → `estimated=true`.
 - **Predictions**: Riegel `t2 = t1 × (d2/d1)^1.06` from latest benchmark and
