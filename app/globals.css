@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f7f8fa;
+  --card: #ffffff;
+  --line: #e3e6eb;
+  --ink: #141a26;
+  --muted: #5f6776;
+  --navy-a: #16223d;
+  --navy-b: #2c4570;
+  --sky: #2f9ad0;
+  --sky-text: #1f6f9a;
+  --sky-hero: #7fd0f7;
+  --tang: #f08a24;
+  --tang-text: #b85f0f;
+  --tang-hero: #ffb25c;
+  --lime: #7ab648;
+  --lime-text: #4f8a22;
+  --lime-hero: #b5e07a;
+  --easy: #7b8494;
+  --red: #d9534f;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-sky: var(--sky);
+  --color-sky-text: var(--sky-text);
+  --color-tang: var(--tang);
+  --color-tang-text: var(--tang-text);
+  --color-lime: var(--lime);
+  --color-lime-text: var(--lime-text);
+  --color-easy: var(--easy);
+  --color-red: var(--red);
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.card {
+  @apply bg-card border border-line rounded-xl;
+}
+.hero {
+  color: #fff;
+  border-radius: 12px;
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgba(127, 208, 247, 0.18) 0%, rgba(127, 208, 247, 0) 55%),
+    linear-gradient(135deg, var(--navy-a) 0%, var(--navy-b) 100%);
+}
+.num {
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.k {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+}
+.pill {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+}
