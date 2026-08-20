@@ -1,5 +1,5 @@
 import json
-BG="#ffffff"; TILE="#ffffff"; TXT="#141a26"; MUT="#5f6776"; GA="#16223d"; GB="#2c4570"
+BG="#f7f8fa"; TILE="#ffffff"; TXT="#141a26"; MUT="#5f6776"; GA="#16223d"; GB="#2c4570"
 AMB="#f08a24"; GRN="#7ab648"; STL="#2f9ad0"; RED="#d9534f"; ACC="#16223d"; GRN_T="#4f8a22"; AMB_T="#b85f0f"; STL_T="#1f6f9a"; AMB_H="#ffb25c"; GRN_H="#b5e07a"; STL_H="#7fd0f7"
 SH="none"; BOR="#e3e6eb"
 TYPE={"easy":"#7b8494","medium":STL,"tempo":AMB,"long":GRN,"race":TXT}
@@ -133,10 +133,11 @@ def sess(date,name,t,desc,v,verdict,vc):
     <div style="text-align: right;"><div class="num" style="font-size: 22px;">{v}</div><div style="font-size: 10px; font-weight: 700; color: {vc};">{verdict}</div></div>
   </div>
 '''
-plan = head()+header("Thursday 20 August","Plan",f'<div style="height: 36px; padding: 0 14px; border-radius: 8px; background: {ACC}; color: #fff; display: flex; align-items: center; font-size: 13px; font-weight: 800;">Plan week 6</div>')+f'''  <div style="{HERO}">
+plan = head()+header("Thursday 20 August","Plan",f'<div style="display: flex; border: 1px solid {BOR}; border-radius: 8px; overflow: hidden; height: 36px;"><span style="padding: 0 14px; display: flex; align-items: center; font-size: 13px; font-weight: 800; background: {TXT}; color: #fff;">Week</span><span style="padding: 0 14px; display: flex; align-items: center; font-size: 13px; font-weight: 700; color: {MUT};">Month</span></div>')+f'''  <div style="{HERO}">
     <div style="display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 12px; font-weight: 700; opacity: .85;">HM BUILD · WEEK 5 OF 8</span><span class="pill" style="background: rgba(255,255,255,.18);">HM · 13 Sep</span></div>
     <div style="display: flex; align-items: baseline; gap: 8px;"><span class="num" style="font-size: 40px;">141</span><span style="font-size: 14px; opacity: .85;">of 300 km · 24 days to go</span></div>
     <div style="height: 8px; background: rgba(255,255,255,.18); border-radius: 4px; overflow: hidden;"><div style="width: 47%; height: 100%; background: {GRN_H}; border-radius: 4px;"></div></div>
+    <div style="height: 44px; display: flex; align-items: center; justify-content: center; background: #fff; color: {TXT}; border-radius: 8px; font-weight: 800; font-size: 14px;">Plan week 6</div>
   </div>
   <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 6px;"><span style="font-weight: 800;">This week · 17–23 Aug</span>{pill("2 of 2 at effort",GRN+"26",GRN_T)}</div>
   <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px;">
@@ -171,7 +172,7 @@ def feedcard(date,name,t,km,time,pace,hr,climb,verdict,vcol,tags,route,planned,g
     </div>
   </div>
 '''
-acts = head()+header("August · 91 km · 12 runs","Runs",f'<div style="height: 36px; padding: 0 14px; border-radius: 8px; background: {TILE}; border: 1px solid {BOR}; display: flex; align-items: center; font-size: 13px; font-weight: 700;">Upload</div>')
+acts = head()+header("August · 91 km · 12 runs","Runs",f'<div style="display: flex; gap: 8px;"><div style="width: 36px; height: 36px; border-radius: 8px; background: {TILE}; border: 1px solid {BOR}; display: flex; align-items: center; justify-content: center; color: {MUT};"><svg class="ic" viewBox="0 0 24 24" style="width: 18px; height: 18px;">{ICONS["plan"]}</svg></div><div style="height: 36px; padding: 0 14px; border-radius: 8px; background: {TILE}; border: 1px solid {BOR}; display: flex; align-items: center; font-size: 13px; font-weight: 700;">Upload</div></div>')
 acts += chips(["All","Easy","Medium","Tempo","Long","Race"],"All")
 acts += feedcard("Wed 19 Aug · 18:02","Mafra Corrida","tempo","7.4","40:12","5:26",158,wx(WX_SUN,"26 °C")+wx(WX_WIND,"9 km/h")+"+71 m","On target",GRN_T,[("Best 2 km · 9:50",AMB_T)],[(347,STL),(331,GRN),(289,AMB),(301,AMB),(307,AMB),(369,GRN),(373,GRN),(380,GRN)],"Planned: 3 km @ 4:50–5:10 inside 7–8 km","5:21")
 acts += feedcard("Mon 17 Aug · 09:12","Mafra Corrida","easy","6.5","39:52","6:08",144,wx(WX_CLOUD,"18 °C")+wx(WX_WIND,"21 km/h")+"+58 m","On target",GRN_T,[],[(372,STL),(366,STL),(360,GRN),(362,GRN),(375,STL),(380,STL),(390,STL)],"Planned: 6–7 km easy, under 145 bpm","6:04")
@@ -362,7 +363,7 @@ sheet += f'''  <div style="{HERO} opacity: .35;">
   <div style="opacity: .35;">{sess("Mon 17","Easy","easy","6–7 km Z2 · ran 6.5 at 6:08, 144 bpm","6.5","On target",GRN_T)}</div>
 '''+END_BODY
 sheet += f'''  <div style="position: absolute; inset: 0; background: rgba(23,25,28,.35);"></div>
-  <div style="position: absolute; left: 0; right: 0; bottom: 0; background: {BG}; border-radius: 16px 16px 0 0; border-top: 1px solid {BOR}; padding: 10px 16px 20px; display: flex; flex-direction: column; gap: 12px;">
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; background: #fff; border-radius: 16px 16px 0 0; border-top: 1px solid {BOR}; padding: 10px 16px 20px; display: flex; flex-direction: column; gap: 12px;">
     <div style="width: 40px; height: 4px; border-radius: 2px; background: {BOR}; align-self: center;"></div>
     <div style="display: flex; align-items: center; justify-content: space-between;">
       <div style="display: flex; flex-direction: column; gap: 4px;"><div style="display: flex; align-items: center; gap: 8px;">{tpill("long")}<span class="k">Sun 23 Aug</span></div><span class="num" style="font-size: 20px;">12–13 km long run</span></div>
@@ -424,7 +425,37 @@ session += f'''  <div style="{HERO} gap: 10px;">
   </div>
 '''+END_BODY+tail("plan")
 
-for name,content in [("Main",home),("Plan",plan),("Runs",acts),("RunDetail",detail),("Trends",trends),("Records",records),("Settings",settings),("MoveSession",sheet),("Session",session)]:
+
+# ---------------- CALENDAR (shared by Plan · Month and Runs · Calendar) ----------------
+def calcell(d, done=None, plan=None, today=False, sel=False, faded=False):
+    if d is None: return '<div></div>'
+    dots=""
+    if done: dots+=f'<i style="width: 7px; height: 7px; border-radius: 50%; background: {TYPE[done]};"></i>'
+    if plan: dots+=f'<i style="width: 7px; height: 7px; border-radius: 50%; border: 1.5px solid {TYPE[plan]}; box-sizing: border-box;"></i>'
+    box = f"background: {TXT}; color: #fff;" if sel else (f"box-shadow: inset 0 0 0 1.5px {TXT};" if today else "")
+    col = MUT if faded else TXT
+    return f'<div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 4px 0;"><div style="width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: {col}; {box}">{d}</div><div style="display: flex; gap: 3px; height: 7px;">{dots}</div></div>'
+# August 2026: 1 Aug is a Saturday → Mon-start grid offset 5
+days=[None]*5+list(range(1,32))+[None]*(42-36)
+cal_done={2:"long",4:"easy",6:"tempo",9:"long",11:"easy",13:"medium",16:"long",17:"easy",19:"tempo"}
+cal_plan={20:"easy",22:"medium",23:"long",25:"easy",27:"tempo",29:"medium",30:"race"}
+cells="".join(calcell(d, cal_done.get(d), cal_plan.get(d), today=(d==20), sel=(d==19), faded=(d is not None and d>20)) for d in days)
+calendar = head()+header("August 2026","Plan",f'<div style="display: flex; border: 1px solid {BOR}; border-radius: 8px; overflow: hidden; height: 36px;"><span style="padding: 0 14px; display: flex; align-items: center; font-size: 13px; font-weight: 700; color: {MUT};">Week</span><span style="padding: 0 14px; display: flex; align-items: center; font-size: 13px; font-weight: 800; background: {TXT}; color: #fff;">Month</span></div>')
+calendar += f'''  <div class="tile" style="gap: 6px; padding: 12px 10px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 6px 4px;"><svg class="ic" viewBox="0 0 24 24" style="width: 18px; height: 18px; color: {MUT};"><path d="M15 6l-6 6 6 6"/></svg><span style="font-weight: 800;">August 2026</span><svg class="ic" viewBox="0 0 24 24" style="width: 18px; height: 18px; color: {MUT};"><path d="M9 6l6 6-6 6"/></svg></div>
+    <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); text-align: center;">{"".join(f'<span class="k" style="font-size: 10px;">{w}</span>' for w in "MTWTFSS")}</div>
+    <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr));">{cells}</div>
+    <div style="display: flex; gap: 14px; justify-content: center; padding-top: 6px; border-top: 1px solid {BOR}; font-size: 11px; color: {MUT}; font-weight: 600;"><span style="display: flex; align-items: center; gap: 5px;"><i style="width: 7px; height: 7px; border-radius: 50%; background: {TYPE["long"]};"></i>done</span><span style="display: flex; align-items: center; gap: 5px;"><i style="width: 7px; height: 7px; border-radius: 50%; border: 1.5px solid {TYPE["long"]}; box-sizing: border-box;"></i>planned</span><span style="display: flex; align-items: center; gap: 5px;"><i style="width: 7px; height: 7px; border-radius: 50%; background: {TXT};"></i>race / TT</span></div>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 6px;"><span style="font-weight: 800;">Wed 19 Aug</span>{pill("On target","",GRN_T)}</div>
+  <div class="tile" style="flex-direction: row; align-items: center; gap: 14px; padding: 12px 16px;">
+    <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;">{tpill("tempo")}<span class="k">18:02 · Mafra Corrida</span></div><div style="font-size: 12px; color: {MUT}; margin-top: 4px;">Planned 3 km @ 4:50–5:10 inside 7–8 km · ran 7.4 km</div></div>
+    <div style="display: flex; gap: 12px;"><div style="text-align: right;"><div class="num" style="font-size: 20px;">5:26</div><div class="k" style="font-size: 10px;">/km</div></div><div style="text-align: right;"><div class="num" style="font-size: 20px; color: {STL_T};">158</div><div class="k" style="font-size: 10px;">bpm</div></div></div>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 6px;"><span style="font-weight: 800;">Month</span><span class="k">91 km · 12 runs · 11 at effort</span></div>
+'''+END_BODY+tail("plan")
+
+for name,content in [("Main",home),("Plan",plan),("Runs",acts),("RunDetail",detail),("Trends",trends),("Records",records),("Settings",settings),("MoveSession",sheet),("Session",session),("Calendar",calendar)]:
     open(f"{name}.dc.html","w").write(content)
 json.dump({
  "artboards":[
@@ -436,7 +467,8 @@ json.dump({
   {"file":"Records.dc.html","x":470,"y":940,"w":390,"h":844},
   {"file":"Settings.dc.html","title":"Account","x":940,"y":940,"w":390,"h":844},
   {"file":"Session.dc.html","title":"Plan · session","x":1410,"y":940,"w":390,"h":844},
-  {"file":"MoveSession.dc.html","title":"Plan · move session","x":1880,"y":940,"w":390,"h":844}],
- "annotations":[{"id":"note","x":1880,"y":0,"w":360,"text":"Ritmo · Midnight Citrus\nTop row is the daily loop (Home → Plan → Runs → Run detail); bottom row the review screens. Settings opens from the profile button.\n\nNavy carries the brand (hero, buttons, active tab, avatar). Sky = HR/fitness/medium, tangerine = load/fatigue/tempo, lime = on target/form/long — used in tinted metric tiles, bars, zone strips and chart lines."}],
+  {"file":"MoveSession.dc.html","title":"Plan · move session","x":1880,"y":940,"w":390,"h":844},
+  {"file":"Calendar.dc.html","title":"Calendar (Plan · Month / Runs)","x":1880,"y":0,"w":390,"h":844}],
+ "annotations":[{"id":"note","x":2350,"y":0,"w":360,"text":"Ritmo · Midnight Citrus\nTop row is the daily loop (Home → Plan → Runs → Run detail); bottom row the review screens. Settings opens from the profile button.\n\nNavy carries the brand (hero, buttons, active tab, avatar). Sky = HR/fitness/medium, tangerine = load/fatigue/tempo, lime = on target/form/long — used in tinted metric tiles, bars, zone strips and chart lines."}],
  "launch":{"view":"canvas"}}, open("canvas.json","w"), indent=2)
 print("ok")

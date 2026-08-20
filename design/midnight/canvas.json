@@ -67,12 +67,20 @@
       "y": 940,
       "w": 390,
       "h": 844
+    },
+    {
+      "file": "Calendar.dc.html",
+      "title": "Calendar (Plan \u00b7 Month / Runs)",
+      "x": 1880,
+      "y": 0,
+      "w": 390,
+      "h": 844
     }
   ],
   "annotations": [
     {
       "id": "note",
-      "x": 1880,
+      "x": 2350,
       "y": 0,
       "w": 360,
       "text": "Ritmo \u00b7 Midnight Citrus\nTop row is the daily loop (Home \u2192 Plan \u2192 Runs \u2192 Run detail); bottom row the review screens. Settings opens from the profile button.\n\nNavy carries the brand (hero, buttons, active tab, avatar). Sky = HR/fitness/medium, tangerine = load/fatigue/tempo, lime = on target/form/long \u2014 used in tinted metric tiles, bars, zone strips and chart lines."

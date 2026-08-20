@@ -64,7 +64,7 @@ header icon. Sign-in and first-run Onboarding are separate.
 
 Visual direction — **"Midnight Citrus"** (chosen 2026-08-20 after four
 exploration rounds and a premium pass; see `design/midnight/`): light theme,
-white `#ffffff` page, **white cards with a 1 px hairline `#e3e6eb`**, 12 px
+faint slate page `#f7f8fa`, **white cards with a 1 px hairline `#e3e6eb`**, 12 px
 radius, no shadows, no tinted fills anywhere. **Navy** hero gradient
 `#16223d`→`#2c4570` with a faint sky radial sweep top-right on every screen;
 navy primary buttons, active tab, avatar and selected chips; plain bottom tab
