@@ -63,19 +63,20 @@ header icon. Sign-in and first-run Onboarding are separate.
 | **Onboarding** | First run | Connect Strava → import history (progress) → set max HR → define first block & benchmark |
 
 Visual direction — **"Midnight Citrus"** (chosen 2026-08-20 after four
-exploration rounds; see `design/midnight/`, superseding Graphite): light
-theme, white `#ffffff` page, flat light-grey `#f3f4f6` tiles (no border, no
-shadow, 10 px radius), **navy** hero gradient `#16223d`→`#2c4570` on every
-screen, navy primary buttons, active tab and avatar; plain bottom tab bar;
-Manrope (800 numerals). Metric stat boxes use a faint navy tint `#edf1f7`. Three secondaries with
-fixed roles, used for numerals, faintly tinted run/session cards (type colour
-at ~7 %), bars, zone strips, chart lines and the Session structure rows:
+exploration rounds and a premium pass; see `design/midnight/`): light theme,
+white `#ffffff` page, **white cards with a 1 px hairline `#e3e6eb`**, 12 px
+radius, no shadows, no tinted fills anywhere. **Navy** hero gradient
+`#16223d`→`#2c4570` with a faint sky radial sweep top-right on every screen;
+navy primary buttons, active tab, avatar and selected chips; plain bottom tab
+bar; Manrope (800 numerals). Three secondaries with fixed roles, applied only
+as numerals, **outline pills** (1 px border in the colour, transparent fill),
+thin bars, zone strips, dots and chart lines — never as washes:
 **sky** `#2f9ad0` (HR, fitness, medium runs; text `#1f6f9a`, on-navy
-`#7fd0f7`), **tangerine** `#f08a24` (load, fatigue, tempo, warnings; text
-`#b85f0f`, on-navy `#ffb25c`), **lime** `#7ab648` (on target, form, long runs,
-progress; text `#4f8a22`, on-navy `#b5e07a`). Red `#d9534f` only for Z5 and
-"skip". Type pills are tinted, no left colour bars. Reference feel: Apple
-Health tiles × Oura calm, kept flat and professional.
+`#7fd0f7`), **tangerine** `#f08a24` (load, fatigue, tempo, warnings, season
+best; text `#b85f0f`, on-navy `#ffb25c`), **lime** `#7ab648` (on target, form,
+long runs, progress; text `#4f8a22`, on-navy `#b5e07a`). Red `#d9534f` only
+for Z5 and "skip". Reference feel: Linear/Stripe restraint with Apple Health's
+big numerals.
 
 ## 4. Architecture
 
