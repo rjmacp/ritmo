@@ -67,8 +67,9 @@ exploration rounds; see `design/midnight/`, superseding Graphite): light
 theme, white `#ffffff` page, flat light-grey `#f3f4f6` tiles (no border, no
 shadow, 10 px radius), **navy** hero gradient `#16223d`→`#2c4570` on every
 screen, navy primary buttons, active tab and avatar; plain bottom tab bar;
-Manrope (800 numerals). Three secondaries with fixed roles, used in tinted
-metric tiles (colour at ~12 %), bars, zone strips and chart lines:
+Manrope (800 numerals). Metric stat boxes use a faint navy tint `#edf1f7`. Three secondaries with
+fixed roles, used for numerals, faintly tinted run/session cards (type colour
+at ~7 %), bars, zone strips, chart lines and the Session structure rows:
 **sky** `#2f9ad0` (HR, fitness, medium runs; text `#1f6f9a`, on-navy
 `#7fd0f7`), **tangerine** `#f08a24` (load, fatigue, tempo, warnings; text
 `#b85f0f`, on-navy `#ffb25c`), **lime** `#7ab648` (on target, form, long runs,

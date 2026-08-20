@@ -72,7 +72,7 @@ def chips(items, active):
 def pill(text,bg,fg="#fff"): return f'<span class="pill" style="background: {bg}; color: {fg};">{text}</span>'
 TINT={"#4f8a22":"#7ab64826","#b85f0f":"#f08a2426","#2f9ad0":"#2f9ad01f","#1f6f9a":"#2f9ad01f"}
 def stat(v,k,col=TXT,size=30):
-    bg = TILE if col==TXT else TINT.get(col, col+"1a")
+    bg = "#edf1f7"
     return f'<div class="tile" style="padding: 14px; gap: 6px; background: {bg};"><span class="num" style="font-size: {size}px; color: {col};">{v}</span><span class="k">{k}</span></div>'
 
 # ---------------- HOME ----------------
@@ -85,7 +85,7 @@ home = head()+header("Thursday 20 August","Today",f'<div style="height: 36px; pa
       </div>
       <div style="display: flex; flex-direction: column; gap: 6px;">
         <span class="num" style="font-size: 44px;">6–7 km</span>
-        <span style="font-size: 13px; opacity: .95;">6:05–6:25 /km · under <strong>145 bpm</strong></span>
+        <span style="font-size: 13px; opacity: .95;"><strong style="color: {STL_H};">6:05–6:25</strong> /km · under <strong style="color: {AMB_H};">145 bpm</strong></span>
         <span style="font-size: 13px; opacity: .85; line-height: 1.4;">Your Mafra loop is ideal. See 150? Walk 30 s.</span>
       </div>
     </div>
@@ -97,7 +97,7 @@ home = head()+header("Thursday 20 August","Today",f'<div style="height: 36px; pa
     {stat("14","of 39 km this wk",STL_T)}
   </div>
   <div class="tile">
-    <div style="display: flex; justify-content: space-between; align-items: center;"><span class="k">Yesterday · Tempo</span>{pill("On target",BG,GRN_T)}</div>
+    <div style="display: flex; justify-content: space-between; align-items: center;"><span class="k">Yesterday · Tempo</span>{pill("On target",GRN+"26",GRN_T)}</div>
     <div style="display: flex; align-items: baseline; gap: 14px;">
       <span class="num" style="font-size: 30px;">7.4<span style="font-size: 14px; font-weight: 500; color: {MUT};"> km</span></span>
       <span class="num" style="font-size: 30px;">5:26<span style="font-size: 14px; font-weight: 500; color: {MUT};"> /km</span></span>
@@ -121,7 +121,7 @@ def day(n,d,c,state):
     ring = f" box-shadow: 0 0 0 3px {BG}, 0 0 0 5px {TXT};" if state=="today" else ""
     return f'    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;"><span class="k">{n}</span><div style="width: 38px; height: 38px; border-radius: 50%; box-sizing: border-box; {box}{ring} display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800;">{d}</div></div>\n'
 def sess(date,name,t,desc,v,verdict,vc):
-    return f'''  <div class="tile" style="flex-direction: row; align-items: center; gap: 14px; padding: 12px 16px;">
+    return f'''  <div class="tile" style="flex-direction: row; align-items: center; gap: 14px; padding: 12px 16px; background: {TYPE[t]}12;">
     <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;"><span class="k">{date}</span>{tpill(t)}</div><div style="font-size: 12px; color: {MUT}; margin-top: 4px;">{desc}</div></div>
     <div style="text-align: right;"><div class="num" style="font-size: 22px;">{v}</div><div style="font-size: 10px; font-weight: 700; color: {vc};">{verdict}</div></div>
   </div>
@@ -131,7 +131,7 @@ plan = head()+header("Thursday 20 August","Plan",f'<div style="height: 36px; pad
     <div style="display: flex; align-items: baseline; gap: 8px;"><span class="num" style="font-size: 40px;">141</span><span style="font-size: 14px; opacity: .85;">of 300 km · 24 days to go</span></div>
     <div style="height: 8px; background: rgba(255,255,255,.18); border-radius: 4px; overflow: hidden;"><div style="width: 47%; height: 100%; background: {GRN_H}; border-radius: 4px;"></div></div>
   </div>
-  <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 6px;"><span style="font-weight: 800;">This week · 17–23 Aug</span><span class="k">tap to open · hold to move</span></div>
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 6px;"><span style="font-weight: 800;">This week · 17–23 Aug</span>{pill("2 of 2 at effort",GRN+"26",GRN_T)}</div>
   <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px;">
 {day("M",17,TYPE["easy"],"done")}{day("T",18,TILE,"rest")}{day("W",19,TYPE["tempo"],"done")}{day("T",20,TYPE["easy"],"today")}{day("F",21,TILE,"rest")}{day("S",22,TYPE["medium"],"plan")}{day("S",23,TYPE["long"],"plan")}  </div>
 {sess("Mon 17","Easy","easy","6–7 km Z2 · ran 6.5 at 6:08, 144 bpm","6.5","On target",GRN_T)}{sess("Wed 19","Tempo","tempo","3 km @ 4:50–5:10 · ran 7.4","7.4","On target",GRN_T)}{sess("Thu 20","Easy","easy","6–7 km Z2 · Mafra loop","6–7","Today",TXT)}{sess("Sat 22","Medium","medium","8–9 km Z3 · 5:35–5:45 /km","8–9","Planned",MUT)}{sess("Sun 23","Long","long","12–13 km Z2 · last 3 km at HM effort","12–13","Planned",MUT)}
@@ -140,7 +140,7 @@ plan = head()+header("Thursday 20 August","Plan",f'<div style="height: 36px; pad
 # ---------------- ACTIVITIES ----------------
 def run(date,name,t,km,pace,hr,note=""):
     n = f'<span class="pill" style="background: {BG}; color: {AMB_T}; white-space: nowrap;">{note}</span>' if note else ""
-    return f'''  <div class="tile" style="flex-direction: row; align-items: center; gap: 12px; padding: 12px 16px;">
+    return f'''  <div class="tile" style="flex-direction: row; align-items: center; gap: 12px; padding: 12px 16px; background: {TYPE[t]}12;">
     <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;"><span class="k" style="white-space: nowrap;">{date}</span>{tpill(t)}{n}</div><div style="font-weight: 800; margin-top: 4px;">{name}</div></div>
     <div style="display: flex; gap: 14px;">
       <div style="text-align: right;"><div class="num" style="font-size: 20px;">{km}</div><div class="k" style="font-size: 10px;">km</div></div>
@@ -153,7 +153,7 @@ acts = head()+header("Thursday 20 August","Runs",f'<div style="height: 36px; pad
 acts += f'''  <div style="{HERO} flex-direction: row; align-items: center; justify-content: space-between; gap: 8px;">
     <div><div class="num" style="font-size: 34px;">91<span style="font-size: 14px; font-weight: 500; opacity: .85;"> km</span></div><div style="font-size: 12px; opacity: .85; margin-top: 4px;">August · 12 runs</div></div>
     <div style="text-align: right;"><div class="num" style="font-size: 22px;">5:44</div><div style="font-size: 11px; opacity: .85;">avg /km</div></div>
-    <div style="text-align: right;"><div class="num" style="font-size: 22px;">151</div><div style="font-size: 11px; opacity: .85;">avg bpm</div></div>
+    <div style="text-align: right;"><div class="num" style="font-size: 22px; color: {STL_H};">151</div><div style="font-size: 11px; opacity: .85;">avg bpm</div></div>
     <div style="text-align: right;"><div class="num" style="font-size: 22px; color: {GRN_H};">11/12</div><div style="font-size: 11px; opacity: .85;">at effort</div></div>
   </div>
 '''
@@ -167,13 +167,13 @@ acts += run("Sun 9 Aug","Mafra Corrida","long","14.1","5:38",152)
 acts += END_BODY+tail("act")
 
 # ---------------- ACTIVITY DETAIL ----------------
-laps=[("1","5:47",126,"+23",MUT),("2","5:31",150,"+15",MUT),("3","4:49",171,"+1",GRN),("4","5:01",174,"−6",GRN),("5","5:07",173,"−4",GRN),("6","6:09",163,"−18",MUT),("7","6:13",157,"−13",MUT),("0.4","1:35",155,"−2",MUT)]
+laps=[("1","5:47",126,"+23",STL),("2","5:31",150,"+15",GRN),("3","4:49",171,"+1",AMB),("4","5:01",174,"−6",AMB),("5","5:07",173,"−4",AMB),("6","6:09",163,"−18",GRN),("7","6:13",157,"−13",GRN),("0.4","1:35",155,"−2",GRN)]
 laprows=""
 for n,t,hr,e,c in laps:
     m,s=t.split(":"); sec=int(m)*60+int(s)
     w = 100 if n=="0.4" else int((420-sec)*100/160)
     w = 40 if n=="0.4" else w
-    laprows+=f'    <div style="display: grid; grid-template-columns: 30px 1fr 52px 44px 40px; gap: 8px; align-items: center; height: 20px;"><span class="k" style="font-size: 11px;">{n}</span><div style="height: 6px; background: #fff; border-radius: 3px;"><div style="width: {w}%; height: 100%; background: {c}; border-radius: 3px; opacity: .85;"></div></div><span class="num" style="font-size: 13px; text-align: right; color: {c};">{t}</span><span class="num" style="font-size: 13px; text-align: right; font-weight: 700;">{hr}</span><span class="k" style="font-size: 11px; text-align: right;">{e}</span></div>\n'
+    laprows+=f'    <div style="display: grid; grid-template-columns: 30px 1fr 52px 44px 40px; gap: 8px; align-items: center; height: 20px;"><span class="k" style="font-size: 11px;">{n}</span><div style="height: 6px; background: #fff; border-radius: 3px;"><div style="width: {w}%; height: 100%; background: {c}; border-radius: 3px; opacity: .85;"></div></div><span class="num" style="font-size: 13px; text-align: right;">{t}</span><span class="num" style="font-size: 13px; text-align: right; font-weight: 700;">{hr}</span><span class="k" style="font-size: 11px; text-align: right;">{e}</span></div>\n'
 zones=[(7,"3m"),(30,"12m"),(22,"9m"),(33,"13m"),(8,"3m")]
 zbar="".join(f'<div style="width: {p}%; background: {ZONE[i]};"></div>' for i,(p,_) in enumerate(zones))
 zlab="".join(f'<span>Z{i+1} {l}</span>' for i,(_,l) in enumerate(zones))
@@ -193,12 +193,12 @@ detail += f'''  <div style="{HERO} flex-direction: row; justify-content: space-b
     <div style="display: flex; height: 12px; border-radius: 6px; overflow: hidden;">{zbar}</div>
     <div style="display: flex; justify-content: space-between; font-size: 11px; color: {MUT}; font-weight: 600;">{zlab}</div>
   </div>
-  <div class="tile" style="gap: 6px; padding: 14px 16px;">
-    <span class="k">Planned · 3 km @ 4:50–5:10 inside 7–8 km</span>
+  <div class="tile" style="gap: 6px; padding: 14px 16px; background: {GRN}14;">
+    <div style="display: flex; justify-content: space-between; align-items: center;"><span class="k">Planned · 3 km @ 4:50–5:10 inside 7–8 km</span>{pill("On target",GRN+"33",GRN_T)}</div>
     <div style="font-size: 13px; color: {MUT}; line-height: 1.45;">Kilometres 3–5 at 4:49, 5:01, 5:07 — first a touch quick, last faded 4 %. HR 171–174 is squarely zone 4. Effort was the plan; keep Thursday easy.</div>
   </div>
   <div class="tile" style="gap: 6px;">
-    <div style="display: grid; grid-template-columns: 30px 1fr 52px 44px 40px; gap: 8px; font-size: 11px; color: {MUT}; font-weight: 600;"><span>km</span><span></span><span style="text-align: right;">pace</span><span style="text-align: right;">bpm</span><span style="text-align: right;">elev</span></div>
+    <div style="display: grid; grid-template-columns: 30px 1fr 52px 44px 40px; gap: 8px; font-size: 11px; color: {MUT}; font-weight: 600;"><span>km</span><span style="display: flex; gap: 10px;"><span style="color: {STL_T};">Z2</span><span style="color: {GRN_T};">Z3</span><span style="color: {AMB_T};">Z4</span></span><span style="text-align: right;">pace</span><span style="text-align: right;">bpm</span><span style="text-align: right;">elev</span></div>
 {laprows}  </div>
 '''+END_BODY+tail("act")
 
@@ -223,12 +223,12 @@ trends = head()+header("Last 8 weeks","Trends")+chips(["4w","8w","12w","Block","
     <div style="display: flex; gap: 16px; font-size: 11px; opacity: .85; font-weight: 600;"><span style="display: flex; align-items: center; gap: 6px;"><i style="width: 10px; height: 10px; border-radius: 50%; background: {STL_H};"></i>Fitness</span><span style="display: flex; align-items: center; gap: 6px;"><i style="width: 10px; height: 10px; border-radius: 50%; background: {AMB_H};"></i>Fatigue</span><span style="display: flex; align-items: center; gap: 6px;"><i style="width: 10px; height: 10px; border-radius: 50%; background: {GRN_H};"></i>Form</span></div>
   </div>
   <div class="tile" style="gap: 10px;">
-    <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-weight: 800;">Weekly km by zone</span><span class="k">Z2 · Z3 · Z4+</span></div>
+    <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-weight: 800;">Weekly km by zone</span><span style="display: flex; gap: 10px; font-size: 11px; font-weight: 700;"><span style="color: {STL_T};">Z2</span><span style="color: {GRN_T};">Z3</span><span style="color: {AMB_T};">Z4+</span></span></div>
     <div style="display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 8px; align-items: end; height: 110px;">
 {bars}    </div>
     <div style="display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 8px; font-size: 11px; color: {MUT}; text-align: center; font-weight: 600;">{labels}</div>
   </div>
-  <div class="tile" style="gap: 10px;">
+  <div class="tile" style="gap: 10px; background: {STL}12;">
     <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-weight: 800;">Aerobic efficiency</span><span class="k">easy runs · <span style="color: {GRN_T}; font-weight: 800;">+6 %</span> vs June</span></div>
     <svg viewBox="0 0 330 60" style="width: 100%; height: 60px; display: block;">
       <line x1="0" y1="52" x2="330" y2="52" stroke="{BG}" stroke-width="2"/>
@@ -242,7 +242,7 @@ trends = head()+header("Last 8 weeks","Trends")+chips(["4w","8w","12w","Block","
 def rec(label, rows):
     # rows: (year, time, delta, pct, best)
     out=f'''  <div class="tile" style="gap: 10px;">
-    <div style="display: flex; justify-content: space-between; align-items: center;"><span class="num" style="font-size: 22px;">{label}</span>{CHEV}</div>
+    <div style="display: flex; justify-content: space-between; align-items: center;"><div style="display: flex; align-items: center; gap: 10px;"><span class="num" style="font-size: 22px;">{label}</span>{pill("2026 best",AMB+"26",AMB_T)}</div>{CHEV}</div>
     <div style="display: flex; flex-direction: column; gap: 8px;">
 '''
     for yr,t,d,pct,best in rows:
@@ -270,7 +270,7 @@ def section(title, rows):
 settings = head()+header("Rob · rjmac","Account",avatar=False,right=f'<div style="width: 36px; height: 36px; border-radius: 8px; background: {TILE}; display: flex; align-items: center; justify-content: center; color: {MUT};">{BACK}</div>')
 settings += f'''  <div style="{HERO} flex-direction: row; align-items: center; gap: 14px;">
     <div style="width: 40px; height: 40px; border-radius: 8px; background: rgba(255,255,255,.14); display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: #fff;"><path d="M10 2L4 14h4l2-4 2 4h4z"/><path d="M14 12l-2 4-2-4H7l5 9 5-9z" opacity=".55"/></svg></div>
-    <div style="flex: 1;"><div style="font-weight: 800;">Strava connected</div><div style="font-size: 12px; opacity: .85;">Last sync 19 Aug 20:14 · 142 runs</div></div>
+    <div style="flex: 1;"><div style="font-weight: 800;">Strava connected</div><div style="font-size: 12px; opacity: .85;"><span style="color: {GRN_H}; font-weight: 700;">Synced</span> 19 Aug 20:14 · 142 runs</div></div>
     <span style="font-size: 12px; font-weight: 700; opacity: .85;">Disconnect</span>
   </div>
 '''
@@ -305,11 +305,11 @@ sheet += f'''  <div style="position: absolute; inset: 0; background: rgba(23,25,
       <span class="k">Move to</span>
       <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px;">
 {daypick("T",20,"busy")}{daypick("F",21,"free")}{daypick("S",22,"busy")}{daypick("S",23,"away")}{daypick("M",24,"sel")}{daypick("T",25,"free")}{daypick("W",26,"free")}      </div>
-      <div style="font-size: 12px; color: {MUT}; line-height: 1.5;">Mon 24 keeps 48 h after Saturday's medium run; Tuesday's easy run shifts to Wednesday.</div>
+      <div style="font-size: 12px; color: {STL_T}; line-height: 1.5; background: {STL}14; padding: 10px 12px; border-radius: 8px;">Mon 24 keeps 48 h after Saturday's medium run; Tuesday's easy run shifts to Wednesday.</div>
     </div>
     <div class="tile" style="gap: 0; padding: 4px 16px;">
       <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px; border-bottom: 1px solid {BG};"><span style="font-weight: 600;">Target</span><div style="display: flex; align-items: center; gap: 8px; color: {MUT}; font-size: 13px; font-weight: 600;"><span>Long · 12–13 km · Z2</span>{CHEV}</div></div>
-      <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px; border-bottom: 1px solid {BG};"><span style="font-weight: 600;">Away · Sat 22 – Sun 23</span><div style="width: 40px; height: 24px; border-radius: 12px; background: {TXT}; position: relative;"><div style="position: absolute; top: 2px; right: 2px; width: 20px; height: 20px; border-radius: 50%; background: #fff;"></div></div></div>
+      <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px; border-bottom: 1px solid {BG};"><span style="font-weight: 600;">Away · Sat 22 – Sun 23</span><div style="width: 40px; height: 24px; border-radius: 12px; background: {GRN}; position: relative;"><div style="position: absolute; top: 2px; right: 2px; width: 20px; height: 20px; border-radius: 50%; background: #fff;"></div></div></div>
       <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px;"><span style="font-weight: 600; color: {RED};">Skip this session</span>{CHEV}</div>
     </div>
     <div style="display: flex; gap: 8px;">
@@ -329,10 +329,10 @@ class Component extends DCLogic {{ renderVals() {{ return {{}}; }} }}
 
 # ---------------- SESSION DETAIL ----------------
 def seg(label,detail,km,col):
-    return f'''    <div style="display: flex; align-items: center; gap: 12px; min-height: 34px;"><div style="width: 10px; height: 10px; border-radius: 50%; background: {col}; flex-shrink: 0;"></div><div style="flex: 1;"><div style="font-weight: 700;">{label}</div><div style="font-size: 12px; color: {MUT};">{detail}</div></div><div class="num" style="font-size: 18px;">{km}</div></div>
+    return f'''    <div style="display: flex; align-items: center; gap: 12px; min-height: 40px; padding: 0 12px; border-radius: 8px; background: {col}1a;"><div style="width: 10px; height: 10px; border-radius: 50%; background: {col}; flex-shrink: 0;"></div><div style="flex: 1;"><div style="font-weight: 700;">{label}</div><div style="font-size: 12px; color: {MUT};">{detail}</div></div><div class="num" style="font-size: 18px;">{km}</div></div>
 '''
 def tip(n,strong,rest):
-    return f'      <div style="display: flex; gap: 10px;"><span class="num" style="font-size: 13px; color: {STL}; width: 16px; flex-shrink: 0;">{n}</span><span><strong>{strong}</strong> {rest}</span></div>\n'
+    return f'      <div style="display: flex; gap: 10px;"><span class="num" style="font-size: 12px; color: #fff; background: {GRN_T}; width: 18px; height: 18px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">{n}</span><span><strong>{strong}</strong> {rest}</span></div>\n'
 session = head()+header("Sun 23 Aug · Long run","Session",avatar=False,right=f'<div style="height: 36px; padding: 0 14px; border-radius: 8px; background: {TILE}; display: flex; align-items: center; font-size: 13px; font-weight: 700;">Edit</div>')
 session += f'''  <div style="{HERO} gap: 10px;">
     <div style="display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 12px; font-weight: 700; opacity: .85;">WEEK 5 · SESSION 5 OF 5</span>{pill("Long","rgba(255,255,255,.18)")}</div>
@@ -344,10 +344,10 @@ session += f'''  <div style="{HERO} gap: 10px;">
     </div>
     <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.14); font-size: 12px;"><span style="opacity: .85;">Route · Mafra → Ericeira road · 12.6 km · 140 m</span><span style="font-weight: 700;">Change</span></div>
   </div>
-  <div class="tile" style="gap: 0;">
+  <div class="tile" style="gap: 6px; padding: 8px;">
 {seg("Warm-up","Easy, find the rhythm · Z1–Z2","2 km",ZONE[1])}{seg("Steady","Z2 · conversational · under 145","7 km",ZONE[1])}{seg("HM effort","5:25–5:35 /km · Z3, not harder","3 km",ZONE[2])}{seg("Cool-down","Jog / walk","1 km",ZONE[0])}  </div>
-  <div class="tile" style="gap: 8px;">
-    <div style="display: flex; justify-content: space-between; align-items: center;"><span class="k">Coach tips for this run</span><span class="k" style="font-size: 11px;">from your last 6 long runs</span></div>
+  <div class="tile" style="gap: 8px; background: {GRN}14;">
+    <div style="display: flex; justify-content: space-between; align-items: center;"><span class="k" style="color: {GRN_T};">Coach tips for this run</span><span class="k" style="font-size: 11px;">from your last 6 long runs</span></div>
     <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; line-height: 1.45;">
 {tip(1,"Start slower than feels right.","Your last two long runs opened at 5:40 and drifted over 145 by km 6. Aim for 6:15 early.")}{tip(2,"The finish is 3 km at HM effort, not a race.","If HR passes 170 before km 11, ease off.")}{tip(3,"Climb at km 4–6:","hold effort, let pace drop to 6:30+.")}    </div>
   </div>
