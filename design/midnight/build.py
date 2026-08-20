@@ -223,40 +223,86 @@ detail += f'''  <div style="{HERO} flex-direction: row; justify-content: space-b
 '''+END_BODY+tail("act")
 
 # ---------------- TRENDS ----------------
-weeks=[(22,""),(24,""),(26,""),(28,""),(30,""),(33,""),(35,""),(14,"this wk")]
-bars=""; labels=""
-for km,l in weeks:
-    h=int(km*100/38); z2=60; z3=28; z4=12
-    cur = km==14
-    op = ".45" if cur else "1"
-    bars+=f'      <div style="height: {h}%; display: flex; flex-direction: column; border-radius: 6px 6px 3px 3px; overflow: hidden; opacity: {op};"><div style="flex: {z4}; background: {AMB};"></div><div style="flex: {z3}; background: {GRN};"></div><div style="flex: {z2}; background: {STL};"></div></div>\n'
-    labels+=f'<span style="{"color: "+TXT+"; font-weight: 800;" if cur else ""}">{km}</span>'
-trends = head()+header("Last 8 weeks","Trends")+chips(["4w","8w","12w","Block","Season"],"8w")+f'''  <div style="{HERO}">
-    <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-weight: 800;">Fitness · Fatigue · Form</span><span style="font-size: 12px; opacity: .85; font-weight: 600;">41 · 38 · <span style="color: {GRN_H}; font-weight: 800;">+3</span></span></div>
-    <svg viewBox="0 0 330 120" style="width: 100%; height: 120px; display: block;">
-      <line x1="0" y1="100" x2="330" y2="100" stroke="rgba(255,255,255,.12)" stroke-width="1"/><line x1="0" y1="60" x2="330" y2="60" stroke="rgba(255,255,255,.12)" stroke-width="1"/><line x1="0" y1="20" x2="330" y2="20" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
-      <path d="M0 92 C40 88 70 84 110 78 S190 62 240 52 S300 40 330 36" fill="none" stroke="{STL_H}" stroke-width="3" stroke-linecap="round"/>
-      <path d="M0 96 L30 80 L55 90 L85 66 L115 76 L150 58 L180 70 L215 50 L245 62 L280 44 L310 56 L330 42" fill="none" stroke="{AMB_H}" stroke-width="2.5" stroke-linejoin="round"/>
-      <path d="M0 60 L30 72 L55 58 L85 76 L115 66 L150 80 L180 70 L215 82 L245 70 L280 82 L310 70 L330 58" fill="none" stroke="{GRN_H}" stroke-width="2.5" stroke-dasharray="5 4"/>
-      <text x="0" y="116" fill="rgba(255,255,255,.6)" font-size="10" font-family="Manrope">Jun</text><text x="110" y="116" fill="rgba(255,255,255,.6)" font-size="10" font-family="Manrope">Jul</text><text x="220" y="116" fill="rgba(255,255,255,.6)" font-size="10" font-family="Manrope">Aug</text>
+def qtile(q, headline, delta, dcol, body, note):
+    return f'''  <div class="tile" style="gap: 10px;">
+    <span class="k">{q}</span>
+    <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 10px;"><span style="font-size: 16px; font-weight: 800; line-height: 1.3;">{headline}</span><span class="num" style="font-size: 16px; color: {dcol}; white-space: nowrap;">{delta}</span></div>
+{body}    <div style="font-size: 12px; color: {MUT}; line-height: 1.45;">{note}</div>
+  </div>
+'''
+# 1 pace at easy HR — line chart
+pace_chart=f'''    <svg viewBox="0 0 330 80" style="width: 100%; height: 80px; display: block;">
+      <line x1="0" y1="70" x2="330" y2="70" stroke="{BOR}"/><line x1="0" y1="40" x2="330" y2="40" stroke="{BOR}"/><line x1="0" y1="10" x2="330" y2="10" stroke="{BOR}"/>
+      <text x="0" y="8" fill="{MUT}" font-size="9" font-family="Manrope">6:15</text><text x="0" y="38" fill="{MUT}" font-size="9" font-family="Manrope">6:00</text><text x="0" y="68" fill="{MUT}" font-size="9" font-family="Manrope">5:45</text>
+      <path d="M30 18 L60 24 L90 16 L120 30 L150 34 L180 40 L210 38 L240 48 L270 52 L300 56 L330 58" fill="none" stroke="{STL}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="330" cy="58" r="4" fill="{STL}"/>
     </svg>
-    <div style="display: flex; gap: 16px; font-size: 11px; opacity: .85; font-weight: 600;"><span style="display: flex; align-items: center; gap: 6px;"><i style="width: 10px; height: 10px; border-radius: 50%; background: {STL_H};"></i>Fitness</span><span style="display: flex; align-items: center; gap: 6px;"><i style="width: 10px; height: 10px; border-radius: 50%; background: {AMB_H};"></i>Fatigue</span><span style="display: flex; align-items: center; gap: 6px;"><i style="width: 10px; height: 10px; border-radius: 50%; background: {GRN_H};"></i>Form</span></div>
-  </div>
-  <div class="tile" style="gap: 10px;">
-    <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-weight: 800;">Weekly km by zone</span><span style="display: flex; gap: 10px; font-size: 11px; font-weight: 700;"><span style="color: {STL_T};">Z2</span><span style="color: {GRN_T};">Z3</span><span style="color: {AMB_T};">Z4+</span></span></div>
-    <div style="display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 8px; align-items: end; height: 110px;">
-{bars}    </div>
-    <div style="display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 8px; font-size: 11px; color: {MUT}; text-align: center; font-weight: 600;">{labels}</div>
-  </div>
-  <div class="tile" style="gap: 10px;">
-    <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-weight: 800;">Aerobic efficiency</span><span class="k">easy runs · <span style="color: {GRN_T}; font-weight: 800;">+6 %</span> vs June</span></div>
-    <svg viewBox="0 0 330 60" style="width: 100%; height: 60px; display: block;">
-      <line x1="0" y1="52" x2="330" y2="52" stroke="{BG}" stroke-width="2"/>
-      <path d="M0 44 L40 48 L80 38 L120 40 L160 32 L200 34 L240 24 L280 22 L330 16" fill="none" stroke="{STL}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="330" cy="16" r="4" fill="{GRN}"/>
+'''
+# 2 intensity distribution — stacked easy/hard per week with 80% line
+def intensity():
+    weeks=[(82,18),(79,21),(74,26),(71,29),(68,32),(70,30),(66,34),(85,15)]
+    bars="".join(f'<div style="display: flex; flex-direction: column; border-radius: 3px; overflow: hidden; height: 56px;"><div style="flex: {h}; background: {AMB};"></div><div style="flex: {e}; background: {STL};"></div></div>' for e,h in weeks)
+    return f'''    <div style="position: relative;">
+      <div style="display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px;">{bars}</div>
+      <div style="position: absolute; left: 0; right: 0; top: 20%; border-top: 2px dashed {TXT}; opacity: .5;"></div>
+      <span style="position: absolute; right: 0; top: 22%; font-size: 9px; font-weight: 700; background: #fff; padding: 0 3px;">80 % easy</span>
+    </div>
+    <div style="display: flex; gap: 14px; font-size: 11px; color: {MUT}; font-weight: 600;"><span style="display: flex; align-items: center; gap: 6px;"><i style="width: 8px; height: 8px; border-radius: 2px; background: {STL};"></i>Easy (Z1–2)</span><span style="display: flex; align-items: center; gap: 6px;"><i style="width: 8px; height: 8px; border-radius: 2px; background: {AMB};"></i>Hard (Z3+)</span></div>
+'''
+# 2b weekly volume by zone (kept from v1)
+def volume():
+    weeks=[22,24,26,28,30,33,35,14]
+    bars=""
+    for km in weeks:
+        h=int(km*100/38); cur=km==14; op=".45" if cur else "1"
+        bars+=f'<div style="height: {h}%; display: flex; flex-direction: column; border-radius: 4px 4px 2px 2px; overflow: hidden; opacity: {op};"><div style="flex: 12; background: {AMB};"></div><div style="flex: 28; background: {GRN};"></div><div style="flex: 60; background: {STL};"></div></div>'
+    labels="".join(f'<span style="{"color: "+TXT+"; font-weight: 800;" if km==14 else ""}">{km}</span>' for km in weeks)
+    return f'''    <div style="display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px; align-items: end; height: 90px;">{bars}</div>
+    <div style="display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px; font-size: 10px; color: {MUT}; text-align: center; font-weight: 600;">{labels}</div>
+'''
+# 3 load — FFF with ACWR band
+load_chart=f'''    <svg viewBox="0 0 330 80" style="width: 100%; height: 80px; display: block;">
+      <rect x="0" y="22" width="330" height="30" fill="{GRN}" opacity=".12"/>
+      <text x="4" y="32" fill="{GRN_T}" font-size="9" font-weight="700" font-family="Manrope">safe ramp 0.8–1.3</text>
+      <path d="M0 60 L30 50 L60 54 L90 40 L120 46 L150 34 L180 38 L210 28 L240 36 L270 18 L300 30 L330 40" fill="none" stroke="{AMB}" stroke-width="2.5" stroke-linejoin="round"/>
+      <circle cx="270" cy="18" r="4" fill="{AMB}"/><text x="262" y="12" fill="{AMB_T}" font-size="9" font-weight="700" font-family="Manrope" text-anchor="end">1.42 · wk 4</text>
+      <circle cx="330" cy="40" r="4" fill="{TXT}"/>
     </svg>
+'''
+# 4 consistency — 12-week heatmap (7 rows × 12 cols)
+def heatmap():
+    import random
+    random.seed(4)
+    cells=""
+    for r in range(7):
+        for c in range(12):
+            v=random.choice([0,0,1,1,2,3]) if not (r==1 or r==4) else random.choice([0,0,0,1])
+            col={0:"#eef0f3",1:STL+"55",2:STL+"99",3:STL}[v]
+            cells+=f'<div style="aspect-ratio: 1; border-radius: 2px; background: {col};"></div>'
+    return f'    <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 3px;">{cells}</div>\n'
+# 5 prediction — HM time trend vs goal
+pred_chart=f'''    <svg viewBox="0 0 330 80" style="width: 100%; height: 80px; display: block;">
+      <line x1="0" y1="34" x2="330" y2="34" stroke="{GRN}" stroke-width="1.5" stroke-dasharray="4 3"/><text x="330" y="30" fill="{GRN_T}" font-size="9" font-weight="700" font-family="Manrope" text-anchor="end">goal 1:55</text>
+      <path d="M0 14 L40 16 L80 12 L120 20 L160 24 L200 28 L240 30 L280 36 L330 38" fill="none" stroke="{TXT}" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M330 38 L360 40" fill="none" stroke="{TXT}" stroke-width="2" stroke-dasharray="3 3"/>
+      <circle cx="330" cy="38" r="4" fill="{TXT}"/><text x="322" y="54" fill="{TXT}" font-size="10" font-weight="800" font-family="Manrope" text-anchor="end">1:54:10</text>
+      <text x="0" y="76" fill="{MUT}" font-size="9" font-family="Manrope">Jun</text><text x="160" y="76" fill="{MUT}" font-size="9" font-family="Manrope">Jul</text><text x="300" y="76" fill="{MUT}" font-size="9" font-family="Manrope">Aug</text>
+    </svg>
+'''
+trends = head()+header("Thursday 20 August","Trends")+chips(["4w","8w","12w","Block","Season"],"8w")
+trends += f'''  <div style="{HERO}">
+    <div style="display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 12px; font-weight: 700; opacity: .85;">TODAY'S READ · 06:40</span><span class="pill" style="color: #fff;">after yesterday's tempo</span></div>
+    <div style="font-size: 14px; line-height: 1.5;">Your aerobic engine is clearly improving — <strong style="color: {STL_H};">23 s/km faster at 145 bpm</strong> than in June, and yesterday's tempo confirms it. The one thing to watch: the last four weeks were <strong style="color: {AMB_H};">32 % hard</strong>, well over the 20 % target. Easy days have crept up to zone 3. Hold today under 145 and the HM prediction should keep moving.</div>
+    <div style="display: flex; gap: 8px; font-size: 11px; font-weight: 700; opacity: .85;"><span>Fitness ↑</span><span>·</span><span>Form +3</span><span>·</span><span>HM 1:54:10</span></div>
   </div>
-'''+END_BODY+tail("trends")
+'''
+trends += qtile("Am I fitter aerobically?","5:52 /km at 145 bpm","−23 s",GRN_T,pace_chart,"Easy-run pace at the same heart rate, 8 weeks. Lower is better. Drift on long runs: 3.8 % (good, under 5 %).")
+trends += qtile("Am I training too hard?","32 % hard this month","target 20 %",AMB_T,intensity(),"Share of running time in Z3+ per week. Your easy runs average 148 bpm — the fix is pace, not fewer sessions.")
+trends += qtile("How much am I running?","35 km last week","+10 % / wk",STL_T,volume(),"Weekly km split by zone. Growth has stayed inside the 10 % rule; the block peaks at 38 km in week 6 before the taper.")
+trends += qtile("Am I absorbing the load?","Ramp 1.05 · form +3","fitness 41",STL_T,load_chart,"Acute vs chronic load. Week 4 spiked to 1.42 (the 16 km long run); it settled. Fitness has climbed every week of the block.")
+trends += qtile("Am I consistent?","11 of 12 sessions","92 %",GRN_T,heatmap(),"Last 12 weeks, one square per day. Tuesday and Friday are your rest days; no gap longer than 3 days since June.")
+trends += qtile("Am I on track for 13 Sep?","HM predicted 1:54:10","goal 1:55",GRN_T,pred_chart,"From best efforts, efficiency and load. Has improved 4:10 since June; the benchmark TT on 30 Aug will sharpen it.")
+trends += END_BODY+tail("trends")
 
 # ---------------- RECORDS ----------------
 def rec(label, rows):
