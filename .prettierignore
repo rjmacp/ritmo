@@ -1,0 +1,6 @@
+.next
+drizzle/meta
+coverage
+design/
+.superpowers/
+package-lock.json

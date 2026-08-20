@@ -7,5 +7,5 @@ export default defineConfig({
     include: ["tests/**/*.test.ts"],
     setupFiles: ["tests/setup.ts"],
   },
-  resolve: { alias: { "@": path.resolve(__dirname, ".") } },
+  resolve: { alias: { "@": path.resolve(import.meta.dirname, ".") } },
 });

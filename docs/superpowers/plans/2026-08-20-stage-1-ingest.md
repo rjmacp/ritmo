@@ -74,9 +74,11 @@ ritmo/
 ### Task 1: Scaffold the app with tooling and design tokens
 
 **Files:**
+
 - Create: `package.json`, `tsconfig.json`, `next.config.ts`, `postcss.config.mjs`, `app/layout.tsx`, `app/globals.css`, `app/page.tsx`, `vitest.config.ts`, `tests/unit/smoke.test.ts`, `.gitignore`, `.env.example`, `lib/env.ts`, `lib/format.ts`, `tests/unit/format.test.ts`
 
 **Interfaces:**
+
 - Produces: `env` object (`lib/env.ts`) with typed getters; `formatPace(secPerKm: number): string`, `formatDuration(sec: number): string`, `formatKm(metres: number): string` in `lib/format.ts`.
 
 - [ ] **Step 1: Scaffold Next.js**
@@ -198,16 +200,36 @@ function require(name: string): string {
 
 export const env = {
   require,
-  get DATABASE_URL() { return require("DATABASE_URL"); },
-  get AUTH_SECRET() { return require("AUTH_SECRET"); },
-  get ALLOWED_EMAIL() { return require("ALLOWED_EMAIL").toLowerCase(); },
-  get STRAVA_CLIENT_ID() { return require("STRAVA_CLIENT_ID"); },
-  get STRAVA_CLIENT_SECRET() { return require("STRAVA_CLIENT_SECRET"); },
-  get STRAVA_WEBHOOK_VERIFY_TOKEN() { return require("STRAVA_WEBHOOK_VERIFY_TOKEN"); },
-  get CRON_SECRET() { return require("CRON_SECRET"); },
-  get APP_URL() { return require("NEXT_PUBLIC_APP_URL"); },
-  get RESEND_API_KEY() { return require("AUTH_RESEND_KEY"); },
-  get EMAIL_FROM() { return process.env.EMAIL_FROM ?? "Ritmo <login@ritmo.run>"; },
+  get DATABASE_URL() {
+    return require("DATABASE_URL");
+  },
+  get AUTH_SECRET() {
+    return require("AUTH_SECRET");
+  },
+  get ALLOWED_EMAIL() {
+    return require("ALLOWED_EMAIL").toLowerCase();
+  },
+  get STRAVA_CLIENT_ID() {
+    return require("STRAVA_CLIENT_ID");
+  },
+  get STRAVA_CLIENT_SECRET() {
+    return require("STRAVA_CLIENT_SECRET");
+  },
+  get STRAVA_WEBHOOK_VERIFY_TOKEN() {
+    return require("STRAVA_WEBHOOK_VERIFY_TOKEN");
+  },
+  get CRON_SECRET() {
+    return require("CRON_SECRET");
+  },
+  get APP_URL() {
+    return require("NEXT_PUBLIC_APP_URL");
+  },
+  get RESEND_API_KEY() {
+    return require("AUTH_RESEND_KEY");
+  },
+  get EMAIL_FROM() {
+    return process.env.EMAIL_FROM ?? "Ritmo <login@ritmo.run>";
+  },
 };
 ```
 
@@ -249,9 +271,15 @@ export function formatKm(metres: number): string {
   --muted: #5f6776;
   --navy-a: #16223d;
   --navy-b: #2c4570;
-  --sky: #2f9ad0;  --sky-text: #1f6f9a;  --sky-hero: #7fd0f7;
-  --tang: #f08a24; --tang-text: #b85f0f; --tang-hero: #ffb25c;
-  --lime: #7ab648; --lime-text: #4f8a22; --lime-hero: #b5e07a;
+  --sky: #2f9ad0;
+  --sky-text: #1f6f9a;
+  --sky-hero: #7fd0f7;
+  --tang: #f08a24;
+  --tang-text: #b85f0f;
+  --tang-hero: #ffb25c;
+  --lime: #7ab648;
+  --lime-text: #4f8a22;
+  --lime-hero: #b5e07a;
   --easy: #7b8494;
   --red: #d9534f;
 }
@@ -273,19 +301,39 @@ export function formatKm(metres: number): string {
   --font-sans: var(--font-manrope), system-ui, sans-serif;
 }
 
-body { background: var(--bg); color: var(--ink); }
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
 
-.card { @apply bg-card border border-line rounded-xl; }
+.card {
+  @apply bg-card border border-line rounded-xl;
+}
 .hero {
   color: #fff;
   border-radius: 12px;
   background:
-    radial-gradient(120% 90% at 100% 0%, rgba(127,208,247,.18) 0%, rgba(127,208,247,0) 55%),
+    radial-gradient(120% 90% at 100% 0%, rgba(127, 208, 247, 0.18) 0%, rgba(127, 208, 247, 0) 55%),
     linear-gradient(135deg, var(--navy-a) 0%, var(--navy-b) 100%);
 }
-.num { font-weight: 800; line-height: 1; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
-.k { font-size: 12px; color: var(--muted); font-weight: 500; }
-.pill { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; border: 1px solid currentColor; }
+.num {
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.k {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+}
+.pill {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+}
 ```
 
 `app/layout.tsx`:
@@ -317,7 +365,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 ```tsx
 import { redirect } from "next/navigation";
-export default function Home() { redirect("/runs"); }
+export default function Home() {
+  redirect("/runs");
+}
 ```
 
 - [ ] **Step 8: `.env.example` and `.gitignore`**
@@ -357,6 +407,7 @@ git push
 ### Task 1b: Project hygiene — README, licence, lint/format/typecheck, hooks
 
 **Files:**
+
 - Create: `README.md`, `LICENSE`, `CONTRIBUTING.md`, `SECURITY.md`, `CHANGELOG.md`, `.editorconfig`, `.prettierrc`, `.prettierignore`, `eslint.config.mjs` (replace scaffold), `lib/log.ts`, `.husky/pre-commit`, `.github/pull_request_template.md`, `.github/dependabot.yml`
 - Modify: `tsconfig.json`, `package.json`
 
@@ -398,13 +449,23 @@ export default tseslint.config(
     plugins: { import: importPlugin },
     rules: {
       "no-console": ["error", { allow: ["warn", "error"] }],
-      "import/order": ["error", { "newlines-between": "never", alphabetize: { order: "asc" }, groups: ["builtin", "external", "internal", "parent", "sibling"] }],
+      "import/order": [
+        "error",
+        {
+          "newlines-between": "never",
+          alphabetize: { order: "asc" },
+          groups: ["builtin", "external", "internal", "parent", "sibling"],
+        },
+      ],
       "@typescript-eslint/consistent-type-imports": "error",
       "@typescript-eslint/no-unnecessary-condition": "warn",
       "@typescript-eslint/restrict-template-expressions": ["error", { allowNumber: true }],
     },
   },
-  { files: ["tests/**", "e2e/**"], rules: { "@typescript-eslint/no-non-null-assertion": "off", "@typescript-eslint/no-unsafe-assignment": "off" } },
+  {
+    files: ["tests/**", "e2e/**"],
+    rules: { "@typescript-eslint/no-non-null-assertion": "off", "@typescript-eslint/no-unsafe-assignment": "off" },
+  },
   prettier,
 );
 ```
@@ -459,10 +520,19 @@ npm run typecheck
 ```ts
 /** Structured logger; Vercel captures stdout/stderr. Use instead of console in app code. */
 export const log = {
-  info: (msg: string, data: Record<string, unknown> = {}) => process.stdout.write(JSON.stringify({ level: "info", msg, ...data }) + "\n"),
-  warn: (msg: string, data: Record<string, unknown> = {}) => process.stderr.write(JSON.stringify({ level: "warn", msg, ...data }) + "\n"),
+  info: (msg: string, data: Record<string, unknown> = {}) =>
+    process.stdout.write(JSON.stringify({ level: "info", msg, ...data }) + "\n"),
+  warn: (msg: string, data: Record<string, unknown> = {}) =>
+    process.stderr.write(JSON.stringify({ level: "warn", msg, ...data }) + "\n"),
   error: (msg: string, err: unknown, data: Record<string, unknown> = {}) =>
-    process.stderr.write(JSON.stringify({ level: "error", msg, error: err instanceof Error ? { message: err.message, stack: err.stack } : String(err), ...data }) + "\n"),
+    process.stderr.write(
+      JSON.stringify({
+        level: "error",
+        msg,
+        error: err instanceof Error ? { message: err.message, stack: err.stack } : String(err),
+        ...data,
+      }) + "\n",
+    ),
 };
 ```
 
@@ -472,7 +542,7 @@ export const log = {
 
 `README.md` (fill the screenshot paths with PNGs exported from the design canvas into `docs/screens/`):
 
-```markdown
+````markdown
 # Ritmo
 
 > Your running, planned and explained. Strava-synced training log with a built-in AI coach.
@@ -484,8 +554,8 @@ export const log = {
 
 Ritmo syncs every run from Strava, computes the metrics free apps hide (fitness/fatigue/form, pace at easy HR, grade-adjusted pace, intensity balance) and uses Claude to plan training blocks, brief each session and review progress — with a coach persona that is honest, encouraging, and insists on running easy days easy.
 
-| Home | Runs | Trends |
-|---|---|---|
+| Home                           | Runs                           | Trends                             |
+| ------------------------------ | ------------------------------ | ---------------------------------- |
 | ![Home](docs/screens/home.png) | ![Runs](docs/screens/runs.png) | ![Trends](docs/screens/trends.png) |
 
 ## Status
@@ -505,6 +575,7 @@ cp .env.example .env.local      # fill in Neon, Resend, Strava, secrets
 npm run db:migrate
 npm run dev
 ```
+````
 
 Then sign in with `ALLOWED_EMAIL`, open **Account → Connect Strava**. Full setup (Strava app, webhook subscription, Vercel) is in [docs/runbook.md](docs/runbook.md).
 
@@ -526,13 +597,13 @@ Design spec: [docs/superpowers/specs/2026-08-20-ritmo-design.md](docs/superpower
 
 ## Scripts
 
-| Command | What it does |
-|---|---|
-| `npm run dev` / `build` / `start` | Next.js |
-| `npm test` · `npm run e2e` | Vitest (unit + PGlite integration) · Playwright smoke |
-| `npm run lint` · `typecheck` · `format:check` | Quality gates (also run in CI and pre-commit) |
-| `npm run db:generate` · `db:migrate` | Drizzle migrations |
-| `npm run strava:subscribe` | One-time webhook subscription |
+| Command                                       | What it does                                          |
+| --------------------------------------------- | ----------------------------------------------------- |
+| `npm run dev` / `build` / `start`             | Next.js                                               |
+| `npm test` · `npm run e2e`                    | Vitest (unit + PGlite integration) · Playwright smoke |
+| `npm run lint` · `typecheck` · `format:check` | Quality gates (also run in CI and pre-commit)         |
+| `npm run db:generate` · `db:migrate`          | Drizzle migrations                                    |
+| `npm run strava:subscribe`                    | One-time webhook subscription                         |
 
 ## Contributing
 
@@ -541,7 +612,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Security issues: [SECURITY.md](SECURITY.
 ## Licence
 
 MIT © Rob MacPherson. Powered by Strava.
-```
+
+````
 
 `LICENSE`: standard MIT text, `Copyright (c) 2026 Rob MacPherson`.
 
@@ -556,7 +628,7 @@ MIT © Rob MacPherson. Powered by Strava.
 - Metrics and coach validators are pure functions in `lib/metrics` / `lib/coach` — no DB or framework imports.
 - Never log tokens or emails. Use `lib/log.ts`, not `console`.
 - Design changes start in `design/midnight/build.py` and the spec, not in components.
-```
+````
 
 `SECURITY.md`:
 
@@ -573,6 +645,7 @@ Secrets live only in Vercel env vars and `.env.local` (git-ignored). Strava toke
 # Changelog
 
 ## Unreleased — Stage 1: Ingest
+
 - Magic-link sign-in gated to one athlete
 - Strava connect, history import, webhook, nightly sync, manual sync
 - Runs feed with per-km zone bars; Run detail with laps and time in zone
@@ -583,8 +656,11 @@ Secrets live only in Vercel env vars and `.env.local` (git-ignored). Strava toke
 
 ```markdown
 ## What
+
 ## Why
+
 ## How tested
+
 - [ ] Unit/integration tests added or updated
 - [ ] `npm run lint && npm run typecheck && npm test` green locally
 - [ ] Spec/CHANGELOG updated if behaviour changed
@@ -622,9 +698,11 @@ git push
 ### Task 2: Database schema, client and PGlite test harness
 
 **Files:**
+
 - Create: `lib/db/schema.ts`, `lib/db/client.ts`, `lib/db/migrate.ts`, `drizzle.config.ts`, `tests/helpers/db.ts`, `tests/integration/schema.test.ts`
 
 **Interfaces:**
+
 - Produces: Drizzle tables `athletes`, `stravaConnections`, `activities`, `laps`, `syncLog`, plus Auth.js tables `users`, `accounts`, `sessions`, `verificationTokens`. `db` (Neon) from `lib/db/client.ts`; `createTestDb()` returning `{ db, close }` from `tests/helpers/db.ts`. Type exports `Activity`, `NewActivity`, `Lap`, `NewLap`, `Athlete`.
 
 - [ ] **Step 1: Write the failing schema test**
@@ -655,20 +733,39 @@ import { createTestDb, type TestDb } from "../helpers/db";
 import { athletes, activities, laps } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 
-let db: TestDb; let close: () => Promise<void>;
+let db: TestDb;
+let close: () => Promise<void>;
 beforeAll(async () => ({ db, close } = await createTestDb()));
 afterAll(() => close());
 
 describe("schema", () => {
   it("stores an athlete, an activity and its laps", async () => {
     const [a] = await db.insert(athletes).values({ email: "athlete@example.com", name: "Rob" }).returning();
-    const [act] = await db.insert(activities).values({
-      athleteId: a.id, source: "strava", stravaId: 123n, startedAt: new Date("2026-08-19T17:02:00Z"),
-      timezone: "Europe/Lisbon", name: "Mafra Corrida", type: "tempo", distanceM: 7410,
-      movingS: 2412, elapsedS: 2450, avgPaceSPerKm: 325.5, avgHr: 158, maxHr: 183,
-      avgCadence: 172, elevationGainM: 71, calories: 596, rawJson: { id: 123 },
-    }).returning();
-    await db.insert(laps).values([{ activityId: act.id, index: 1, distanceM: 1000, movingS: 347, avgHr: 126, elevationGainM: 23 }]);
+    const [act] = await db
+      .insert(activities)
+      .values({
+        athleteId: a.id,
+        source: "strava",
+        stravaId: 123n,
+        startedAt: new Date("2026-08-19T17:02:00Z"),
+        timezone: "Europe/Lisbon",
+        name: "Mafra Corrida",
+        type: "tempo",
+        distanceM: 7410,
+        movingS: 2412,
+        elapsedS: 2450,
+        avgPaceSPerKm: 325.5,
+        avgHr: 158,
+        maxHr: 183,
+        avgCadence: 172,
+        elevationGainM: 71,
+        calories: 596,
+        rawJson: { id: 123 },
+      })
+      .returning();
+    await db
+      .insert(laps)
+      .values([{ activityId: act.id, index: 1, distanceM: 1000, movingS: 347, avgHr: 126, elevationGainM: 23 }]);
     const rows = await db.select().from(laps).where(eq(laps.activityId, act.id));
     expect(rows).toHaveLength(1);
     expect(rows[0].movingS).toBe(347);
@@ -676,10 +773,22 @@ describe("schema", () => {
 
   it("enforces unique strava_id per athlete", async () => {
     const [a] = await db.select().from(athletes).limit(1);
-    await expect(db.insert(activities).values({
-      athleteId: a.id, source: "strava", stravaId: 123n, startedAt: new Date(), timezone: "UTC",
-      name: "dup", type: "easy", distanceM: 1, movingS: 1, elapsedS: 1, avgPaceSPerKm: 1, rawJson: {},
-    })).rejects.toThrow();
+    await expect(
+      db.insert(activities).values({
+        athleteId: a.id,
+        source: "strava",
+        stravaId: 123n,
+        startedAt: new Date(),
+        timezone: "UTC",
+        name: "dup",
+        type: "easy",
+        distanceM: 1,
+        movingS: 1,
+        elapsedS: 1,
+        avgPaceSPerKm: 1,
+        rawJson: {},
+      }),
+    ).rejects.toThrow();
   });
 });
 ```
@@ -695,41 +804,66 @@ Expected: FAIL — `@/lib/db/schema` not found.
 
 ```ts
 import {
-  pgTable, uuid, text, timestamp, integer, real, bigint, jsonb, boolean, primaryKey, uniqueIndex, index,
+  pgTable,
+  uuid,
+  text,
+  timestamp,
+  integer,
+  real,
+  bigint,
+  jsonb,
+  boolean,
+  primaryKey,
+  uniqueIndex,
+  index,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccountType } from "next-auth/adapters";
 
 // ---- Auth.js tables (required by @auth/drizzle-adapter) ----
 export const users = pgTable("user", {
-  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
   name: text("name"),
   email: text("email").unique(),
   emailVerified: timestamp("emailVerified", { mode: "date" }),
   image: text("image"),
 });
-export const accounts = pgTable("account", {
-  userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
-  type: text("type").$type<AdapterAccountType>().notNull(),
-  provider: text("provider").notNull(),
-  providerAccountId: text("providerAccountId").notNull(),
-  refresh_token: text("refresh_token"),
-  access_token: text("access_token"),
-  expires_at: integer("expires_at"),
-  token_type: text("token_type"),
-  scope: text("scope"),
-  id_token: text("id_token"),
-  session_state: text("session_state"),
-}, (t) => [primaryKey({ columns: [t.provider, t.providerAccountId] })]);
+export const accounts = pgTable(
+  "account",
+  {
+    userId: text("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    type: text("type").$type<AdapterAccountType>().notNull(),
+    provider: text("provider").notNull(),
+    providerAccountId: text("providerAccountId").notNull(),
+    refresh_token: text("refresh_token"),
+    access_token: text("access_token"),
+    expires_at: integer("expires_at"),
+    token_type: text("token_type"),
+    scope: text("scope"),
+    id_token: text("id_token"),
+    session_state: text("session_state"),
+  },
+  (t) => [primaryKey({ columns: [t.provider, t.providerAccountId] })],
+);
 export const sessions = pgTable("session", {
   sessionToken: text("sessionToken").primaryKey(),
-  userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+  userId: text("userId")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
   expires: timestamp("expires", { mode: "date" }).notNull(),
 });
-export const verificationTokens = pgTable("verificationToken", {
-  identifier: text("identifier").notNull(),
-  token: text("token").notNull(),
-  expires: timestamp("expires", { mode: "date" }).notNull(),
-}, (t) => [primaryKey({ columns: [t.identifier, t.token] })]);
+export const verificationTokens = pgTable(
+  "verificationToken",
+  {
+    identifier: text("identifier").notNull(),
+    token: text("token").notNull(),
+    expires: timestamp("expires", { mode: "date" }).notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.identifier, t.token] })],
+);
 
 // ---- Ritmo tables ----
 export const athletes = pgTable("athletes", {
@@ -747,7 +881,9 @@ export const athletes = pgTable("athletes", {
 });
 
 export const stravaConnections = pgTable("strava_connections", {
-  athleteId: uuid("athlete_id").primaryKey().references(() => athletes.id, { onDelete: "cascade" }),
+  athleteId: uuid("athlete_id")
+    .primaryKey()
+    .references(() => athletes.id, { onDelete: "cascade" }),
   stravaAthleteId: bigint("strava_athlete_id", { mode: "bigint" }).notNull(),
   accessToken: text("access_token").notNull(),
   refreshToken: text("refresh_token").notNull(),
@@ -760,57 +896,71 @@ export const stravaConnections = pgTable("strava_connections", {
 export const ACTIVITY_TYPES = ["easy", "medium", "tempo", "long", "race", "tt", "other"] as const;
 export type ActivityType = (typeof ACTIVITY_TYPES)[number];
 
-export const activities = pgTable("activities", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  athleteId: uuid("athlete_id").notNull().references(() => athletes.id, { onDelete: "cascade" }),
-  source: text("source").notNull(), // strava | upload
-  stravaId: bigint("strava_id", { mode: "bigint" }),
-  startedAt: timestamp("started_at", { withTimezone: true }).notNull(),
-  timezone: text("timezone").notNull(),
-  name: text("name").notNull(),
-  type: text("type").$type<ActivityType>().notNull(),
-  typeOverridden: boolean("type_overridden").notNull().default(false),
-  surface: text("surface"),
-  distanceM: real("distance_m").notNull(),
-  movingS: integer("moving_s").notNull(),
-  elapsedS: integer("elapsed_s").notNull(),
-  avgPaceSPerKm: real("avg_pace_s_per_km").notNull(),
-  avgGapSPerKm: real("avg_gap_s_per_km"),
-  avgHr: real("avg_hr"),
-  maxHr: real("max_hr"),
-  avgCadence: real("avg_cadence"),
-  elevationGainM: real("elevation_gain_m"),
-  calories: real("calories"),
-  startLat: real("start_lat"),
-  startLng: real("start_lng"),
-  trainingEffectAerobic: real("training_effect_aerobic"),
-  trainingEffectAnaerobic: real("training_effect_anaerobic"),
-  notes: text("notes"),
-  rawJson: jsonb("raw_json").notNull(),
-  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
-  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
-}, (t) => [
-  uniqueIndex("activities_athlete_strava_idx").on(t.athleteId, t.stravaId),
-  index("activities_athlete_started_idx").on(t.athleteId, t.startedAt),
-]);
+export const activities = pgTable(
+  "activities",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    athleteId: uuid("athlete_id")
+      .notNull()
+      .references(() => athletes.id, { onDelete: "cascade" }),
+    source: text("source").notNull(), // strava | upload
+    stravaId: bigint("strava_id", { mode: "bigint" }),
+    startedAt: timestamp("started_at", { withTimezone: true }).notNull(),
+    timezone: text("timezone").notNull(),
+    name: text("name").notNull(),
+    type: text("type").$type<ActivityType>().notNull(),
+    typeOverridden: boolean("type_overridden").notNull().default(false),
+    surface: text("surface"),
+    distanceM: real("distance_m").notNull(),
+    movingS: integer("moving_s").notNull(),
+    elapsedS: integer("elapsed_s").notNull(),
+    avgPaceSPerKm: real("avg_pace_s_per_km").notNull(),
+    avgGapSPerKm: real("avg_gap_s_per_km"),
+    avgHr: real("avg_hr"),
+    maxHr: real("max_hr"),
+    avgCadence: real("avg_cadence"),
+    elevationGainM: real("elevation_gain_m"),
+    calories: real("calories"),
+    startLat: real("start_lat"),
+    startLng: real("start_lng"),
+    trainingEffectAerobic: real("training_effect_aerobic"),
+    trainingEffectAnaerobic: real("training_effect_anaerobic"),
+    notes: text("notes"),
+    rawJson: jsonb("raw_json").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    uniqueIndex("activities_athlete_strava_idx").on(t.athleteId, t.stravaId),
+    index("activities_athlete_started_idx").on(t.athleteId, t.startedAt),
+  ],
+);
 
-export const laps = pgTable("laps", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  activityId: uuid("activity_id").notNull().references(() => activities.id, { onDelete: "cascade" }),
-  index: integer("index").notNull(),
-  distanceM: real("distance_m").notNull(),
-  movingS: integer("moving_s").notNull(),
-  avgHr: real("avg_hr"),
-  maxHr: real("max_hr"),
-  avgCadence: real("avg_cadence"),
-  elevationGainM: real("elevation_gain_m"),
-  elevationLossM: real("elevation_loss_m"),
-  gapSPerKm: real("gap_s_per_km"),
-}, (t) => [uniqueIndex("laps_activity_index_idx").on(t.activityId, t.index)]);
+export const laps = pgTable(
+  "laps",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    activityId: uuid("activity_id")
+      .notNull()
+      .references(() => activities.id, { onDelete: "cascade" }),
+    index: integer("index").notNull(),
+    distanceM: real("distance_m").notNull(),
+    movingS: integer("moving_s").notNull(),
+    avgHr: real("avg_hr"),
+    maxHr: real("max_hr"),
+    avgCadence: real("avg_cadence"),
+    elevationGainM: real("elevation_gain_m"),
+    elevationLossM: real("elevation_loss_m"),
+    gapSPerKm: real("gap_s_per_km"),
+  },
+  (t) => [uniqueIndex("laps_activity_index_idx").on(t.activityId, t.index)],
+);
 
 export const syncLog = pgTable("sync_log", {
   id: uuid("id").primaryKey().defaultRandom(),
-  athleteId: uuid("athlete_id").notNull().references(() => athletes.id, { onDelete: "cascade" }),
+  athleteId: uuid("athlete_id")
+    .notNull()
+    .references(() => athletes.id, { onDelete: "cascade" }),
   kind: text("kind").notNull(), // webhook | cron | manual | import | upload
   startedAt: timestamp("started_at", { withTimezone: true }).notNull().defaultNow(),
   finishedAt: timestamp("finished_at", { withTimezone: true }),
@@ -888,9 +1038,11 @@ git push
 ### Task 3: Auth.js magic-link sign-in gated to one email
 
 **Files:**
+
 - Create: `lib/auth.ts`, `lib/db/athlete.ts`, `app/api/auth/[...nextauth]/route.ts`, `app/(auth)/signin/page.tsx`, `middleware.ts`, `tests/unit/auth.test.ts`, `tests/integration/athlete.test.ts`
 
 **Interfaces:**
+
 - Produces: `auth()`, `signIn`, `signOut`, `handlers` from `lib/auth.ts`; `isAllowedEmail(email: string | null | undefined): boolean`; `requireAthlete(): Promise<Athlete>` (redirects to `/signin` when unauthenticated); `ensureAthlete(dbc, email, name?)` in `lib/db/athlete.ts` returning the `Athlete` row (created on first sign-in).
 
 - [ ] **Step 1: Write failing tests**
@@ -915,7 +1067,8 @@ import { it, expect, beforeAll, afterAll } from "vitest";
 import { createTestDb, type TestDb } from "../helpers/db";
 import { ensureAthlete } from "@/lib/db/athlete";
 
-let db: TestDb; let close: () => Promise<void>;
+let db: TestDb;
+let close: () => Promise<void>;
 beforeAll(async () => ({ db, close } = await createTestDb()));
 afterAll(() => close());
 
@@ -957,7 +1110,10 @@ export async function ensureAthlete(dbc: AnyDb, email: string, name?: string | n
   const e = email.toLowerCase();
   const existing = await dbc.select().from(athletes).where(eq(athletes.email, e)).limit(1);
   if (existing[0]) return existing[0];
-  const [created] = await dbc.insert(athletes).values({ email: e, name: name ?? null }).returning();
+  const [created] = await dbc
+    .insert(athletes)
+    .values({ email: e, name: name ?? null })
+    .returning();
   return created;
 }
 ```
@@ -980,14 +1136,21 @@ import { ensureAthlete } from "@/lib/db/athlete";
 import { env } from "@/lib/env";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: DrizzleAdapter(db, { usersTable: users, accountsTable: accounts, sessionsTable: sessions, verificationTokensTable: verificationTokens }),
+  adapter: DrizzleAdapter(db, {
+    usersTable: users,
+    accountsTable: accounts,
+    sessionsTable: sessions,
+    verificationTokensTable: verificationTokens,
+  }),
   providers: [Resend({ apiKey: env.RESEND_API_KEY, from: env.EMAIL_FROM })],
   pages: { signIn: "/signin", verifyRequest: "/signin?sent=1" },
   callbacks: {
     signIn: ({ user }) => isAllowedEmail(user.email),
   },
   events: {
-    signIn: async ({ user }) => { if (user.email) await ensureAthlete(db, user.email, user.name); },
+    signIn: async ({ user }) => {
+      if (user.email) await ensureAthlete(db, user.email, user.name);
+    },
   },
 });
 
@@ -1009,7 +1172,9 @@ export const { GET, POST } = handlers;
 
 ```ts
 export { auth as middleware } from "@/lib/auth";
-export const config = { matcher: ["/((?!api/strava/webhook|api/cron|api/auth|signin|manifest.webmanifest|icons|_next|favicon.ico).*)"] };
+export const config = {
+  matcher: ["/((?!api/strava/webhook|api/cron|api/auth|signin|manifest.webmanifest|icons|_next|favicon.ico).*)"],
+};
 ```
 
 (Webhook and cron routes authenticate themselves; everything else requires a session.)
@@ -1032,8 +1197,16 @@ export default async function SignIn({ searchParams }: { searchParams: Promise<{
       {sent ? (
         <p className="card p-4">Check your inbox — the sign-in link is on its way.</p>
       ) : (
-        <form className="card p-4 flex flex-col gap-3" action={async (fd) => { "use server"; await signIn("resend", { email: String(fd.get("email")), redirectTo: "/runs" }); }}>
-          <label className="k" htmlFor="email">Email</label>
+        <form
+          className="card p-4 flex flex-col gap-3"
+          action={async (fd) => {
+            "use server";
+            await signIn("resend", { email: String(fd.get("email")), redirectTo: "/runs" });
+          }}
+        >
+          <label className="k" htmlFor="email">
+            Email
+          </label>
           <input id="email" name="email" type="email" required className="border border-line rounded-lg px-3 h-11" />
           <button className="h-11 rounded-lg bg-ink text-white font-extrabold">Send sign-in link</button>
         </form>
@@ -1061,9 +1234,11 @@ git push
 ### Task 4: Strava API client with token refresh and throttling
 
 **Files:**
+
 - Create: `lib/strava/types.ts`, `lib/strava/client.ts`, `tests/unit/strava-client.test.ts`, `tests/fixtures/strava/activity-19aug.json`, `tests/fixtures/strava/laps-19aug.json`, `tests/fixtures/strava/athlete-activities-page.json`
 
 **Interfaces:**
+
 - Produces: `StravaClient` class: `constructor(tokens: StravaTokens, onRefresh: (t: StravaTokens) => Promise<void>, fetchImpl = fetch)`, methods `listActivities(page, perPage, after?)`, `getActivity(id)`, `getLaps(id)`, `deauthorize()`. `StravaTokens = { accessToken, refreshToken, expiresAt: Date }`. `exchangeCode(code)` and `refreshTokens(refreshToken)` as standalone functions. `StravaRateLimitError` when Strava returns 429.
 
 - [ ] **Step 1: Fixtures**
@@ -1072,13 +1247,26 @@ Create `tests/fixtures/strava/activity-19aug.json` — a trimmed DetailedActivit
 
 ```json
 {
-  "id": 15000000019, "name": "Mafra Corrida", "type": "Run", "sport_type": "Run",
-  "start_date": "2026-08-19T17:02:00Z", "start_date_local": "2026-08-19T18:02:00Z", "timezone": "(GMT+00:00) Europe/Lisbon",
-  "distance": 7410.0, "moving_time": 2412, "elapsed_time": 2450,
-  "average_speed": 3.072, "max_speed": 4.1,
-  "average_heartrate": 158.0, "max_heartrate": 183.0, "has_heartrate": true,
-  "average_cadence": 86.0, "total_elevation_gain": 71.0, "calories": 596.0,
-  "start_latlng": [38.937, -9.327], "workout_type": 3,
+  "id": 15000000019,
+  "name": "Mafra Corrida",
+  "type": "Run",
+  "sport_type": "Run",
+  "start_date": "2026-08-19T17:02:00Z",
+  "start_date_local": "2026-08-19T18:02:00Z",
+  "timezone": "(GMT+00:00) Europe/Lisbon",
+  "distance": 7410.0,
+  "moving_time": 2412,
+  "elapsed_time": 2450,
+  "average_speed": 3.072,
+  "max_speed": 4.1,
+  "average_heartrate": 158.0,
+  "max_heartrate": 183.0,
+  "has_heartrate": true,
+  "average_cadence": 86.0,
+  "total_elevation_gain": 71.0,
+  "calories": 596.0,
+  "start_latlng": [38.937, -9.327],
+  "workout_type": 3,
   "athlete": { "id": 42 }
 }
 ```
@@ -1087,14 +1275,94 @@ Create `tests/fixtures/strava/activity-19aug.json` — a trimmed DetailedActivit
 
 ```json
 [
-  { "id": 1, "lap_index": 1, "distance": 1000, "moving_time": 347, "elapsed_time": 350, "average_heartrate": 126, "max_heartrate": 140, "average_cadence": 85, "total_elevation_gain": 23 },
-  { "id": 2, "lap_index": 2, "distance": 1000, "moving_time": 331, "elapsed_time": 333, "average_heartrate": 150, "max_heartrate": 160, "average_cadence": 86, "total_elevation_gain": 15 },
-  { "id": 3, "lap_index": 3, "distance": 1000, "moving_time": 289, "elapsed_time": 290, "average_heartrate": 171, "max_heartrate": 178, "average_cadence": 88, "total_elevation_gain": 1 },
-  { "id": 4, "lap_index": 4, "distance": 1000, "moving_time": 301, "elapsed_time": 302, "average_heartrate": 174, "max_heartrate": 180, "average_cadence": 88, "total_elevation_gain": 0 },
-  { "id": 5, "lap_index": 5, "distance": 1000, "moving_time": 307, "elapsed_time": 308, "average_heartrate": 173, "max_heartrate": 183, "average_cadence": 87, "total_elevation_gain": 0 },
-  { "id": 6, "lap_index": 6, "distance": 1000, "moving_time": 369, "elapsed_time": 372, "average_heartrate": 163, "max_heartrate": 172, "average_cadence": 85, "total_elevation_gain": 0 },
-  { "id": 7, "lap_index": 7, "distance": 1000, "moving_time": 373, "elapsed_time": 375, "average_heartrate": 157, "max_heartrate": 165, "average_cadence": 85, "total_elevation_gain": 2 },
-  { "id": 8, "lap_index": 8, "distance": 410, "moving_time": 95, "elapsed_time": 120, "average_heartrate": 155, "max_heartrate": 160, "average_cadence": 84, "total_elevation_gain": 0 }
+  {
+    "id": 1,
+    "lap_index": 1,
+    "distance": 1000,
+    "moving_time": 347,
+    "elapsed_time": 350,
+    "average_heartrate": 126,
+    "max_heartrate": 140,
+    "average_cadence": 85,
+    "total_elevation_gain": 23
+  },
+  {
+    "id": 2,
+    "lap_index": 2,
+    "distance": 1000,
+    "moving_time": 331,
+    "elapsed_time": 333,
+    "average_heartrate": 150,
+    "max_heartrate": 160,
+    "average_cadence": 86,
+    "total_elevation_gain": 15
+  },
+  {
+    "id": 3,
+    "lap_index": 3,
+    "distance": 1000,
+    "moving_time": 289,
+    "elapsed_time": 290,
+    "average_heartrate": 171,
+    "max_heartrate": 178,
+    "average_cadence": 88,
+    "total_elevation_gain": 1
+  },
+  {
+    "id": 4,
+    "lap_index": 4,
+    "distance": 1000,
+    "moving_time": 301,
+    "elapsed_time": 302,
+    "average_heartrate": 174,
+    "max_heartrate": 180,
+    "average_cadence": 88,
+    "total_elevation_gain": 0
+  },
+  {
+    "id": 5,
+    "lap_index": 5,
+    "distance": 1000,
+    "moving_time": 307,
+    "elapsed_time": 308,
+    "average_heartrate": 173,
+    "max_heartrate": 183,
+    "average_cadence": 87,
+    "total_elevation_gain": 0
+  },
+  {
+    "id": 6,
+    "lap_index": 6,
+    "distance": 1000,
+    "moving_time": 369,
+    "elapsed_time": 372,
+    "average_heartrate": 163,
+    "max_heartrate": 172,
+    "average_cadence": 85,
+    "total_elevation_gain": 0
+  },
+  {
+    "id": 7,
+    "lap_index": 7,
+    "distance": 1000,
+    "moving_time": 373,
+    "elapsed_time": 375,
+    "average_heartrate": 157,
+    "max_heartrate": 165,
+    "average_cadence": 85,
+    "total_elevation_gain": 2
+  },
+  {
+    "id": 8,
+    "lap_index": 8,
+    "distance": 410,
+    "moving_time": 95,
+    "elapsed_time": 120,
+    "average_heartrate": 155,
+    "max_heartrate": 160,
+    "average_cadence": 84,
+    "total_elevation_gain": 0
+  }
 ]
 ```
 
@@ -1112,7 +1380,8 @@ import laps from "../fixtures/strava/laps-19aug.json";
 
 const fresh = (): StravaTokens => ({ accessToken: "a", refreshToken: "r", expiresAt: new Date(Date.now() + 3600_000) });
 const expired = (): StravaTokens => ({ accessToken: "old", refreshToken: "r", expiresAt: new Date(Date.now() - 10) });
-const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status, headers: { "content-type": "application/json" } });
+const json = (body: unknown, status = 200) =>
+  new Response(JSON.stringify(body), { status, headers: { "content-type": "application/json" } });
 
 describe("StravaClient", () => {
   it("fetches an activity with a bearer token", async () => {
@@ -1129,7 +1398,8 @@ describe("StravaClient", () => {
   it("refreshes an expired token before calling and reports the new tokens", async () => {
     const onRefresh = vi.fn(async () => {});
     const fetchImpl = vi.fn(async (url: string | URL | Request) => {
-      if (String(url).includes("/oauth/token")) return json({ access_token: "new", refresh_token: "r2", expires_at: Math.floor(Date.now() / 1000) + 21600 });
+      if (String(url).includes("/oauth/token"))
+        return json({ access_token: "new", refresh_token: "r2", expires_at: Math.floor(Date.now() / 1000) + 21600 });
       return json(laps);
     });
     const c = new StravaClient(expired(), onRefresh, fetchImpl as unknown as typeof fetch);
@@ -1169,21 +1439,48 @@ Expected: FAIL — module not found.
 
 ```ts
 export interface StravaSummaryActivity {
-  id: number; name: string; type: string; sport_type?: string;
-  start_date: string; start_date_local: string; timezone: string;
-  distance: number; moving_time: number; elapsed_time: number;
-  average_speed: number; max_speed?: number;
-  average_heartrate?: number; max_heartrate?: number; has_heartrate?: boolean;
-  average_cadence?: number; total_elevation_gain?: number;
-  start_latlng?: [number, number] | null; workout_type?: number | null;
+  id: number;
+  name: string;
+  type: string;
+  sport_type?: string;
+  start_date: string;
+  start_date_local: string;
+  timezone: string;
+  distance: number;
+  moving_time: number;
+  elapsed_time: number;
+  average_speed: number;
+  max_speed?: number;
+  average_heartrate?: number;
+  max_heartrate?: number;
+  has_heartrate?: boolean;
+  average_cadence?: number;
+  total_elevation_gain?: number;
+  start_latlng?: [number, number] | null;
+  workout_type?: number | null;
   athlete?: { id: number };
 }
-export interface StravaDetailedActivity extends StravaSummaryActivity { calories?: number; description?: string | null; }
-export interface StravaLap {
-  id: number; lap_index: number; distance: number; moving_time: number; elapsed_time: number;
-  average_heartrate?: number; max_heartrate?: number; average_cadence?: number; total_elevation_gain?: number;
+export interface StravaDetailedActivity extends StravaSummaryActivity {
+  calories?: number;
+  description?: string | null;
 }
-export interface StravaTokenResponse { access_token: string; refresh_token: string; expires_at: number; athlete?: { id: number; firstname?: string; lastname?: string }; }
+export interface StravaLap {
+  id: number;
+  lap_index: number;
+  distance: number;
+  moving_time: number;
+  elapsed_time: number;
+  average_heartrate?: number;
+  max_heartrate?: number;
+  average_cadence?: number;
+  total_elevation_gain?: number;
+}
+export interface StravaTokenResponse {
+  access_token: string;
+  refresh_token: string;
+  expires_at: number;
+  athlete?: { id: number; firstname?: string; lastname?: string };
+}
 ```
 
 `lib/strava/client.ts`:
@@ -1192,28 +1489,48 @@ export interface StravaTokenResponse { access_token: string; refresh_token: stri
 import { env } from "@/lib/env";
 import type { StravaDetailedActivity, StravaLap, StravaSummaryActivity, StravaTokenResponse } from "./types";
 
-export interface StravaTokens { accessToken: string; refreshToken: string; expiresAt: Date; }
-export class StravaRateLimitError extends Error { constructor() { super("Strava rate limit exceeded"); } }
-export class StravaAuthError extends Error { constructor() { super("Strava authorization invalid"); } }
+export interface StravaTokens {
+  accessToken: string;
+  refreshToken: string;
+  expiresAt: Date;
+}
+export class StravaRateLimitError extends Error {
+  constructor() {
+    super("Strava rate limit exceeded");
+  }
+}
+export class StravaAuthError extends Error {
+  constructor() {
+    super("Strava authorization invalid");
+  }
+}
 
 const BASE = "https://www.strava.com/api/v3";
 const TOKEN_URL = "https://www.strava.com/oauth/token";
 
 async function tokenRequest(body: Record<string, string>, fetchImpl: typeof fetch): Promise<StravaTokenResponse> {
   const res = await fetchImpl(TOKEN_URL, {
-    method: "POST", headers: { "content-type": "application/json" },
+    method: "POST",
+    headers: { "content-type": "application/json" },
     body: JSON.stringify({ client_id: env.STRAVA_CLIENT_ID, client_secret: env.STRAVA_CLIENT_SECRET, ...body }),
   });
   if (!res.ok) throw new StravaAuthError();
   return res.json();
 }
 
-export const toTokens = (t: StravaTokenResponse): StravaTokens =>
-  ({ accessToken: t.access_token, refreshToken: t.refresh_token, expiresAt: new Date(t.expires_at * 1000) });
+export const toTokens = (t: StravaTokenResponse): StravaTokens => ({
+  accessToken: t.access_token,
+  refreshToken: t.refresh_token,
+  expiresAt: new Date(t.expires_at * 1000),
+});
 
 export async function exchangeCode(code: string, fetchImpl: typeof fetch = fetch) {
   const t = await tokenRequest({ code, grant_type: "authorization_code" }, fetchImpl);
-  return { tokens: toTokens(t), stravaAthleteId: BigInt(t.athlete?.id ?? 0), name: [t.athlete?.firstname, t.athlete?.lastname].filter(Boolean).join(" ") };
+  return {
+    tokens: toTokens(t),
+    stravaAthleteId: BigInt(t.athlete?.id ?? 0),
+    name: [t.athlete?.firstname, t.athlete?.lastname].filter(Boolean).join(" "),
+  };
 }
 
 export async function refreshTokens(refreshToken: string, fetchImpl: typeof fetch = fetch) {
@@ -1249,11 +1566,18 @@ export class StravaClient {
     if (after) params.after = String(Math.floor(after.getTime() / 1000));
     return this.get<StravaSummaryActivity[]>("/athlete/activities", params);
   }
-  getActivity(id: number | bigint) { return this.get<StravaDetailedActivity>(`/activities/${id}`); }
-  getLaps(id: number | bigint) { return this.get<StravaLap[]>(`/activities/${id}/laps`); }
+  getActivity(id: number | bigint) {
+    return this.get<StravaDetailedActivity>(`/activities/${id}`);
+  }
+  getLaps(id: number | bigint) {
+    return this.get<StravaLap[]>(`/activities/${id}/laps`);
+  }
 
   async deauthorize() {
-    await this.fetchImpl("https://www.strava.com/oauth/deauthorize", { method: "POST", headers: { Authorization: `Bearer ${this.tokens.accessToken}` } });
+    await this.fetchImpl("https://www.strava.com/oauth/deauthorize", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${this.tokens.accessToken}` },
+    });
   }
 }
 
@@ -1279,21 +1603,41 @@ git push
 ### Task 5: Normalise Strava activities into Ritmo's shape
 
 **Files:**
+
 - Create: `lib/strava/normalise.ts`, `tests/unit/normalise.test.ts`
 
 **Interfaces:**
+
 - Produces: `NormalisedActivity` type and `normaliseStrava(detail: StravaDetailedActivity, laps: StravaLap[]): NormalisedActivity`; `isRun(summary): boolean`; `inferType(detail, laps): ActivityType`.
 
 ```ts
 export interface NormalisedActivity {
   source: "strava" | "upload";
   stravaId: bigint | null;
-  startedAt: Date; timezone: string; name: string; type: ActivityType;
-  distanceM: number; movingS: number; elapsedS: number; avgPaceSPerKm: number;
-  avgHr: number | null; maxHr: number | null; avgCadence: number | null;
-  elevationGainM: number | null; calories: number | null;
-  startLat: number | null; startLng: number | null;
-  laps: Array<{ index: number; distanceM: number; movingS: number; avgHr: number | null; maxHr: number | null; avgCadence: number | null; elevationGainM: number | null }>;
+  startedAt: Date;
+  timezone: string;
+  name: string;
+  type: ActivityType;
+  distanceM: number;
+  movingS: number;
+  elapsedS: number;
+  avgPaceSPerKm: number;
+  avgHr: number | null;
+  maxHr: number | null;
+  avgCadence: number | null;
+  elevationGainM: number | null;
+  calories: number | null;
+  startLat: number | null;
+  startLng: number | null;
+  laps: Array<{
+    index: number;
+    distanceM: number;
+    movingS: number;
+    avgHr: number | null;
+    maxHr: number | null;
+    avgCadence: number | null;
+    elevationGainM: number | null;
+  }>;
   raw: unknown;
 }
 ```
@@ -1365,15 +1709,35 @@ Expected: FAIL — module not found.
 import type { ActivityType } from "@/lib/db/schema";
 import type { StravaDetailedActivity, StravaLap, StravaSummaryActivity } from "./types";
 
-export interface NormalisedLap { index: number; distanceM: number; movingS: number; avgHr: number | null; maxHr: number | null; avgCadence: number | null; elevationGainM: number | null; }
+export interface NormalisedLap {
+  index: number;
+  distanceM: number;
+  movingS: number;
+  avgHr: number | null;
+  maxHr: number | null;
+  avgCadence: number | null;
+  elevationGainM: number | null;
+}
 export interface NormalisedActivity {
-  source: "strava" | "upload"; stravaId: bigint | null;
-  startedAt: Date; timezone: string; name: string; type: ActivityType;
-  distanceM: number; movingS: number; elapsedS: number; avgPaceSPerKm: number;
-  avgHr: number | null; maxHr: number | null; avgCadence: number | null;
-  elevationGainM: number | null; calories: number | null;
-  startLat: number | null; startLng: number | null;
-  laps: NormalisedLap[]; raw: unknown;
+  source: "strava" | "upload";
+  stravaId: bigint | null;
+  startedAt: Date;
+  timezone: string;
+  name: string;
+  type: ActivityType;
+  distanceM: number;
+  movingS: number;
+  elapsedS: number;
+  avgPaceSPerKm: number;
+  avgHr: number | null;
+  maxHr: number | null;
+  avgCadence: number | null;
+  elevationGainM: number | null;
+  calories: number | null;
+  startLat: number | null;
+  startLng: number | null;
+  laps: NormalisedLap[];
+  raw: unknown;
 }
 
 const RUN_TYPES = new Set(["Run", "TrailRun", "VirtualRun"]);
@@ -1390,7 +1754,9 @@ export function inferType(a: StravaDetailedActivity, laps: StravaLap[]): Activit
   if (a.workout_type === 3) return "tempo";
   const km = a.distance / 1000;
   const hr = a.average_heartrate ?? 0;
-  const hasFastBlock = laps.some((l) => l.distance >= 900 && paceFrom(l.distance, l.moving_time) < paceFrom(a.distance, a.moving_time) - 30);
+  const hasFastBlock = laps.some(
+    (l) => l.distance >= 900 && paceFrom(l.distance, l.moving_time) < paceFrom(a.distance, a.moving_time) - 30,
+  );
   if (km >= 14) return "long";
   if (hasFastBlock && hr >= 150) return "tempo";
   if (hr >= 150) return "medium";
@@ -1416,11 +1782,17 @@ export function normaliseStrava(a: StravaDetailedActivity, laps: StravaLap[]): N
     calories: a.calories ?? null,
     startLat: a.start_latlng?.[0] ?? null,
     startLng: a.start_latlng?.[1] ?? null,
-    laps: [...laps].sort((x, y) => x.lap_index - y.lap_index).map((l) => ({
-      index: l.lap_index, distanceM: l.distance, movingS: l.moving_time,
-      avgHr: l.average_heartrate ?? null, maxHr: l.max_heartrate ?? null,
-      avgCadence: cadence(l.average_cadence), elevationGainM: l.total_elevation_gain ?? null,
-    })),
+    laps: [...laps]
+      .sort((x, y) => x.lap_index - y.lap_index)
+      .map((l) => ({
+        index: l.lap_index,
+        distanceM: l.distance,
+        movingS: l.moving_time,
+        avgHr: l.average_heartrate ?? null,
+        maxHr: l.max_heartrate ?? null,
+        avgCadence: cadence(l.average_cadence),
+        elevationGainM: l.total_elevation_gain ?? null,
+      })),
     raw: { activity: a, laps },
   };
 }
@@ -1444,9 +1816,11 @@ git push
 ### Task 6: Pipeline — upsert activity and laps, honouring athlete overrides
 
 **Files:**
+
 - Create: `lib/pipeline/processActivity.ts`, `lib/pipeline/syncLog.ts`, `tests/integration/processActivity.test.ts`
 
 **Interfaces:**
+
 - Produces: `processActivity(dbc: AnyDb, athleteId: string, n: NormalisedActivity): Promise<{ activityId: string; created: boolean }>`; `deleteActivityByStravaId(dbc, athleteId, stravaId: bigint): Promise<void>`; `startSyncLog(dbc, athleteId, kind)` → `{ id, finish(status, processed, error?) }`.
 - Hook point for later stages: after upsert, `processActivity` calls `afterUpsert(dbc, activityId)` — an exported no-op in Stage 1 that Stage 2 fills with metrics.
 
@@ -1465,8 +1839,13 @@ import { normaliseStrava } from "@/lib/strava/normalise";
 import detail from "../fixtures/strava/activity-19aug.json";
 import lapsFx from "../fixtures/strava/laps-19aug.json";
 
-let db: TestDb; let close: () => Promise<void>; let athleteId: string;
-beforeAll(async () => { ({ db, close } = await createTestDb()); athleteId = (await ensureAthlete(db, "athlete@example.com")).id; });
+let db: TestDb;
+let close: () => Promise<void>;
+let athleteId: string;
+beforeAll(async () => {
+  ({ db, close } = await createTestDb());
+  athleteId = (await ensureAthlete(db, "athlete@example.com")).id;
+});
 afterAll(() => close());
 
 describe("processActivity", () => {
@@ -1487,7 +1866,10 @@ describe("processActivity", () => {
 
   it("does not overwrite athlete-entered type, notes or training effect", async () => {
     const [a] = await db.select().from(activities).where(eq(activities.athleteId, athleteId));
-    await db.update(activities).set({ type: "race", typeOverridden: true, notes: "felt great", trainingEffectAerobic: 3.7 }).where(eq(activities.id, a.id));
+    await db
+      .update(activities)
+      .set({ type: "race", typeOverridden: true, notes: "felt great", trainingEffectAerobic: 3.7 })
+      .where(eq(activities.id, a.id));
     await processActivity(db, athleteId, normaliseStrava(detail, lapsFx));
     const [after] = await db.select().from(activities).where(eq(activities.id, a.id));
     expect(after.type).toBe("race");
@@ -1522,25 +1904,51 @@ export async function afterUpsert(_dbc: AnyDb, _activityId: string): Promise<voi
 
 export async function processActivity(dbc: AnyDb, athleteId: string, n: NormalisedActivity) {
   const stravaFields: Omit<NewActivity, "athleteId" | "type" | "rawJson"> = {
-    source: n.source, stravaId: n.stravaId, startedAt: n.startedAt, timezone: n.timezone, name: n.name,
-    distanceM: n.distanceM, movingS: n.movingS, elapsedS: n.elapsedS, avgPaceSPerKm: n.avgPaceSPerKm,
-    avgHr: n.avgHr, maxHr: n.maxHr, avgCadence: n.avgCadence, elevationGainM: n.elevationGainM,
-    calories: n.calories, startLat: n.startLat, startLng: n.startLng, updatedAt: new Date(),
+    source: n.source,
+    stravaId: n.stravaId,
+    startedAt: n.startedAt,
+    timezone: n.timezone,
+    name: n.name,
+    distanceM: n.distanceM,
+    movingS: n.movingS,
+    elapsedS: n.elapsedS,
+    avgPaceSPerKm: n.avgPaceSPerKm,
+    avgHr: n.avgHr,
+    maxHr: n.maxHr,
+    avgCadence: n.avgCadence,
+    elevationGainM: n.elevationGainM,
+    calories: n.calories,
+    startLat: n.startLat,
+    startLng: n.startLng,
+    updatedAt: new Date(),
   };
 
-  const existing = n.stravaId == null ? [] : await dbc.select({ id: activities.id, typeOverridden: activities.typeOverridden })
-    .from(activities).where(and(eq(activities.athleteId, athleteId), eq(activities.stravaId, n.stravaId))).limit(1);
+  const existing =
+    n.stravaId == null
+      ? []
+      : await dbc
+          .select({ id: activities.id, typeOverridden: activities.typeOverridden })
+          .from(activities)
+          .where(and(eq(activities.athleteId, athleteId), eq(activities.stravaId, n.stravaId)))
+          .limit(1);
 
-  let activityId: string; let created: boolean;
+  let activityId: string;
+  let created: boolean;
   if (existing[0]) {
-    activityId = existing[0].id; created = false;
-    await dbc.update(activities)
+    activityId = existing[0].id;
+    created = false;
+    await dbc
+      .update(activities)
       .set({ ...stravaFields, rawJson: n.raw as object, ...(existing[0].typeOverridden ? {} : { type: n.type }) })
       .where(eq(activities.id, activityId));
     await dbc.delete(laps).where(eq(laps.activityId, activityId));
   } else {
-    const [row] = await dbc.insert(activities).values({ ...stravaFields, athleteId, type: n.type, rawJson: n.raw as object }).returning({ id: activities.id });
-    activityId = row.id; created = true;
+    const [row] = await dbc
+      .insert(activities)
+      .values({ ...stravaFields, athleteId, type: n.type, rawJson: n.raw as object })
+      .returning({ id: activities.id });
+    activityId = row.id;
+    created = true;
   }
 
   if (n.laps.length) {
@@ -1569,7 +1977,10 @@ export async function startSyncLog(dbc: AnyDb, athleteId: string, kind: SyncKind
   return {
     id: row.id,
     finish: async (status: "ok" | "failed", activitiesProcessed: number, error?: string) => {
-      await dbc.update(syncLog).set({ status, activitiesProcessed, error: error ?? null, finishedAt: new Date() }).where(eq(syncLog.id, row.id));
+      await dbc
+        .update(syncLog)
+        .set({ status, activitiesProcessed, error: error ?? null, finishedAt: new Date() })
+        .where(eq(syncLog.id, row.id));
     },
   };
 }
@@ -1593,9 +2004,11 @@ git push
 ### Task 7: History import and recent sync (shared by connect, manual, cron)
 
 **Files:**
+
 - Create: `lib/strava/connection.ts`, `lib/pipeline/importHistory.ts`, `lib/pipeline/syncRecent.ts`, `tests/integration/importHistory.test.ts`
 
 **Interfaces:**
+
 - Produces: `clientForAthlete(dbc, athleteId): Promise<StravaClient | null>` (loads tokens, persists refreshes); `saveConnection(dbc, athleteId, tokens, stravaAthleteId)`; `importHistory(dbc, athleteId, client, opts?: { after?: Date; kind?: SyncKind; sleep?: () => Promise<void> })` → `{ processed: number }`; `syncRecent(dbc, athleteId, client, days = 30)` → same shape. `importHistory` updates `strava_connections.import_status/imported_count` as it goes.
 
 - [ ] **Step 1: Write failing test**
@@ -1615,11 +2028,18 @@ import page from "../fixtures/strava/athlete-activities-page.json";
 import detail from "../fixtures/strava/activity-19aug.json";
 import laps from "../fixtures/strava/laps-19aug.json";
 
-let db: TestDb; let close: () => Promise<void>; let athleteId: string;
+let db: TestDb;
+let close: () => Promise<void>;
+let athleteId: string;
 beforeAll(async () => {
   ({ db, close } = await createTestDb());
   athleteId = (await ensureAthlete(db, "athlete@example.com")).id;
-  await saveConnection(db, athleteId, { accessToken: "a", refreshToken: "r", expiresAt: new Date(Date.now() + 3600_000) }, 42n);
+  await saveConnection(
+    db,
+    athleteId,
+    { accessToken: "a", refreshToken: "r", expiresAt: new Date(Date.now() + 3600_000) },
+    42n,
+  );
 });
 afterAll(() => close());
 
@@ -1631,7 +2051,7 @@ it("pages through activities, imports only runs, and records progress", async ()
   } as unknown as StravaClient;
 
   const r = await importHistory(db, athleteId, client, { sleep: async () => {} });
-  expect(r.processed).toBe(1);                       // the Ride was skipped
+  expect(r.processed).toBe(1); // the Ride was skipped
   expect(client.getActivity).toHaveBeenCalledTimes(1);
   expect(await db.select().from(activities).where(eq(activities.athleteId, athleteId))).toHaveLength(1);
   const [conn] = await db.select().from(stravaConnections).where(eq(stravaConnections.athleteId, athleteId));
@@ -1642,7 +2062,11 @@ it("pages through activities, imports only runs, and records progress", async ()
 });
 
 it("marks the import failed and logs the error when Strava throws", async () => {
-  const client = { listActivities: vi.fn(async () => { throw new Error("boom"); }) } as unknown as StravaClient;
+  const client = {
+    listActivities: vi.fn(async () => {
+      throw new Error("boom");
+    }),
+  } as unknown as StravaClient;
   await expect(importHistory(db, athleteId, client, { sleep: async () => {} })).rejects.toThrow("boom");
   const [conn] = await db.select().from(stravaConnections).where(eq(stravaConnections.athleteId, athleteId));
   expect(conn.importStatus).toBe("failed");
@@ -1665,13 +2089,31 @@ import type { AnyDb } from "@/lib/db/athlete";
 import { StravaClient, type StravaTokens } from "./client";
 
 export async function saveConnection(dbc: AnyDb, athleteId: string, tokens: StravaTokens, stravaAthleteId: bigint) {
-  await dbc.insert(stravaConnections)
-    .values({ athleteId, stravaAthleteId, accessToken: tokens.accessToken, refreshToken: tokens.refreshToken, expiresAt: tokens.expiresAt })
-    .onConflictDoUpdate({ target: stravaConnections.athleteId, set: { stravaAthleteId, accessToken: tokens.accessToken, refreshToken: tokens.refreshToken, expiresAt: tokens.expiresAt } });
+  await dbc
+    .insert(stravaConnections)
+    .values({
+      athleteId,
+      stravaAthleteId,
+      accessToken: tokens.accessToken,
+      refreshToken: tokens.refreshToken,
+      expiresAt: tokens.expiresAt,
+    })
+    .onConflictDoUpdate({
+      target: stravaConnections.athleteId,
+      set: {
+        stravaAthleteId,
+        accessToken: tokens.accessToken,
+        refreshToken: tokens.refreshToken,
+        expiresAt: tokens.expiresAt,
+      },
+    });
 }
 
 export async function updateTokens(dbc: AnyDb, athleteId: string, t: StravaTokens) {
-  await dbc.update(stravaConnections).set({ accessToken: t.accessToken, refreshToken: t.refreshToken, expiresAt: t.expiresAt }).where(eq(stravaConnections.athleteId, athleteId));
+  await dbc
+    .update(stravaConnections)
+    .set({ accessToken: t.accessToken, refreshToken: t.refreshToken, expiresAt: t.expiresAt })
+    .where(eq(stravaConnections.athleteId, athleteId));
 }
 
 export async function getConnection(dbc: AnyDb, athleteId: string) {
@@ -1682,7 +2124,9 @@ export async function getConnection(dbc: AnyDb, athleteId: string) {
 export async function clientForAthlete(dbc: AnyDb, athleteId: string): Promise<StravaClient | null> {
   const c = await getConnection(dbc, athleteId);
   if (!c) return null;
-  return new StravaClient({ accessToken: c.accessToken, refreshToken: c.refreshToken, expiresAt: c.expiresAt }, (t) => updateTokens(dbc, athleteId, t));
+  return new StravaClient({ accessToken: c.accessToken, refreshToken: c.refreshToken, expiresAt: c.expiresAt }, (t) =>
+    updateTokens(dbc, athleteId, t),
+  );
 }
 
 export async function deleteConnection(dbc: AnyDb, athleteId: string) {
@@ -1690,7 +2134,11 @@ export async function deleteConnection(dbc: AnyDb, athleteId: string) {
 }
 
 export async function athleteIdForStravaAthlete(dbc: AnyDb, stravaAthleteId: bigint): Promise<string | null> {
-  const [c] = await dbc.select({ athleteId: stravaConnections.athleteId }).from(stravaConnections).where(eq(stravaConnections.stravaAthleteId, stravaAthleteId)).limit(1);
+  const [c] = await dbc
+    .select({ athleteId: stravaConnections.athleteId })
+    .from(stravaConnections)
+    .where(eq(stravaConnections.stravaAthleteId, stravaAthleteId))
+    .limit(1);
   return c?.athleteId ?? null;
 }
 ```
@@ -1708,12 +2156,20 @@ import { isRun, normaliseStrava } from "@/lib/strava/normalise";
 import { processActivity } from "./processActivity";
 import { startSyncLog, type SyncKind } from "./syncLog";
 
-export interface ImportOptions { after?: Date; kind?: SyncKind; sleep?: () => Promise<void>; perPage?: number; }
+export interface ImportOptions {
+  after?: Date;
+  kind?: SyncKind;
+  sleep?: () => Promise<void>;
+  perPage?: number;
+}
 
 export async function importHistory(dbc: AnyDb, athleteId: string, client: StravaClient, opts: ImportOptions = {}) {
   const sleep = opts.sleep ?? (() => throttle(1000));
   const log = await startSyncLog(dbc, athleteId, opts.kind ?? "import");
-  await dbc.update(stravaConnections).set({ importStatus: "running" }).where(eq(stravaConnections.athleteId, athleteId));
+  await dbc
+    .update(stravaConnections)
+    .set({ importStatus: "running" })
+    .where(eq(stravaConnections.athleteId, athleteId));
   let processed = 0;
   try {
     for (let page = 1; ; page++) {
@@ -1727,15 +2183,24 @@ export async function importHistory(dbc: AnyDb, athleteId: string, client: Strav
         const laps = await client.getLaps(s.id);
         await processActivity(dbc, athleteId, normaliseStrava(detail, laps));
         processed++;
-        await dbc.update(stravaConnections).set({ importedCount: sql`${stravaConnections.importedCount} + 1` }).where(eq(stravaConnections.athleteId, athleteId));
+        await dbc
+          .update(stravaConnections)
+          .set({ importedCount: sql`${stravaConnections.importedCount} + 1` })
+          .where(eq(stravaConnections.athleteId, athleteId));
       }
       await sleep();
     }
-    await dbc.update(stravaConnections).set({ importStatus: "done", lastSyncAt: new Date() }).where(eq(stravaConnections.athleteId, athleteId));
+    await dbc
+      .update(stravaConnections)
+      .set({ importStatus: "done", lastSyncAt: new Date() })
+      .where(eq(stravaConnections.athleteId, athleteId));
     await log.finish("ok", processed);
     return { processed };
   } catch (err) {
-    await dbc.update(stravaConnections).set({ importStatus: "failed" }).where(eq(stravaConnections.athleteId, athleteId));
+    await dbc
+      .update(stravaConnections)
+      .set({ importStatus: "failed" })
+      .where(eq(stravaConnections.athleteId, athleteId));
     await log.finish("failed", processed, err instanceof Error ? err.message : String(err));
     throw err;
   }
@@ -1774,9 +2239,11 @@ git push
 ### Task 8: OAuth connect/callback/disconnect and manual sync routes
 
 **Files:**
+
 - Create: `lib/strava/oauth.ts`, `app/api/strava/connect/route.ts`, `app/api/strava/callback/route.ts`, `app/api/strava/disconnect/route.ts`, `app/api/sync/route.ts`, `tests/unit/oauth.test.ts`
 
 **Interfaces:**
+
 - Produces: `authorizeUrl(state: string): string`; routes as above. The callback kicks off `importHistory` without awaiting it (Vercel: wrap in `after()` from `next/server`) and redirects to `/account?import=started`.
 
 - [ ] **Step 1: Failing test for the authorize URL**
@@ -1929,9 +2396,11 @@ git push
 ### Task 9: Webhook receiver and nightly cron
 
 **Files:**
+
 - Create: `lib/strava/webhook.ts`, `app/api/strava/webhook/route.ts`, `app/api/cron/sync/route.ts`, `scripts/strava-subscribe.ts`, `vercel.json`, `tests/unit/webhook.test.ts`
 
 **Interfaces:**
+
 - Produces: `verifyChallenge(params: URLSearchParams): { ok: true; challenge: string } | { ok: false }`; `parseEvent(body: unknown): StravaWebhookEvent | null`; `handleEvent(dbc, event, clientFactory)` which processes `create`/`update` by fetching the activity and `delete` by removing it, ignoring non-activity objects.
 
 - [ ] **Step 1: Failing tests**
@@ -1963,32 +2432,55 @@ describe("verifyChallenge", () => {
 
 describe("parseEvent", () => {
   it("accepts activity events and rejects junk", () => {
-    expect(parseEvent({ object_type: "activity", aspect_type: "create", object_id: 15000000019, owner_id: 42, updates: {} }))
-      .toMatchObject({ objectType: "activity", aspectType: "create", objectId: 15000000019n, ownerId: 42n });
+    expect(
+      parseEvent({ object_type: "activity", aspect_type: "create", object_id: 15000000019, owner_id: 42, updates: {} }),
+    ).toMatchObject({ objectType: "activity", aspectType: "create", objectId: 15000000019n, ownerId: 42n });
     expect(parseEvent({ nonsense: true })).toBeNull();
   });
 });
 
 describe("handleEvent", () => {
-  let db: TestDb; let close: () => Promise<void>; let athleteId: string;
+  let db: TestDb;
+  let close: () => Promise<void>;
+  let athleteId: string;
   beforeAll(async () => {
     ({ db, close } = await createTestDb());
     athleteId = (await ensureAthlete(db, "athlete@example.com")).id;
-    await saveConnection(db, athleteId, { accessToken: "a", refreshToken: "r", expiresAt: new Date(Date.now() + 3600_000) }, 42n);
+    await saveConnection(
+      db,
+      athleteId,
+      { accessToken: "a", refreshToken: "r", expiresAt: new Date(Date.now() + 3600_000) },
+      42n,
+    );
   });
   afterAll(() => close());
 
-  const client = { getActivity: vi.fn(async () => detail), getLaps: vi.fn(async () => laps) } as unknown as StravaClient;
+  const client = {
+    getActivity: vi.fn(async () => detail),
+    getLaps: vi.fn(async () => laps),
+  } as unknown as StravaClient;
 
   it("creates on create, then deletes on delete", async () => {
-    await handleEvent(db, { objectType: "activity", aspectType: "create", objectId: 15000000019n, ownerId: 42n, updates: {} }, async () => client);
+    await handleEvent(
+      db,
+      { objectType: "activity", aspectType: "create", objectId: 15000000019n, ownerId: 42n, updates: {} },
+      async () => client,
+    );
     expect(await db.select().from(activities).where(eq(activities.athleteId, athleteId))).toHaveLength(1);
-    await handleEvent(db, { objectType: "activity", aspectType: "delete", objectId: 15000000019n, ownerId: 42n, updates: {} }, async () => client);
+    await handleEvent(
+      db,
+      { objectType: "activity", aspectType: "delete", objectId: 15000000019n, ownerId: 42n, updates: {} },
+      async () => client,
+    );
     expect(await db.select().from(activities).where(eq(activities.athleteId, athleteId))).toHaveLength(0);
   });
 
   it("ignores events for unknown owners", async () => {
-    await handleEvent(db, { objectType: "activity", aspectType: "create", objectId: 1n, ownerId: 999n, updates: {} }, async () => client);
+    await handleEvent(
+      db,
+      { objectType: "activity", aspectType: "create", objectId: 1n, ownerId: 999n, updates: {} },
+      async () => client,
+    );
     expect(await db.select().from(activities).where(eq(activities.athleteId, athleteId))).toHaveLength(0);
   });
 });
@@ -2011,7 +2503,11 @@ import { startSyncLog } from "@/lib/pipeline/syncLog";
 import type { StravaClient } from "./client";
 
 export function verifyChallenge(p: URLSearchParams) {
-  if (p.get("hub.mode") === "subscribe" && p.get("hub.verify_token") === env.STRAVA_WEBHOOK_VERIFY_TOKEN && p.get("hub.challenge")) {
+  if (
+    p.get("hub.mode") === "subscribe" &&
+    p.get("hub.verify_token") === env.STRAVA_WEBHOOK_VERIFY_TOKEN &&
+    p.get("hub.challenge")
+  ) {
     return { ok: true as const, challenge: p.get("hub.challenge")! };
   }
   return { ok: false as const };
@@ -2024,15 +2520,31 @@ const EventSchema = z.object({
   owner_id: z.number(),
   updates: z.record(z.unknown()).default({}),
 });
-export interface StravaWebhookEvent { objectType: "activity" | "athlete"; aspectType: "create" | "update" | "delete"; objectId: bigint; ownerId: bigint; updates: Record<string, unknown>; }
+export interface StravaWebhookEvent {
+  objectType: "activity" | "athlete";
+  aspectType: "create" | "update" | "delete";
+  objectId: bigint;
+  ownerId: bigint;
+  updates: Record<string, unknown>;
+}
 
 export function parseEvent(body: unknown): StravaWebhookEvent | null {
   const r = EventSchema.safeParse(body);
   if (!r.success) return null;
-  return { objectType: r.data.object_type, aspectType: r.data.aspect_type, objectId: BigInt(r.data.object_id), ownerId: BigInt(r.data.owner_id), updates: r.data.updates };
+  return {
+    objectType: r.data.object_type,
+    aspectType: r.data.aspect_type,
+    objectId: BigInt(r.data.object_id),
+    ownerId: BigInt(r.data.owner_id),
+    updates: r.data.updates,
+  };
 }
 
-export async function handleEvent(dbc: AnyDb, ev: StravaWebhookEvent, clientFactory: (athleteId: string) => Promise<StravaClient | null>) {
+export async function handleEvent(
+  dbc: AnyDb,
+  ev: StravaWebhookEvent,
+  clientFactory: (athleteId: string) => Promise<StravaClient | null>,
+) {
   if (ev.objectType !== "activity") return; // athlete deauth handled by token failure on next sync
   const athleteId = await athleteIdForStravaAthlete(dbc, ev.ownerId);
   if (!athleteId) return;
@@ -2044,9 +2556,15 @@ export async function handleEvent(dbc: AnyDb, ev: StravaWebhookEvent, clientFact
       return;
     }
     const client = await clientFactory(athleteId);
-    if (!client) { await log.finish("failed", 0, "no connection"); return; }
+    if (!client) {
+      await log.finish("failed", 0, "no connection");
+      return;
+    }
     const detail = await client.getActivity(ev.objectId);
-    if (!isRun(detail)) { await log.finish("ok", 0); return; }
+    if (!isRun(detail)) {
+      await log.finish("ok", 0);
+      return;
+    }
     const laps = await client.getLaps(ev.objectId);
     await processActivity(dbc, athleteId, normaliseStrava(detail, laps));
     await log.finish("ok", 1);
@@ -2073,7 +2591,10 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
   const ev = parseEvent(await req.json().catch(() => null));
-  if (ev) after(() => handleEvent(db, ev, (id) => clientForAthlete(db, id)).catch((e: unknown) => log.error("webhook failed", e)));
+  if (ev)
+    after(() =>
+      handleEvent(db, ev, (id) => clientForAthlete(db, id)).catch((e: unknown) => log.error("webhook failed", e)),
+    );
   return new NextResponse("ok", { status: 200 }); // always 200 within 2 s
 }
 ```
@@ -2091,14 +2612,18 @@ import { env } from "@/lib/env";
 export const maxDuration = 300;
 
 export async function GET(req: Request) {
-  if (req.headers.get("authorization") !== `Bearer ${env.CRON_SECRET}`) return new NextResponse("unauthorized", { status: 401 });
+  if (req.headers.get("authorization") !== `Bearer ${env.CRON_SECRET}`)
+    return new NextResponse("unauthorized", { status: 401 });
   const conns = await db.select({ athleteId: stravaConnections.athleteId }).from(stravaConnections);
   const results: Record<string, number | string> = {};
   for (const { athleteId } of conns) {
     const client = await clientForAthlete(db, athleteId);
     if (!client) continue;
-    try { results[athleteId] = (await syncRecent(db, athleteId, client, 30, "cron")).processed; }
-    catch (e) { results[athleteId] = e instanceof Error ? e.message : "failed"; }
+    try {
+      results[athleteId] = (await syncRecent(db, athleteId, client, 30, "cron")).processed;
+    } catch (e) {
+      results[athleteId] = e instanceof Error ? e.message : "failed";
+    }
   }
   return NextResponse.json({ ok: true, results });
 }
@@ -2117,8 +2642,14 @@ export async function GET(req: Request) {
 ```ts
 const { STRAVA_CLIENT_ID, STRAVA_CLIENT_SECRET, STRAVA_WEBHOOK_VERIFY_TOKEN, NEXT_PUBLIC_APP_URL } = process.env;
 const res = await fetch("https://www.strava.com/api/v3/push_subscriptions", {
-  method: "POST", headers: { "content-type": "application/json" },
-  body: JSON.stringify({ client_id: STRAVA_CLIENT_ID, client_secret: STRAVA_CLIENT_SECRET, callback_url: `${NEXT_PUBLIC_APP_URL}/api/strava/webhook`, verify_token: STRAVA_WEBHOOK_VERIFY_TOKEN }),
+  method: "POST",
+  headers: { "content-type": "application/json" },
+  body: JSON.stringify({
+    client_id: STRAVA_CLIENT_ID,
+    client_secret: STRAVA_CLIENT_SECRET,
+    callback_url: `${NEXT_PUBLIC_APP_URL}/api/strava/webhook`,
+    verify_token: STRAVA_WEBHOOK_VERIFY_TOKEN,
+  }),
 });
 process.stdout.write(`${res.status} ${await res.text()}\n`);
 ```
@@ -2138,9 +2669,11 @@ git push
 ### Task 10: HR zones helper (feed colouring) and activity queries
 
 **Files:**
+
 - Create: `lib/metrics/zones.ts`, `lib/db/activities.ts`, `tests/unit/zones.test.ts`, `tests/integration/activities-query.test.ts`
 
 **Interfaces:**
+
 - Produces: `zoneBoundaries(athlete: { maxHr: number | null; hrZoneBoundaries: [number,number,number,number] | null }): [number,number,number,number]` (defaults 60/70/80/90 % of max HR, or 125/145/160/178 when no max HR); `zoneFor(hr: number | null, b): 0|1|2|3|4|5` (0 = no HR); `ZONE_COLORS` mapping zone → CSS var. `listActivities(dbc, athleteId, { type?, limit?, before? })` returning activities with their laps; `getActivity(dbc, athleteId, id)`; `monthSummary(dbc, athleteId, year, month)` → `{ km, runs }`.
 
 - [ ] **Step 1: Failing tests**
@@ -2183,12 +2716,29 @@ import { listActivities, getActivity, monthSummary } from "@/lib/db/activities";
 import detail from "../fixtures/strava/activity-19aug.json";
 import laps from "../fixtures/strava/laps-19aug.json";
 
-let db: TestDb; let close: () => Promise<void>; let athleteId: string;
+let db: TestDb;
+let close: () => Promise<void>;
+let athleteId: string;
 beforeAll(async () => {
   ({ db, close } = await createTestDb());
   athleteId = (await ensureAthlete(db, "athlete@example.com")).id;
   await processActivity(db, athleteId, normaliseStrava(detail, laps));
-  await processActivity(db, athleteId, normaliseStrava({ ...detail, id: 2, start_date: "2026-08-17T08:12:00Z", distance: 6500, moving_time: 2392, workout_type: null, average_heartrate: 144 }, []));
+  await processActivity(
+    db,
+    athleteId,
+    normaliseStrava(
+      {
+        ...detail,
+        id: 2,
+        start_date: "2026-08-17T08:12:00Z",
+        distance: 6500,
+        moving_time: 2392,
+        workout_type: null,
+        average_heartrate: 144,
+      },
+      [],
+    ),
+  );
 });
 afterAll(() => close());
 
@@ -2236,7 +2786,12 @@ export function zoneFor(hr: number | null, b: Boundaries): Zone {
 }
 
 export const ZONE_COLORS: Record<Zone, string> = {
-  0: "var(--line)", 1: "#d0d5de", 2: "var(--sky)", 3: "var(--lime)", 4: "var(--tang)", 5: "var(--red)",
+  0: "var(--line)",
+  1: "#d0d5de",
+  2: "var(--sky)",
+  3: "var(--lime)",
+  4: "var(--tang)",
+  5: "var(--red)",
 };
 ```
 
@@ -2249,28 +2804,48 @@ import type { AnyDb } from "./athlete";
 
 export type ActivityWithLaps = Activity & { laps: Lap[] };
 
-export async function listActivities(dbc: AnyDb, athleteId: string, o: { type?: ActivityType; limit?: number; before?: Date }): Promise<ActivityWithLaps[]> {
+export async function listActivities(
+  dbc: AnyDb,
+  athleteId: string,
+  o: { type?: ActivityType; limit?: number; before?: Date },
+): Promise<ActivityWithLaps[]> {
   const conds = [eq(activities.athleteId, athleteId)];
   if (o.type) conds.push(eq(activities.type, o.type));
   if (o.before) conds.push(lt(activities.startedAt, o.before));
-  const rows = await dbc.select().from(activities).where(and(...conds)).orderBy(desc(activities.startedAt)).limit(o.limit ?? 20);
+  const rows = await dbc
+    .select()
+    .from(activities)
+    .where(and(...conds))
+    .orderBy(desc(activities.startedAt))
+    .limit(o.limit ?? 20);
   if (rows.length === 0) return [];
   const ids = rows.map((r) => r.id);
-  const allLaps = await dbc.select().from(laps).where(sql`${laps.activityId} in ${ids}`).orderBy(laps.index);
+  const allLaps = await dbc
+    .select()
+    .from(laps)
+    .where(sql`${laps.activityId} in ${ids}`)
+    .orderBy(laps.index);
   return rows.map((r) => ({ ...r, laps: allLaps.filter((l) => l.activityId === r.id) }));
 }
 
 export async function getActivity(dbc: AnyDb, athleteId: string, id: string): Promise<ActivityWithLaps | null> {
-  const [row] = await dbc.select().from(activities).where(and(eq(activities.athleteId, athleteId), eq(activities.id, id))).limit(1);
+  const [row] = await dbc
+    .select()
+    .from(activities)
+    .where(and(eq(activities.athleteId, athleteId), eq(activities.id, id)))
+    .limit(1);
   if (!row) return null;
   const l = await dbc.select().from(laps).where(eq(laps.activityId, id)).orderBy(laps.index);
   return { ...row, laps: l };
 }
 
 export async function monthSummary(dbc: AnyDb, athleteId: string, year: number, month: number) {
-  const from = new Date(Date.UTC(year, month - 1, 1)); const to = new Date(Date.UTC(year, month, 1));
-  const [r] = await dbc.select({ m: sql<number>`coalesce(sum(${activities.distanceM}), 0)`, n: sql<number>`count(*)` })
-    .from(activities).where(and(eq(activities.athleteId, athleteId), gte(activities.startedAt, from), lt(activities.startedAt, to)));
+  const from = new Date(Date.UTC(year, month - 1, 1));
+  const to = new Date(Date.UTC(year, month, 1));
+  const [r] = await dbc
+    .select({ m: sql<number>`coalesce(sum(${activities.distanceM}), 0)`, n: sql<number>`count(*)` })
+    .from(activities)
+    .where(and(eq(activities.athleteId, athleteId), gte(activities.startedAt, from), lt(activities.startedAt, to)));
   return { km: Math.round(Number(r.m) / 100) / 10, runs: Number(r.n) };
 }
 ```
@@ -2290,9 +2865,11 @@ git push
 ### Task 11: App shell and Runs feed
 
 **Files:**
+
 - Create: `components/TabBar.tsx`, `components/TypePill.tsx`, `components/Header.tsx`, `components/KmBars.tsx`, `components/RunCard.tsx`, `app/runs/page.tsx`, `app/(app)/layout.tsx` (move `runs`, `account` under `(app)` so they share the tab bar)
 
 **Interfaces:**
+
 - Consumes: `listActivities`, `monthSummary`, `zoneBoundaries`, `zoneFor`, `ZONE_COLORS`, `formatPace/Duration/Km`, `requireAthlete`.
 - Produces: `<RunCard activity boundaries />`, `<KmBars laps boundaries />`, `<TypePill type />`, `<TabBar active />`, `<Header kicker title right? avatar? />`.
 
@@ -2313,8 +2890,17 @@ export function TabBar({ active }: { active: string }) {
   return (
     <nav className="fixed bottom-0 inset-x-0 h-[60px] bg-white border-t border-line grid grid-cols-5 items-center">
       {TABS.map((t) => (
-        <Link key={t.href} href={t.href} className={`flex flex-col items-center gap-[3px] text-[10px] font-bold ${active === t.label ? "text-ink" : "text-muted"}`}>
-          <svg viewBox="0 0 24 24" className="w-[22px] h-[22px] fill-none stroke-current stroke-[1.8] [stroke-linecap:round] [stroke-linejoin:round]"><path d={t.d} /></svg>
+        <Link
+          key={t.href}
+          href={t.href}
+          className={`flex flex-col items-center gap-[3px] text-[10px] font-bold ${active === t.label ? "text-ink" : "text-muted"}`}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            className="w-[22px] h-[22px] fill-none stroke-current stroke-[1.8] [stroke-linecap:round] [stroke-linejoin:round]"
+          >
+            <path d={t.d} />
+          </svg>
           {t.label}
         </Link>
       ))}
@@ -2328,7 +2914,13 @@ export function TabBar({ active }: { active: string }) {
 ```tsx
 import type { ActivityType } from "@/lib/db/schema";
 const COLOR: Record<ActivityType, string> = {
-  easy: "text-easy", medium: "text-sky-text", tempo: "text-tang-text", long: "text-lime-text", race: "text-ink", tt: "text-ink", other: "text-muted",
+  easy: "text-easy",
+  medium: "text-sky-text",
+  tempo: "text-tang-text",
+  long: "text-lime-text",
+  race: "text-ink",
+  tt: "text-ink",
+  other: "text-muted",
 };
 export function TypePill({ type }: { type: ActivityType }) {
   return <span className={`pill capitalize ${COLOR[type]}`}>{type}</span>;
@@ -2338,12 +2930,32 @@ export function TypePill({ type }: { type: ActivityType }) {
 `components/Header.tsx`:
 
 ```tsx
-export function Header({ kicker, title, right, initials }: { kicker: string; title: string; right?: React.ReactNode; initials?: string }) {
+export function Header({
+  kicker,
+  title,
+  right,
+  initials,
+}: {
+  kicker: string;
+  title: string;
+  right?: React.ReactNode;
+  initials?: string;
+}) {
   return (
     <header className="flex items-center justify-between px-5 pt-[22px] pb-[14px]">
       <div className="flex items-center gap-3">
-        {initials && <a href="/account" className="w-[34px] h-[34px] rounded-full bg-ink text-white grid place-items-center text-xs font-extrabold">{initials}</a>}
-        <div className="flex flex-col gap-[2px]"><span className="k">{kicker}</span><span className="num text-[26px]">{title}</span></div>
+        {initials && (
+          <a
+            href="/account"
+            className="w-[34px] h-[34px] rounded-full bg-ink text-white grid place-items-center text-xs font-extrabold"
+          >
+            {initials}
+          </a>
+        )}
+        <div className="flex flex-col gap-[2px]">
+          <span className="k">{kicker}</span>
+          <span className="num text-[26px]">{title}</span>
+        </div>
       </div>
       {right}
     </header>
@@ -2362,15 +2974,26 @@ export function KmBars({ laps, boundaries }: { laps: Lap[]; boundaries: Boundari
   const full = laps.filter((l) => l.distanceM >= 900);
   if (full.length < 2) return null;
   const paces = full.map((l) => (l.movingS / l.distanceM) * 1000);
-  const mx = Math.max(...paces), mn = Math.min(...paces);
+  const mx = Math.max(...paces),
+    mn = Math.min(...paces);
   return (
     <div className="flex flex-col gap-1">
       <div className="flex items-end gap-[3px] h-16 px-[2px] border-b border-line">
         {full.map((l, i) => (
-          <div key={l.id} style={{ height: `${30 + ((mx - paces[i]) / (mx - mn + 1)) * 34}px`, background: ZONE_COLORS[zoneFor(l.avgHr, boundaries)] }} className="flex-1 rounded-t-[3px] opacity-90" />
+          <div
+            key={l.id}
+            style={{
+              height: `${30 + ((mx - paces[i]) / (mx - mn + 1)) * 34}px`,
+              background: ZONE_COLORS[zoneFor(l.avgHr, boundaries)],
+            }}
+            className="flex-1 rounded-t-[3px] opacity-90"
+          />
         ))}
       </div>
-      <div className="flex justify-between"><span className="k text-[10px]">pace per km</span><span className="k text-[10px]">fastest {formatPace(mn)}</span></div>
+      <div className="flex justify-between">
+        <span className="k text-[10px]">pace per km</span>
+        <span className="k text-[10px]">fastest {formatPace(mn)}</span>
+      </div>
     </div>
   );
 }
@@ -2387,12 +3010,24 @@ import { TypePill } from "./TypePill";
 import { KmBars } from "./KmBars";
 
 const fmtDate = (d: Date, tz: string) =>
-  new Intl.DateTimeFormat("en-GB", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: tz }).format(d).replace(",", " ·");
+  new Intl.DateTimeFormat("en-GB", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: tz,
+  })
+    .format(d)
+    .replace(",", " ·");
 
 export function RunCard({ a, boundaries }: { a: ActivityWithLaps; boundaries: Boundaries }) {
   return (
     <Link href={`/runs/${a.id}`} className="card p-4 flex flex-col gap-3 shrink-0">
-      <div className="flex justify-between items-center"><span className="k">{fmtDate(a.startedAt, a.timezone)}</span><TypePill type={a.type} /></div>
+      <div className="flex justify-between items-center">
+        <span className="k">{fmtDate(a.startedAt, a.timezone)}</span>
+        <TypePill type={a.type} />
+      </div>
       <span className="text-[17px] font-extrabold">{a.name}</span>
       <div className="grid grid-cols-4 gap-2">
         <Stat v={formatKm(a.distanceM)} k="km" />
@@ -2408,7 +3043,12 @@ export function RunCard({ a, boundaries }: { a: ActivityWithLaps; boundaries: Bo
   );
 }
 function Stat({ v, k, color = "" }: { v: string; k: string; color?: string }) {
-  return <div><div className={`num text-[22px] ${color}`}>{v}</div><div className="k text-[10px]">{k}</div></div>;
+  return (
+    <div>
+      <div className={`num text-[22px] ${color}`}>{v}</div>
+      <div className="k text-[10px]">{k}</div>
+    </div>
+  );
 }
 ```
 
@@ -2437,7 +3077,11 @@ import { RunCard } from "@/components/RunCard";
 
 export const dynamic = "force-dynamic";
 
-export default async function RunsPage({ searchParams }: { searchParams: Promise<{ type?: string; synced?: string }> }) {
+export default async function RunsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ type?: string; synced?: string }>;
+}) {
   const { type, synced } = await searchParams;
   const athlete = await requireAthlete();
   const t = ACTIVITY_TYPES.includes(type as ActivityType) ? (type as ActivityType) : undefined;
@@ -2447,17 +3091,37 @@ export default async function RunsPage({ searchParams }: { searchParams: Promise
     monthSummary(db, athlete.id, now.getUTCFullYear(), now.getUTCMonth() + 1),
   ]);
   const b = zoneBoundaries(athlete);
-  const initials = (athlete.name ?? athlete.email).split(/[\s@.]/).filter(Boolean).slice(0, 2).map((s) => s[0]!.toUpperCase()).join("");
+  const initials = (athlete.name ?? athlete.email)
+    .split(/[\s@.]/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((s) => s[0]!.toUpperCase())
+    .join("");
   return (
     <>
-      <Header kicker={`${now.toLocaleString("en-GB", { month: "long" })} · ${month.km} km · ${month.runs} runs`} title="Runs" initials={initials}
-        right={<form action="/api/sync" method="post"><button className="h-9 px-[14px] rounded-lg bg-white border border-line text-[13px] font-bold">Sync</button></form>} />
+      <Header
+        kicker={`${now.toLocaleString("en-GB", { month: "long" })} · ${month.km} km · ${month.runs} runs`}
+        title="Runs"
+        initials={initials}
+        right={
+          <form action="/api/sync" method="post">
+            <button className="h-9 px-[14px] rounded-lg bg-white border border-line text-[13px] font-bold">Sync</button>
+          </form>
+        }
+      />
       <div className="px-4 flex flex-col gap-3">
-        {synced && <p className="k">Synced {synced} run{synced === "1" ? "" : "s"} from Strava.</p>}
+        {synced && (
+          <p className="k">
+            Synced {synced} run{synced === "1" ? "" : "s"} from Strava.
+          </p>
+        )}
         <div className="flex gap-2 overflow-x-auto shrink-0">
           {["all", ...ACTIVITY_TYPES.filter((x) => x !== "other" && x !== "tt")].map((x) => (
-            <Link key={x} href={x === "all" ? "/runs" : `/runs?type=${x}`}
-              className={`px-[14px] py-[7px] rounded-lg text-xs font-bold whitespace-nowrap border ${(t ?? "all") === x ? "hero border-transparent" : "bg-white border-line text-muted"}`}>
+            <Link
+              key={x}
+              href={x === "all" ? "/runs" : `/runs?type=${x}`}
+              className={`px-[14px] py-[7px] rounded-lg text-xs font-bold whitespace-nowrap border ${(t ?? "all") === x ? "hero border-transparent" : "bg-white border-line text-muted"}`}
+            >
               {x[0].toUpperCase() + x.slice(1)}
             </Link>
           ))}
@@ -2465,9 +3129,17 @@ export default async function RunsPage({ searchParams }: { searchParams: Promise
         {runs.length === 0 ? (
           <div className="card p-5 flex flex-col gap-2">
             <span className="font-extrabold">No runs yet</span>
-            <span className="k">Connect Strava on your <Link className="underline" href="/account">account</Link> page and your history will import in a minute or two.</span>
+            <span className="k">
+              Connect Strava on your{" "}
+              <Link className="underline" href="/account">
+                account
+              </Link>{" "}
+              page and your history will import in a minute or two.
+            </span>
           </div>
-        ) : runs.map((a) => <RunCard key={a.id} a={a} boundaries={b} />)}
+        ) : (
+          runs.map((a) => <RunCard key={a.id} a={a} boundaries={b} />)
+        )}
       </div>
       <TabBar active="Runs" />
     </>
@@ -2495,9 +3167,11 @@ git push
 ### Task 12: Run detail page
 
 **Files:**
+
 - Create: `app/(app)/runs/[id]/page.tsx`, `components/LapTable.tsx`, `components/ZoneBar.tsx`, `tests/unit/zone-time.test.ts`, `lib/metrics/zoneTime.ts`
 
 **Interfaces:**
+
 - Produces: `zoneSeconds(laps, boundaries): [number,number,number,number,number]` (lap moving time attributed to the lap's average-HR zone; Stage 2 upgrades to streams). `<LapTable laps boundaries />`, `<ZoneBar seconds />`.
 
 - [ ] **Step 1: Failing test**
@@ -2513,7 +3187,18 @@ import detail from "../fixtures/strava/activity-19aug.json";
 
 it("attributes lap time to zones by lap avg HR", () => {
   const n = normaliseStrava(detail, laps);
-  const z = zoneSeconds(n.laps.map((l, i) => ({ ...l, id: String(i), activityId: "x", maxHr: null, avgCadence: null, elevationLossM: null, gapSPerKm: null })), [125, 145, 160, 178]);
+  const z = zoneSeconds(
+    n.laps.map((l, i) => ({
+      ...l,
+      id: String(i),
+      activityId: "x",
+      maxHr: null,
+      avgCadence: null,
+      elevationLossM: null,
+      gapSPerKm: null,
+    })),
+    [125, 145, 160, 178],
+  );
   expect(z.reduce((a, b) => a + b, 0)).toBe(2412);
   expect(z[3]).toBe(289 + 301 + 307 + 369); // laps 3–6 are Z4 (163–174 bpm)
 });
@@ -2530,7 +3215,10 @@ import type { Lap } from "@/lib/db/schema";
 import { zoneFor, type Boundaries } from "./zones";
 export function zoneSeconds(laps: Lap[], b: Boundaries): [number, number, number, number, number] {
   const out: [number, number, number, number, number] = [0, 0, 0, 0, 0];
-  for (const l of laps) { const z = zoneFor(l.avgHr, b); if (z > 0) out[z - 1] += l.movingS; }
+  for (const l of laps) {
+    const z = zoneFor(l.avgHr, b);
+    if (z > 0) out[z - 1] += l.movingS;
+  }
   return out;
 }
 ```
@@ -2543,11 +3231,25 @@ export function ZoneBar({ seconds }: { seconds: [number, number, number, number,
   const total = seconds.reduce((a, b) => a + b, 0) || 1;
   return (
     <div className="card p-4 flex flex-col gap-2">
-      <div className="flex justify-between"><span className="k">Time in zone</span><span className="k">{Math.round(total / 60)} min</span></div>
-      <div className="flex h-3 rounded-md overflow-hidden">
-        {seconds.map((s, i) => <div key={i} style={{ width: `${(s / total) * 100}%`, background: ZONE_COLORS[(i + 1) as 1 | 2 | 3 | 4 | 5] }} />)}
+      <div className="flex justify-between">
+        <span className="k">Time in zone</span>
+        <span className="k">{Math.round(total / 60)} min</span>
       </div>
-      <div className="flex justify-between text-[11px] font-semibold text-muted">{seconds.map((s, i) => <span key={i}>Z{i + 1} {Math.round(s / 60)}m</span>)}</div>
+      <div className="flex h-3 rounded-md overflow-hidden">
+        {seconds.map((s, i) => (
+          <div
+            key={i}
+            style={{ width: `${(s / total) * 100}%`, background: ZONE_COLORS[(i + 1) as 1 | 2 | 3 | 4 | 5] }}
+          />
+        ))}
+      </div>
+      <div className="flex justify-between text-[11px] font-semibold text-muted">
+        {seconds.map((s, i) => (
+          <span key={i}>
+            Z{i + 1} {Math.round(s / 60)}m
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
@@ -2562,18 +3264,35 @@ import { formatPace } from "@/lib/format";
 
 export function LapTable({ laps, boundaries }: { laps: Lap[]; boundaries: Boundaries }) {
   const paces = laps.map((l) => (l.movingS / l.distanceM) * 1000);
-  const mx = Math.max(...paces), mn = Math.min(...paces);
+  const mx = Math.max(...paces),
+    mn = Math.min(...paces);
   const grid = "grid grid-cols-[28px_1fr_46px_40px_38px] gap-2 items-center";
   return (
     <div className="card p-4 flex flex-col gap-[6px]">
-      <div className={`${grid} text-[11px] font-semibold text-muted`}><span>km</span><span /><span className="text-right">pace</span><span className="text-right">bpm</span><span className="text-right">elev</span></div>
+      <div className={`${grid} text-[11px] font-semibold text-muted`}>
+        <span>km</span>
+        <span />
+        <span className="text-right">pace</span>
+        <span className="text-right">bpm</span>
+        <span className="text-right">elev</span>
+      </div>
       {laps.map((l, i) => (
         <div key={l.id} className={`${grid} h-[19px]`}>
           <span className="k text-[11px]">{l.distanceM >= 900 ? l.index : (l.distanceM / 1000).toFixed(1)}</span>
-          <div className="h-1 rounded bg-[#eef0f3]"><div className="h-full rounded opacity-85" style={{ width: `${((mx - paces[i]) / (mx - mn + 1)) * 80 + 20}%`, background: ZONE_COLORS[zoneFor(l.avgHr, boundaries)] }} /></div>
+          <div className="h-1 rounded bg-[#eef0f3]">
+            <div
+              className="h-full rounded opacity-85"
+              style={{
+                width: `${((mx - paces[i]) / (mx - mn + 1)) * 80 + 20}%`,
+                background: ZONE_COLORS[zoneFor(l.avgHr, boundaries)],
+              }}
+            />
+          </div>
           <span className="num text-[13px] text-right">{formatPace(paces[i])}</span>
           <span className="num text-[13px] text-right font-bold">{l.avgHr ? Math.round(l.avgHr) : "—"}</span>
-          <span className="k text-[11px] text-right">{l.elevationGainM != null ? `+${Math.round(l.elevationGainM)}` : ""}</span>
+          <span className="k text-[11px] text-right">
+            {l.elevationGainM != null ? `+${Math.round(l.elevationGainM)}` : ""}
+          </span>
         </div>
       ))}
     </div>
@@ -2605,20 +3324,40 @@ export default async function RunDetail({ params }: { params: Promise<{ id: stri
   const a = await getActivity(db, athlete.id, id);
   if (!a) notFound();
   const b = zoneBoundaries(athlete);
-  const when = new Intl.DateTimeFormat("en-GB", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: a.timezone }).format(a.startedAt);
+  const when = new Intl.DateTimeFormat("en-GB", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: a.timezone,
+  }).format(a.startedAt);
   return (
     <>
       <header className="flex items-center justify-between px-5 pt-[22px] pb-[14px]">
         <div className="flex flex-col gap-[2px]">
-          <span className="k flex items-center gap-2"><Link href="/runs">← Runs</Link> · {when} · <TypePill type={a.type} /></span>
+          <span className="k flex items-center gap-2">
+            <Link href="/runs">← Runs</Link> · {when} · <TypePill type={a.type} />
+          </span>
           <span className="num text-[26px]">{a.name}</span>
         </div>
       </header>
       <div className="px-4 flex flex-col gap-3">
         <div className="hero p-5 flex justify-between items-end">
-          <div><div className="num text-[40px]">{formatKm(a.distanceM)}<span className="text-sm font-medium opacity-85"> km</span></div></div>
-          <div className="text-right"><div className="num text-[26px]">{formatDuration(a.movingS)}</div><div className="text-[11px] opacity-85">time</div></div>
-          <div className="text-right"><div className="num text-[26px]">{formatPace(a.avgPaceSPerKm)}</div><div className="text-[11px] opacity-85">/km</div></div>
+          <div>
+            <div className="num text-[40px]">
+              {formatKm(a.distanceM)}
+              <span className="text-sm font-medium opacity-85"> km</span>
+            </div>
+          </div>
+          <div className="text-right">
+            <div className="num text-[26px]">{formatDuration(a.movingS)}</div>
+            <div className="text-[11px] opacity-85">time</div>
+          </div>
+          <div className="text-right">
+            <div className="num text-[26px]">{formatPace(a.avgPaceSPerKm)}</div>
+            <div className="text-[11px] opacity-85">/km</div>
+          </div>
         </div>
         <div className="grid grid-cols-3 gap-3">
           <Stat v={a.avgHr ? String(Math.round(a.avgHr)) : "—"} k="avg bpm" color="text-sky-text" />
@@ -2633,7 +3372,12 @@ export default async function RunDetail({ params }: { params: Promise<{ id: stri
   );
 }
 function Stat({ v, k, color = "" }: { v: string; k: string; color?: string }) {
-  return <div className="card px-[14px] py-3 flex flex-col gap-1"><span className={`num text-[26px] ${color}`}>{v}</span><span className="k">{k}</span></div>;
+  return (
+    <div className="card px-[14px] py-3 flex flex-col gap-1">
+      <span className={`num text-[26px] ${color}`}>{v}</span>
+      <span className="k">{k}</span>
+    </div>
+  );
 }
 ```
 
@@ -2652,9 +3396,11 @@ git push
 ### Task 13: Account page — Strava connect state, max HR, sync log
 
 **Files:**
+
 - Create: `app/(app)/account/page.tsx`, `app/(app)/account/actions.ts`, `lib/db/syncLogQueries.ts`, `tests/integration/athlete-update.test.ts`
 
 **Interfaces:**
+
 - Produces: server action `updateAthlete(formData)` setting `maxHr` (and clearing `hrZoneBoundaries` so zones re-derive); `recentSyncLogs(dbc, athleteId, n = 10)`.
 
 - [ ] **Step 1: Failing test**
@@ -2668,7 +3414,8 @@ import { ensureAthlete, setMaxHr } from "@/lib/db/athlete";
 import { startSyncLog } from "@/lib/pipeline/syncLog";
 import { recentSyncLogs } from "@/lib/db/syncLogQueries";
 
-let db: TestDb; let close: () => Promise<void>;
+let db: TestDb;
+let close: () => Promise<void>;
 beforeAll(async () => ({ db, close } = await createTestDb()));
 afterAll(() => close());
 
@@ -2676,8 +3423,10 @@ it("updates max HR and lists recent sync logs newest first", async () => {
   const a = await ensureAthlete(db, "athlete@example.com");
   await setMaxHr(db, a.id, 196);
   expect((await ensureAthlete(db, a.email)).maxHr).toBe(196);
-  const l1 = await startSyncLog(db, a.id, "manual"); await l1.finish("ok", 2);
-  const l2 = await startSyncLog(db, a.id, "cron"); await l2.finish("failed", 0, "429");
+  const l1 = await startSyncLog(db, a.id, "manual");
+  await l1.finish("ok", 2);
+  const l2 = await startSyncLog(db, a.id, "cron");
+  await l2.finish("failed", 0, "429");
   const logs = await recentSyncLogs(db, a.id, 10);
   expect(logs.map((l) => l.kind)).toEqual(["cron", "manual"]);
   expect(logs[0].error).toBe("429");
@@ -2737,7 +3486,11 @@ import { TabBar } from "@/components/TabBar";
 
 export const dynamic = "force-dynamic";
 
-export default async function Account({ searchParams }: { searchParams: Promise<{ import?: string; error?: string }> }) {
+export default async function Account({
+  searchParams,
+}: {
+  searchParams: Promise<{ import?: string; error?: string }>;
+}) {
   const sp = await searchParams;
   const athlete = await requireAthlete();
   const [conn, logs] = await Promise.all([getConnection(db, athlete.id), recentSyncLogs(db, athlete.id)]);
@@ -2745,44 +3498,104 @@ export default async function Account({ searchParams }: { searchParams: Promise<
   return (
     <>
       <header className="flex items-center justify-between px-5 pt-[22px] pb-[14px]">
-        <div className="flex flex-col gap-[2px]"><span className="k">{athlete.email}</span><span className="num text-[26px]">Account</span></div>
-        <a href="/runs" className="w-9 h-9 rounded-lg bg-white border border-line grid place-items-center text-muted">←</a>
+        <div className="flex flex-col gap-[2px]">
+          <span className="k">{athlete.email}</span>
+          <span className="num text-[26px]">Account</span>
+        </div>
+        <a href="/runs" className="w-9 h-9 rounded-lg bg-white border border-line grid place-items-center text-muted">
+          ←
+        </a>
       </header>
       <div className="px-4 flex flex-col gap-3">
         {sp.error && <p className="card p-3 text-red text-sm">Strava connection failed ({sp.error}). Try again.</p>}
-        {sp.import === "started" && <p className="card p-3 text-sm">Importing your Strava history — runs will appear on the Runs tab as they land.</p>}
+        {sp.import === "started" && (
+          <p className="card p-3 text-sm">
+            Importing your Strava history — runs will appear on the Runs tab as they land.
+          </p>
+        )}
 
         <div className="hero p-4 flex items-center gap-[14px]">
           <div className="flex-1">
             <div className="font-extrabold">{conn ? "Strava connected" : "Strava not connected"}</div>
             <div className="text-xs opacity-85">
-              {conn ? <>{conn.importStatus === "running" ? `Importing… ${conn.importedCount} runs so far` : conn.lastSyncAt ? `Synced ${conn.lastSyncAt.toLocaleString("en-GB")} · ${conn.importedCount} runs` : "Ready"}</> : "Connect once; every run syncs automatically."}
+              {conn ? (
+                <>
+                  {conn.importStatus === "running"
+                    ? `Importing… ${conn.importedCount} runs so far`
+                    : conn.lastSyncAt
+                      ? `Synced ${conn.lastSyncAt.toLocaleString("en-GB")} · ${conn.importedCount} runs`
+                      : "Ready"}
+                </>
+              ) : (
+                "Connect once; every run syncs automatically."
+              )}
             </div>
           </div>
-          {conn
-            ? <form action="/api/strava/disconnect" method="post"><button className="text-xs font-bold opacity-85">Disconnect</button></form>
-            : <a href="/api/strava/connect" className="h-9 px-4 rounded-lg bg-white text-ink text-[13px] font-extrabold grid place-items-center">Connect</a>}
+          {conn ? (
+            <form action="/api/strava/disconnect" method="post">
+              <button className="text-xs font-bold opacity-85">Disconnect</button>
+            </form>
+          ) : (
+            <a
+              href="/api/strava/connect"
+              className="h-9 px-4 rounded-lg bg-white text-ink text-[13px] font-extrabold grid place-items-center"
+            >
+              Connect
+            </a>
+          )}
         </div>
 
         <span className="k px-[6px]">Athlete</span>
         <form action={updateAthlete} className="card px-4 py-1">
-          <label className="flex items-center justify-between min-h-11 border-b border-line"><span className="font-semibold">Max heart rate</span>
-            <span className="flex items-center gap-2"><input name="maxHr" type="number" defaultValue={athlete.maxHr ?? ""} placeholder="e.g. 196" className="w-20 text-right border border-line rounded-lg px-2 h-8" /><button className="text-xs font-bold">Save</button></span></label>
-          <div className="flex items-center justify-between min-h-11"><span className="font-semibold">HR zones</span><span className="text-muted text-[13px] font-semibold">{b.join(" · ")}</span></div>
+          <label className="flex items-center justify-between min-h-11 border-b border-line">
+            <span className="font-semibold">Max heart rate</span>
+            <span className="flex items-center gap-2">
+              <input
+                name="maxHr"
+                type="number"
+                defaultValue={athlete.maxHr ?? ""}
+                placeholder="e.g. 196"
+                className="w-20 text-right border border-line rounded-lg px-2 h-8"
+              />
+              <button className="text-xs font-bold">Save</button>
+            </span>
+          </label>
+          <div className="flex items-center justify-between min-h-11">
+            <span className="font-semibold">HR zones</span>
+            <span className="text-muted text-[13px] font-semibold">{b.join(" · ")}</span>
+          </div>
         </form>
 
         <span className="k px-[6px]">Sync log</span>
         <div className="card px-4 py-1">
           {logs.length === 0 && <div className="min-h-11 flex items-center k">No syncs yet</div>}
           {logs.map((l) => (
-            <div key={l.id} className="flex items-center justify-between min-h-11 border-b border-line last:border-0 text-[13px]">
+            <div
+              key={l.id}
+              className="flex items-center justify-between min-h-11 border-b border-line last:border-0 text-[13px]"
+            >
               <span className="font-semibold capitalize">{l.kind}</span>
-              <span className={l.status === "failed" ? "text-red" : "text-muted"}>{l.status === "failed" ? (l.error ?? "failed") : `${l.activitiesProcessed} runs`} · {l.startedAt.toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}</span>
+              <span className={l.status === "failed" ? "text-red" : "text-muted"}>
+                {l.status === "failed" ? (l.error ?? "failed") : `${l.activitiesProcessed} runs`} ·{" "}
+                {l.startedAt.toLocaleString("en-GB", {
+                  day: "numeric",
+                  month: "short",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+              </span>
             </div>
           ))}
         </div>
 
-        <form action={async () => { "use server"; await signOut({ redirectTo: "/signin" }); }}><button className="k underline">Sign out</button></form>
+        <form
+          action={async () => {
+            "use server";
+            await signOut({ redirectTo: "/signin" });
+          }}
+        >
+          <button className="k underline">Sign out</button>
+        </form>
         <div className="flex justify-center text-[11px] text-muted font-semibold py-2">Powered by Strava</div>
       </div>
       <TabBar active="" />
@@ -2806,6 +3619,7 @@ git push
 ### Task 14: PWA manifest, CI, Playwright smoke, deployment runbook
 
 **Files:**
+
 - Create: `public/manifest.webmanifest`, `public/icons/icon-192.png`, `public/icons/icon-512.png`, `.github/workflows/ci.yml`, `playwright.config.ts`, `e2e/smoke.spec.ts`, `docs/runbook.md`
 
 - [ ] **Step 1: Manifest and icons**
@@ -2814,8 +3628,12 @@ git push
 
 ```json
 {
-  "name": "Ritmo", "short_name": "Ritmo", "start_url": "/runs", "display": "standalone",
-  "background_color": "#f7f8fa", "theme_color": "#16223d",
+  "name": "Ritmo",
+  "short_name": "Ritmo",
+  "start_url": "/runs",
+  "display": "standalone",
+  "background_color": "#f7f8fa",
+  "theme_color": "#16223d",
   "icons": [
     { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
@@ -2875,7 +3693,12 @@ import { defineConfig } from "@playwright/test";
 export default defineConfig({
   testDir: "e2e",
   use: { baseURL: "http://localhost:3000" },
-  webServer: { command: "npm run dev", url: "http://localhost:3000/signin", reuseExistingServer: true, timeout: 120_000 },
+  webServer: {
+    command: "npm run dev",
+    url: "http://localhost:3000/signin",
+    reuseExistingServer: true,
+    timeout: 120_000,
+  },
 });
 ```
 
@@ -2889,7 +3712,11 @@ test("unauthenticated /runs redirects to sign-in", async ({ page }) => {
   await expect(page.getByRole("button", { name: /send sign-in link/i })).toBeVisible();
 });
 test("webhook challenge answers with the right token", async ({ request }) => {
-  const r = await request.get("/api/strava/webhook?hub.mode=subscribe&hub.verify_token=" + process.env.STRAVA_WEBHOOK_VERIFY_TOKEN + "&hub.challenge=abc");
+  const r = await request.get(
+    "/api/strava/webhook?hub.mode=subscribe&hub.verify_token=" +
+      process.env.STRAVA_WEBHOOK_VERIFY_TOKEN +
+      "&hub.challenge=abc",
+  );
   expect(r.status()).toBe(200);
   expect(await r.json()).toEqual({ "hub.challenge": "abc" });
 });
@@ -2905,6 +3732,7 @@ Run locally: `npx playwright install chromium && npm run e2e` → both PASS (nee
 # Ritmo runbook — Stage 1
 
 ## One-time setup
+
 1. **Neon**: create project `ritmo`, copy the pooled connection string → `DATABASE_URL`.
 2. **Resend**: create API key → `AUTH_RESEND_KEY`; verify a sending domain or use `onboarding@resend.dev` for testing → `EMAIL_FROM`.
 3. **Strava app**: https://www.strava.com/settings/api → create app. Authorization Callback Domain = your Vercel domain (no scheme). Copy Client ID/Secret → `STRAVA_CLIENT_ID/SECRET`.
@@ -2913,11 +3741,13 @@ Run locally: `npx playwright install chromium && npm run e2e` → both PASS (nee
 6. **Webhook**: locally, with `.env.local` filled, run `npm run strava:subscribe` once. Strava calls `GET /api/strava/webhook` to verify, then sends events on every new run.
 
 ## Day to day
+
 - New run → Strava → webhook → appears on Runs within a minute or two.
 - Missed one? Account → Sync (re-pulls 30 days). Nightly cron does the same at 03:00.
 - Sync log on Account shows the last 10 jobs and any error (429 = rate limit, 401 = reconnect Strava).
 
 ## Local dev
+
 `cp .env.example .env.local`, fill values, `npm run db:migrate`, `npm run dev`. For webhooks locally use `vercel dev` + a tunnel, or just use Sync.
 ```
 
@@ -2942,6 +3772,6 @@ git push
 
 **Standards:** Task 1b establishes strict TS, ESLint strict-type-checked, Prettier, husky/lint-staged, README/LICENSE/CONTRIBUTING/SECURITY/CHANGELOG, PR template and Dependabot; CI runs lint, typecheck, format check, tests and build.
 
-**Placeholder scan:** none — every step has code. Icon generation notes a placeholder *asset*, which is intended.
+**Placeholder scan:** none — every step has code. Icon generation notes a placeholder _asset_, which is intended.
 
 **Type consistency:** `AnyDb` defined in T3 and used in T6–T13; `NormalisedActivity` shape in T5 matches `processActivity` in T6 and `NewActivity` columns in T2; `StravaClient` methods used by T7/T9 match T4; `Boundaries`/`zoneFor`/`ZONE_COLORS` in T10 used by T11/T12; `ActivityWithLaps` from T10 consumed by `RunCard` in T11. `requireAthlete` returns `Athlete` whose `hrZoneBoundaries` typing matches `zoneBoundaries()` input.
