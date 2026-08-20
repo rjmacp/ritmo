@@ -153,7 +153,7 @@ def kmbars(splits):
         h=30+int((mx-p_)/(mx-mn+1)*34)
         out+=f'<div style="flex: 1; height: {h}px; background: {c}; border-radius: 3px 3px 0 0; opacity: .9;"></div>'
     return f'<div style="display: flex; align-items: flex-end; gap: 3px; height: 64px; padding: 0 2px; border-bottom: 1px solid {BOR};">{out}</div>'
-def feedcard(date,name,t,km,time,pace,hr,climb,verdict,vcol,tags,route,planned):
+def feedcard(date,name,t,km,time,pace,hr,climb,verdict,vcol,tags,route,planned,gapv="—"):
     tagchips="".join(f'<span class="pill" style="color: {c};">{x}</span>' for x,c in tags)
     return f'''  <div class="tile" style="gap: 12px;">
     <div style="display: flex; justify-content: space-between; align-items: center;"><span class="k">{date}</span>{tpill(t)}</div>
@@ -161,7 +161,7 @@ def feedcard(date,name,t,km,time,pace,hr,climb,verdict,vcol,tags,route,planned):
     <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
       <div><div class="num" style="font-size: 22px;">{km}</div><div class="k" style="font-size: 10px;">km</div></div>
       <div><div class="num" style="font-size: 22px;">{time}</div><div class="k" style="font-size: 10px;">time</div></div>
-      <div><div class="num" style="font-size: 22px;">{pace}</div><div class="k" style="font-size: 10px;">/km</div></div>
+      <div><div class="num" style="font-size: 22px;">{pace}</div><div class="k" style="font-size: 10px;">/km · GAP {gapv}</div></div>
       <div><div class="num" style="font-size: 22px; color: {STL_T};">{hr}</div><div class="k" style="font-size: 10px;">avg bpm</div></div>
     </div>
     <div style="display: flex; flex-direction: column; gap: 4px;">{kmbars(route)}<div style="display: flex; justify-content: space-between;"><span class="k" style="font-size: 10px;">pace per km</span><span class="k" style="font-size: 10px;">fastest {min(route)[0]//60}:{min(route)[0]%60:02d}</span></div></div>
@@ -173,19 +173,26 @@ def feedcard(date,name,t,km,time,pace,hr,climb,verdict,vcol,tags,route,planned):
 '''
 acts = head()+header("August · 91 km · 12 runs","Runs",f'<div style="height: 36px; padding: 0 14px; border-radius: 8px; background: {TILE}; border: 1px solid {BOR}; display: flex; align-items: center; font-size: 13px; font-weight: 700;">Upload</div>')
 acts += chips(["All","Easy","Medium","Tempo","Long","Race"],"All")
-acts += feedcard("Wed 19 Aug · 18:02","Mafra Corrida","tempo","7.4","40:12","5:26",158,wx(WX_SUN,"26 °C")+wx(WX_WIND,"9 km/h")+"+71 m","On target",GRN_T,[("Best 2 km · 9:50",AMB_T)],[(347,STL),(331,GRN),(289,AMB),(301,AMB),(307,AMB),(369,GRN),(373,GRN),(380,GRN)],"Planned: 3 km @ 4:50–5:10 inside 7–8 km")
-acts += feedcard("Mon 17 Aug · 09:12","Mafra Corrida","easy","6.5","39:52","6:08",144,wx(WX_CLOUD,"18 °C")+wx(WX_WIND,"21 km/h")+"+58 m","On target",GRN_T,[],[(372,STL),(366,STL),(360,GRN),(362,GRN),(375,STL),(380,STL),(390,STL)],"Planned: 6–7 km easy, under 145 bpm")
-acts += feedcard("Sun 16 Aug · 08:40","Mafra → Ericeira","long","16.1","1:28:50","5:31",153,wx(WX_SUN,"19 °C")+wx(WX_WIND,"6 km/h")+"+140 m","On target",GRN_T,[("PB 10 km · 53:50",AMB_T),("Longest run",STL_T)],[(377,STL),(362,STL),(341,GRN),(341,GRN),(342,GRN),(356,GRN),(357,GRN),(355,GRN),(362,GRN),(362,GRN),(330,GRN),(325,AMB),(327,AMB),(335,AMB),(360,GRN),(380,STL)],"Planned: 15–16 km, last 3 km at HM effort")
+acts += feedcard("Wed 19 Aug · 18:02","Mafra Corrida","tempo","7.4","40:12","5:26",158,wx(WX_SUN,"26 °C")+wx(WX_WIND,"9 km/h")+"+71 m","On target",GRN_T,[("Best 2 km · 9:50",AMB_T)],[(347,STL),(331,GRN),(289,AMB),(301,AMB),(307,AMB),(369,GRN),(373,GRN),(380,GRN)],"Planned: 3 km @ 4:50–5:10 inside 7–8 km","5:21")
+acts += feedcard("Mon 17 Aug · 09:12","Mafra Corrida","easy","6.5","39:52","6:08",144,wx(WX_CLOUD,"18 °C")+wx(WX_WIND,"21 km/h")+"+58 m","On target",GRN_T,[],[(372,STL),(366,STL),(360,GRN),(362,GRN),(375,STL),(380,STL),(390,STL)],"Planned: 6–7 km easy, under 145 bpm","6:04")
+acts += feedcard("Sun 16 Aug · 08:40","Mafra → Ericeira","long","16.1","1:28:50","5:31",153,wx(WX_SUN,"19 °C")+wx(WX_WIND,"6 km/h")+"+140 m","On target",GRN_T,[("PB 10 km · 53:50",AMB_T),("Longest run",STL_T)],[(377,STL),(362,STL),(341,GRN),(341,GRN),(342,GRN),(356,GRN),(357,GRN),(355,GRN),(362,GRN),(362,GRN),(330,GRN),(325,AMB),(327,AMB),(335,AMB),(360,GRN),(380,STL)],"Planned: 15–16 km, last 3 km at HM effort","5:24")
 acts += END_BODY+tail("act")
 
 # ---------------- ACTIVITY DETAIL ----------------
+def gap(sec, e, dist=1000):
+    m = int(e.replace("−","-").replace("+",""))
+    i = m/dist
+    C = lambda g: 155.4*g**5 - 30.4*g**4 - 43.3*g**3 + 46.3*g**2 + 19.5*g + 3.6
+    g = int(round(sec * C(0)/C(i)))
+    return f"{g//60}:{g%60:02d}"
 laps=[("1","5:47",126,"+23",STL),("2","5:31",150,"+15",GRN),("3","4:49",171,"+1",AMB),("4","5:01",174,"−6",AMB),("5","5:07",173,"−4",AMB),("6","6:09",163,"−18",GRN),("7","6:13",157,"−13",GRN),("0.4","1:35",155,"−2",GRN)]
 laprows=""
 for n,t,hr,e,c in laps:
     m,s=t.split(":"); sec=int(m)*60+int(s)
     w = 100 if n=="0.4" else int((420-sec)*100/160)
     w = 40 if n=="0.4" else w
-    laprows+=f'    <div style="display: grid; grid-template-columns: 30px 1fr 52px 44px 40px; gap: 8px; align-items: center; height: 19px;"><span class="k" style="font-size: 11px;">{n}</span><div style="height: 4px; background: #eef0f3; border-radius: 2px;"><div style="width: {w}%; height: 100%; background: {c}; border-radius: 3px; opacity: .85;"></div></div><span class="num" style="font-size: 13px; text-align: right;">{t}</span><span class="num" style="font-size: 13px; text-align: right; font-weight: 700;">{hr}</span><span class="k" style="font-size: 11px; text-align: right;">{e}</span></div>\n'
+    gap_=gap(sec, e)
+    laprows+=f'    <div style="display: grid; grid-template-columns: 28px 1fr 46px 46px 40px 38px; gap: 8px; align-items: center; height: 19px;"><span class="k" style="font-size: 11px;">{n}</span><div style="height: 4px; background: #eef0f3; border-radius: 2px;"><div style="width: {w}%; height: 100%; background: {c}; border-radius: 2px; opacity: .85;"></div></div><span class="num" style="font-size: 13px; text-align: right;">{t}</span><span class="num" style="font-size: 13px; text-align: right; color: {STL_T};">{gap_}</span><span class="num" style="font-size: 13px; text-align: right; font-weight: 700;">{hr}</span><span class="k" style="font-size: 11px; text-align: right;">{e}</span></div>\n'
 zones=[(7,"3m"),(30,"12m"),(22,"9m"),(33,"13m"),(8,"3m")]
 zbar="".join(f'<div style="width: {p}%; background: {ZONE[i]};"></div>' for i,(p,_) in enumerate(zones))
 zlab="".join(f'<span>Z{i+1} {l}</span>' for i,(_,l) in enumerate(zones))
@@ -193,7 +200,7 @@ detail = head()+header("Wed 19 Aug · 18:02 · Tempo","Mafra Corrida",avatar=Fal
 detail += f'''  <div style="{HERO} flex-direction: row; justify-content: space-between; align-items: flex-end;">
     <div><div class="num" style="font-size: 40px;">7.4<span style="font-size: 14px; font-weight: 500; opacity: .85;"> km</span></div><div style="font-size: 12px; opacity: .85; margin-top: 4px;">{pill("On target","rgba(255,255,255,.18)")}</div></div>
     <div style="text-align: right;"><div class="num" style="font-size: 26px;">40:12</div><div style="font-size: 11px; opacity: .85;">time</div></div>
-    <div style="text-align: right;"><div class="num" style="font-size: 26px;">5:26</div><div style="font-size: 11px; opacity: .85;">/km</div></div>
+    <div style="text-align: right;"><div class="num" style="font-size: 26px;">5:26</div><div style="font-size: 11px; opacity: .85;">/km · <span style="color: {STL_H}; font-weight: 700;">5:21 GAP</span></div></div>
   </div>
   <div style="display: flex; gap: 14px; padding: 0 4px; color: {MUT}; margin: -4px 0;">{wx(WX_SUN,"26 °C · 48 %")}{wx(WX_WIND,"9 km/h headwind")}<span style="font-size: 11px; font-weight: 600; color: {AMB_T}; white-space: nowrap;">HR ~4 high · heat</span></div>
   <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;">
@@ -211,7 +218,7 @@ detail += f'''  <div style="{HERO} flex-direction: row; justify-content: space-b
     <div style="font-size: 13px; color: {MUT}; line-height: 1.45;">Kilometres 3–5 at 4:49, 5:01, 5:07 — first a touch quick, last faded 4 %. HR 171–174 is squarely zone 4. Effort was the plan; keep Thursday easy.</div>
   </div>
   <div class="tile" style="gap: 6px;">
-    <div style="display: grid; grid-template-columns: 30px 1fr 52px 44px 40px; gap: 8px; font-size: 11px; color: {MUT}; font-weight: 600;"><span>km</span><span style="display: flex; gap: 10px;"><span style="color: {STL_T};">Z2</span><span style="color: {GRN_T};">Z3</span><span style="color: {AMB_T};">Z4</span></span><span style="text-align: right;">pace</span><span style="text-align: right;">bpm</span><span style="text-align: right;">elev</span></div>
+    <div style="display: grid; grid-template-columns: 28px 1fr 46px 46px 40px 38px; gap: 8px; font-size: 11px; color: {MUT}; font-weight: 600;"><span>km</span><span style="display: flex; gap: 10px;"><span style="color: {STL_T};">Z2</span><span style="color: {GRN_T};">Z3</span><span style="color: {AMB_T};">Z4</span></span><span style="text-align: right;">pace</span><span style="text-align: right; color: {STL_T};">GAP</span><span style="text-align: right;">bpm</span><span style="text-align: right;">elev</span></div>
 {laprows}  </div>
 '''+END_BODY+tail("act")
 
