@@ -31,7 +31,7 @@ def head():
     a {{ color: {ACC}; }} a:hover {{ opacity: .85; }}
     .num {{ font-weight: 800; line-height: 1; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }}
     .k {{ font-size: 12px; color: {MUT}; font-weight: 500; }}
-    .tile {{ background: {TILE}; border: 1px solid {BOR}; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; }}
+    .tile {{ background: {TILE}; border: 1px solid {BOR}; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }}
     .pill {{ font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; border: 1px solid currentColor; background: transparent !important; }}
     svg.ic {{ width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }}
   </style>
@@ -64,7 +64,7 @@ def header(kicker,title,right="",avatar=True):
 END_BODY="  </div>\n"
 HERO=f"border-radius: 12px; padding: 18px 20px; background: radial-gradient(120% 90% at 100% 0%, rgba(127,208,247,.18) 0%, rgba(127,208,247,0) 55%), linear-gradient(135deg, {GA} 0%, {GB} 100%); color: #fff; display: flex; flex-direction: column; gap: 12px;"
 def chips(items, active):
-    s='  <div style="display: flex; gap: 8px; overflow: hidden;">\n'
+    s='  <div style="display: flex; gap: 8px; overflow: hidden; flex-shrink: 0;">\n'
     for it in items:
         if it==active: s+=f'    <span style="background: linear-gradient(135deg, {GA}, {GB}); color: #fff; font-size: 12px; font-weight: 700; padding: 8px 14px; border-radius: 8px; white-space: nowrap;">{it}</span>\n'
         else: s+=f'    <span style="background: {TILE}; border: 1px solid {BOR}; color: {MUT}; font-size: 12px; font-weight: 600; padding: 7px 14px; border-radius: 8px; white-space: nowrap;">{it}</span>\n'
@@ -138,32 +138,37 @@ plan = head()+header("Thursday 20 August","Plan",f'<div style="height: 36px; pad
 '''+END_BODY+tail("plan")
 
 # ---------------- ACTIVITIES ----------------
-def run(date,name,t,km,pace,hr,note=""):
-    n = f'<span class="pill" style="background: {BG}; color: {AMB_T}; white-space: nowrap;">{note}</span>' if note else ""
-    return f'''  <div class="tile" style="flex-direction: row; align-items: center; gap: 12px; padding: 12px 16px;">
-    <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;"><span class="k" style="white-space: nowrap;">{date}</span>{tpill(t)}{n}</div><div style="font-weight: 800; margin-top: 4px;">{name}</div></div>
-    <div style="display: flex; gap: 14px;">
-      <div style="text-align: right;"><div class="num" style="font-size: 20px;">{km}</div><div class="k" style="font-size: 10px;">km</div></div>
-      <div style="text-align: right;"><div class="num" style="font-size: 20px;">{pace}</div><div class="k" style="font-size: 10px;">/km</div></div>
-      <div style="text-align: right;"><div class="num" style="font-size: 20px; color: {STL_T};">{hr}</div><div class="k" style="font-size: 10px;">bpm</div></div>
+def kmbars(splits):
+    # splits: list of (pace_s, zonecolor); bar height inverse to pace
+    mx=max(p for p,_ in splits); mn=min(p for p,_ in splits)
+    out=""
+    for p_,c in splits:
+        h=30+int((mx-p_)/(mx-mn+1)*34)
+        out+=f'<div style="flex: 1; height: {h}px; background: {c}; border-radius: 3px 3px 0 0; opacity: .9;"></div>'
+    return f'<div style="display: flex; align-items: flex-end; gap: 3px; height: 64px; padding: 0 2px; border-bottom: 1px solid {BOR};">{out}</div>'
+def feedcard(date,name,t,km,time,pace,hr,climb,verdict,vcol,tags,route,planned):
+    tagchips="".join(f'<span class="pill" style="color: {c};">{x}</span>' for x,c in tags)
+    return f'''  <div class="tile" style="gap: 12px;">
+    <div style="display: flex; justify-content: space-between; align-items: center;"><span class="k">{date}</span>{tpill(t)}</div>
+    <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 17px; font-weight: 800;">{name}</span><span style="font-size: 12px; color: {MUT};">{planned}</span></div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
+      <div><div class="num" style="font-size: 22px;">{km}</div><div class="k" style="font-size: 10px;">km</div></div>
+      <div><div class="num" style="font-size: 22px;">{time}</div><div class="k" style="font-size: 10px;">time</div></div>
+      <div><div class="num" style="font-size: 22px;">{pace}</div><div class="k" style="font-size: 10px;">/km</div></div>
+      <div><div class="num" style="font-size: 22px; color: {STL_T};">{hr}</div><div class="k" style="font-size: 10px;">avg bpm</div></div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 4px;">{kmbars(route)}<div style="display: flex; justify-content: space-between;"><span class="k" style="font-size: 10px;">pace per km</span><span class="k" style="font-size: 10px;">fastest {min(route)[0]//60}:{min(route)[0]%60:02d}</span></div></div>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+      <div style="display: flex; gap: 6px; flex-wrap: wrap;">{pill(verdict,"",vcol)}{tagchips}</div>
+      <span class="k" style="font-size: 11px; white-space: nowrap;">{climb}</span>
     </div>
   </div>
 '''
-acts = head()+header("Thursday 20 August","Runs",f'<div style="height: 36px; padding: 0 14px; border-radius: 8px; background: {TILE}; border: 1px solid {BOR}; display: flex; align-items: center; font-size: 13px; font-weight: 700;">Upload</div>')
-acts += f'''  <div style="{HERO} flex-direction: row; align-items: center; justify-content: space-between; gap: 8px;">
-    <div><div class="num" style="font-size: 34px;">91<span style="font-size: 14px; font-weight: 500; opacity: .85;"> km</span></div><div style="font-size: 12px; opacity: .85; margin-top: 4px;">August · 12 runs</div></div>
-    <div style="text-align: right;"><div class="num" style="font-size: 22px;">5:44</div><div style="font-size: 11px; opacity: .85;">avg /km</div></div>
-    <div style="text-align: right;"><div class="num" style="font-size: 22px; color: {STL_H};">151</div><div style="font-size: 11px; opacity: .85;">avg bpm</div></div>
-    <div style="text-align: right;"><div class="num" style="font-size: 22px; color: {GRN_H};">11/12</div><div style="font-size: 11px; opacity: .85;">at effort</div></div>
-  </div>
-'''
+acts = head()+header("August · 91 km · 12 runs","Runs",f'<div style="height: 36px; padding: 0 14px; border-radius: 8px; background: {TILE}; border: 1px solid {BOR}; display: flex; align-items: center; font-size: 13px; font-weight: 700;">Upload</div>')
 acts += chips(["All","Easy","Medium","Tempo","Long","Race"],"All")
-acts += run("Wed 19 Aug","Mafra Corrida","tempo","7.4","5:26",158)
-acts += run("Mon 17 Aug","Mafra Corrida","easy","6.5","6:08",144)
-acts += run("Sun 16 Aug","Mafra Corrida","long","16.1","5:31",153,"PB 10k")
-acts += run("Thu 13 Aug","Ferreira do Zêzere","medium","9.0","5:43",157)
-acts += run("Tue 11 Aug","Mafra Corrida","easy","6.5","6:12",141)
-acts += run("Sun 9 Aug","Mafra Corrida","long","14.1","5:38",152)
+acts += feedcard("Wed 19 Aug · 18:02","Mafra Corrida","tempo","7.4","40:12","5:26",158,"+71 m · load 84","On target",GRN_T,[("Best 2 km · 9:50",AMB_T)],[(347,STL),(331,GRN),(289,AMB),(301,AMB),(307,AMB),(369,GRN),(373,GRN),(380,GRN)],"Planned: 3 km @ 4:50–5:10 inside 7–8 km")
+acts += feedcard("Mon 17 Aug · 09:12","Mafra Corrida","easy","6.5","39:52","6:08",144,"+58 m · load 41","On target",GRN_T,[],[(372,STL),(366,STL),(360,GRN),(362,GRN),(375,STL),(380,STL),(390,STL)],"Planned: 6–7 km easy, under 145 bpm")
+acts += feedcard("Sun 16 Aug · 08:40","Mafra → Ericeira","long","16.1","1:28:50","5:31",153,"+140 m · load 118","On target",GRN_T,[("PB 10 km · 53:50",AMB_T),("Longest run",STL_T)],[(377,STL),(362,STL),(341,GRN),(341,GRN),(342,GRN),(356,GRN),(357,GRN),(355,GRN),(362,GRN),(362,GRN),(330,GRN),(325,AMB),(327,AMB),(335,AMB),(360,GRN),(380,STL)],"Planned: 15–16 km, last 3 km at HM effort")
 acts += END_BODY+tail("act")
 
 # ---------------- ACTIVITY DETAIL ----------------

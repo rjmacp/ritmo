@@ -13,24 +13,18 @@
     a { color: #16223d; } a:hover { opacity: .85; }
     .num { font-weight: 800; line-height: 1; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
     .k { font-size: 12px; color: #5f6776; font-weight: 500; }
-    .tile { background: #ffffff; border: 1px solid #e3e6eb; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+    .tile { background: #ffffff; border: 1px solid #e3e6eb; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }
     .pill { font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; border: 1px solid currentColor; background: transparent !important; }
     svg.ic { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
   </style>
 </helmet>
 <div style="position: relative; width: 390px; height: 844px; overflow: hidden; background: #ffffff; display: flex; flex-direction: column;">
   <div style="display: flex; align-items: center; justify-content: space-between; padding: 22px 20px 14px;">
-    <div style="display: flex; align-items: center; gap: 12px;"><div style="width: 34px; height: 34px; border-radius: 50%; background: #141a26; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; flex-shrink: 0;">RM</div><div style="display: flex; flex-direction: column; gap: 2px;"><span class="k">Thursday 20 August</span><span class="num" style="font-size: 26px;">Runs</span></div></div>
+    <div style="display: flex; align-items: center; gap: 12px;"><div style="width: 34px; height: 34px; border-radius: 50%; background: #141a26; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; flex-shrink: 0;">RM</div><div style="display: flex; flex-direction: column; gap: 2px;"><span class="k">August · 91 km · 12 runs</span><span class="num" style="font-size: 26px;">Runs</span></div></div>
     <div style="height: 36px; padding: 0 14px; border-radius: 8px; background: #ffffff; border: 1px solid #e3e6eb; display: flex; align-items: center; font-size: 13px; font-weight: 700;">Upload</div>
   </div>
   <div style="flex: 1; overflow: hidden; padding: 0 16px 72px; display: flex; flex-direction: column; gap: 12px;">
-  <div style="border-radius: 12px; padding: 18px 20px; background: radial-gradient(120% 90% at 100% 0%, rgba(127,208,247,.18) 0%, rgba(127,208,247,0) 55%), linear-gradient(135deg, #16223d 0%, #2c4570 100%); color: #fff; display: flex; flex-direction: column; gap: 12px; flex-direction: row; align-items: center; justify-content: space-between; gap: 8px;">
-    <div><div class="num" style="font-size: 34px;">91<span style="font-size: 14px; font-weight: 500; opacity: .85;"> km</span></div><div style="font-size: 12px; opacity: .85; margin-top: 4px;">August · 12 runs</div></div>
-    <div style="text-align: right;"><div class="num" style="font-size: 22px;">5:44</div><div style="font-size: 11px; opacity: .85;">avg /km</div></div>
-    <div style="text-align: right;"><div class="num" style="font-size: 22px; color: #7fd0f7;">151</div><div style="font-size: 11px; opacity: .85;">avg bpm</div></div>
-    <div style="text-align: right;"><div class="num" style="font-size: 22px; color: #b5e07a;">11/12</div><div style="font-size: 11px; opacity: .85;">at effort</div></div>
-  </div>
-  <div style="display: flex; gap: 8px; overflow: hidden;">
+  <div style="display: flex; gap: 8px; overflow: hidden; flex-shrink: 0;">
     <span style="background: linear-gradient(135deg, #16223d, #2c4570); color: #fff; font-size: 12px; font-weight: 700; padding: 8px 14px; border-radius: 8px; white-space: nowrap;">All</span>
     <span style="background: #ffffff; border: 1px solid #e3e6eb; color: #5f6776; font-size: 12px; font-weight: 600; padding: 7px 14px; border-radius: 8px; white-space: nowrap;">Easy</span>
     <span style="background: #ffffff; border: 1px solid #e3e6eb; color: #5f6776; font-size: 12px; font-weight: 600; padding: 7px 14px; border-radius: 8px; white-space: nowrap;">Medium</span>
@@ -38,52 +32,49 @@
     <span style="background: #ffffff; border: 1px solid #e3e6eb; color: #5f6776; font-size: 12px; font-weight: 600; padding: 7px 14px; border-radius: 8px; white-space: nowrap;">Long</span>
     <span style="background: #ffffff; border: 1px solid #e3e6eb; color: #5f6776; font-size: 12px; font-weight: 600; padding: 7px 14px; border-radius: 8px; white-space: nowrap;">Race</span>
   </div>
-  <div class="tile" style="flex-direction: row; align-items: center; gap: 12px; padding: 12px 16px;">
-    <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;"><span class="k" style="white-space: nowrap;">Wed 19 Aug</span><span class="pill" style="color: #b85f0f; text-transform: capitalize;">tempo</span></div><div style="font-weight: 800; margin-top: 4px;">Mafra Corrida</div></div>
-    <div style="display: flex; gap: 14px;">
-      <div style="text-align: right;"><div class="num" style="font-size: 20px;">7.4</div><div class="k" style="font-size: 10px;">km</div></div>
-      <div style="text-align: right;"><div class="num" style="font-size: 20px;">5:26</div><div class="k" style="font-size: 10px;">/km</div></div>
-      <div style="text-align: right;"><div class="num" style="font-size: 20px; color: #1f6f9a;">158</div><div class="k" style="font-size: 10px;">bpm</div></div>
+  <div class="tile" style="gap: 12px;">
+    <div style="display: flex; justify-content: space-between; align-items: center;"><span class="k">Wed 19 Aug · 18:02</span><span class="pill" style="color: #b85f0f; text-transform: capitalize;">tempo</span></div>
+    <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 17px; font-weight: 800;">Mafra Corrida</span><span style="font-size: 12px; color: #5f6776;">Planned: 3 km @ 4:50–5:10 inside 7–8 km</span></div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
+      <div><div class="num" style="font-size: 22px;">7.4</div><div class="k" style="font-size: 10px;">km</div></div>
+      <div><div class="num" style="font-size: 22px;">40:12</div><div class="k" style="font-size: 10px;">time</div></div>
+      <div><div class="num" style="font-size: 22px;">5:26</div><div class="k" style="font-size: 10px;">/km</div></div>
+      <div><div class="num" style="font-size: 22px; color: #1f6f9a;">158</div><div class="k" style="font-size: 10px;">avg bpm</div></div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 4px;"><div style="display: flex; align-items: flex-end; gap: 3px; height: 64px; padding: 0 2px; border-bottom: 1px solid #e3e6eb;"><div style="flex: 1; height: 42px; background: #2f9ad0; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 48px; background: #7ab648; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 63px; background: #f08a24; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 59px; background: #f08a24; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 56px; background: #f08a24; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 34px; background: #7ab648; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 32px; background: #7ab648; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 30px; background: #7ab648; border-radius: 3px 3px 0 0; opacity: .9;"></div></div><div style="display: flex; justify-content: space-between;"><span class="k" style="font-size: 10px;">pace per km</span><span class="k" style="font-size: 10px;">fastest 4:49</span></div></div>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+      <div style="display: flex; gap: 6px; flex-wrap: wrap;"><span class="pill" style="color: #4f8a22;">On target</span><span class="pill" style="color: #b85f0f;">Best 2 km · 9:50</span></div>
+      <span class="k" style="font-size: 11px; white-space: nowrap;">+71 m · load 84</span>
     </div>
   </div>
-  <div class="tile" style="flex-direction: row; align-items: center; gap: 12px; padding: 12px 16px;">
-    <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;"><span class="k" style="white-space: nowrap;">Mon 17 Aug</span><span class="pill" style="color: #5f6776; text-transform: capitalize;">easy</span></div><div style="font-weight: 800; margin-top: 4px;">Mafra Corrida</div></div>
-    <div style="display: flex; gap: 14px;">
-      <div style="text-align: right;"><div class="num" style="font-size: 20px;">6.5</div><div class="k" style="font-size: 10px;">km</div></div>
-      <div style="text-align: right;"><div class="num" style="font-size: 20px;">6:08</div><div class="k" style="font-size: 10px;">/km</div></div>
-      <div style="text-align: right;"><div class="num" style="font-size: 20px; color: #1f6f9a;">144</div><div class="k" style="font-size: 10px;">bpm</div></div>
+  <div class="tile" style="gap: 12px;">
+    <div style="display: flex; justify-content: space-between; align-items: center;"><span class="k">Mon 17 Aug · 09:12</span><span class="pill" style="color: #5f6776; text-transform: capitalize;">easy</span></div>
+    <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 17px; font-weight: 800;">Mafra Corrida</span><span style="font-size: 12px; color: #5f6776;">Planned: 6–7 km easy, under 145 bpm</span></div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
+      <div><div class="num" style="font-size: 22px;">6.5</div><div class="k" style="font-size: 10px;">km</div></div>
+      <div><div class="num" style="font-size: 22px;">39:52</div><div class="k" style="font-size: 10px;">time</div></div>
+      <div><div class="num" style="font-size: 22px;">6:08</div><div class="k" style="font-size: 10px;">/km</div></div>
+      <div><div class="num" style="font-size: 22px; color: #1f6f9a;">144</div><div class="k" style="font-size: 10px;">avg bpm</div></div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 4px;"><div style="display: flex; align-items: flex-end; gap: 3px; height: 64px; padding: 0 2px; border-bottom: 1px solid #e3e6eb;"><div style="flex: 1; height: 49px; background: #2f9ad0; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 56px; background: #2f9ad0; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 62px; background: #7ab648; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 60px; background: #7ab648; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 46px; background: #2f9ad0; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 40px; background: #2f9ad0; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 30px; background: #2f9ad0; border-radius: 3px 3px 0 0; opacity: .9;"></div></div><div style="display: flex; justify-content: space-between;"><span class="k" style="font-size: 10px;">pace per km</span><span class="k" style="font-size: 10px;">fastest 6:00</span></div></div>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+      <div style="display: flex; gap: 6px; flex-wrap: wrap;"><span class="pill" style="color: #4f8a22;">On target</span></div>
+      <span class="k" style="font-size: 11px; white-space: nowrap;">+58 m · load 41</span>
     </div>
   </div>
-  <div class="tile" style="flex-direction: row; align-items: center; gap: 12px; padding: 12px 16px;">
-    <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;"><span class="k" style="white-space: nowrap;">Sun 16 Aug</span><span class="pill" style="color: #4f8a22; text-transform: capitalize;">long</span><span class="pill" style="background: #ffffff; color: #b85f0f; white-space: nowrap;">PB 10k</span></div><div style="font-weight: 800; margin-top: 4px;">Mafra Corrida</div></div>
-    <div style="display: flex; gap: 14px;">
-      <div style="text-align: right;"><div class="num" style="font-size: 20px;">16.1</div><div class="k" style="font-size: 10px;">km</div></div>
-      <div style="text-align: right;"><div class="num" style="font-size: 20px;">5:31</div><div class="k" style="font-size: 10px;">/km</div></div>
-      <div style="text-align: right;"><div class="num" style="font-size: 20px; color: #1f6f9a;">153</div><div class="k" style="font-size: 10px;">bpm</div></div>
+  <div class="tile" style="gap: 12px;">
+    <div style="display: flex; justify-content: space-between; align-items: center;"><span class="k">Sun 16 Aug · 08:40</span><span class="pill" style="color: #4f8a22; text-transform: capitalize;">long</span></div>
+    <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 17px; font-weight: 800;">Mafra → Ericeira</span><span style="font-size: 12px; color: #5f6776;">Planned: 15–16 km, last 3 km at HM effort</span></div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
+      <div><div class="num" style="font-size: 22px;">16.1</div><div class="k" style="font-size: 10px;">km</div></div>
+      <div><div class="num" style="font-size: 22px;">1:28:50</div><div class="k" style="font-size: 10px;">time</div></div>
+      <div><div class="num" style="font-size: 22px;">5:31</div><div class="k" style="font-size: 10px;">/km</div></div>
+      <div><div class="num" style="font-size: 22px; color: #1f6f9a;">153</div><div class="k" style="font-size: 10px;">avg bpm</div></div>
     </div>
-  </div>
-  <div class="tile" style="flex-direction: row; align-items: center; gap: 12px; padding: 12px 16px;">
-    <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;"><span class="k" style="white-space: nowrap;">Thu 13 Aug</span><span class="pill" style="color: #1f6f9a; text-transform: capitalize;">medium</span></div><div style="font-weight: 800; margin-top: 4px;">Ferreira do Zêzere</div></div>
-    <div style="display: flex; gap: 14px;">
-      <div style="text-align: right;"><div class="num" style="font-size: 20px;">9.0</div><div class="k" style="font-size: 10px;">km</div></div>
-      <div style="text-align: right;"><div class="num" style="font-size: 20px;">5:43</div><div class="k" style="font-size: 10px;">/km</div></div>
-      <div style="text-align: right;"><div class="num" style="font-size: 20px; color: #1f6f9a;">157</div><div class="k" style="font-size: 10px;">bpm</div></div>
-    </div>
-  </div>
-  <div class="tile" style="flex-direction: row; align-items: center; gap: 12px; padding: 12px 16px;">
-    <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;"><span class="k" style="white-space: nowrap;">Tue 11 Aug</span><span class="pill" style="color: #5f6776; text-transform: capitalize;">easy</span></div><div style="font-weight: 800; margin-top: 4px;">Mafra Corrida</div></div>
-    <div style="display: flex; gap: 14px;">
-      <div style="text-align: right;"><div class="num" style="font-size: 20px;">6.5</div><div class="k" style="font-size: 10px;">km</div></div>
-      <div style="text-align: right;"><div class="num" style="font-size: 20px;">6:12</div><div class="k" style="font-size: 10px;">/km</div></div>
-      <div style="text-align: right;"><div class="num" style="font-size: 20px; color: #1f6f9a;">141</div><div class="k" style="font-size: 10px;">bpm</div></div>
-    </div>
-  </div>
-  <div class="tile" style="flex-direction: row; align-items: center; gap: 12px; padding: 12px 16px;">
-    <div style="flex: 1; min-width: 0;"><div style="display: flex; align-items: center; gap: 8px;"><span class="k" style="white-space: nowrap;">Sun 9 Aug</span><span class="pill" style="color: #4f8a22; text-transform: capitalize;">long</span></div><div style="font-weight: 800; margin-top: 4px;">Mafra Corrida</div></div>
-    <div style="display: flex; gap: 14px;">
-      <div style="text-align: right;"><div class="num" style="font-size: 20px;">14.1</div><div class="k" style="font-size: 10px;">km</div></div>
-      <div style="text-align: right;"><div class="num" style="font-size: 20px;">5:38</div><div class="k" style="font-size: 10px;">/km</div></div>
-      <div style="text-align: right;"><div class="num" style="font-size: 20px; color: #1f6f9a;">152</div><div class="k" style="font-size: 10px;">bpm</div></div>
+    <div style="display: flex; flex-direction: column; gap: 4px;"><div style="display: flex; align-items: flex-end; gap: 3px; height: 64px; padding: 0 2px; border-bottom: 1px solid #e3e6eb;"><div style="flex: 1; height: 31px; background: #2f9ad0; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 40px; background: #2f9ad0; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 53px; background: #7ab648; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 53px; background: #7ab648; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 53px; background: #7ab648; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 44px; background: #7ab648; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 43px; background: #7ab648; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 45px; background: #7ab648; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 40px; background: #7ab648; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 40px; background: #7ab648; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 60px; background: #7ab648; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 63px; background: #f08a24; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 62px; background: #f08a24; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 57px; background: #f08a24; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 42px; background: #7ab648; border-radius: 3px 3px 0 0; opacity: .9;"></div><div style="flex: 1; height: 30px; background: #2f9ad0; border-radius: 3px 3px 0 0; opacity: .9;"></div></div><div style="display: flex; justify-content: space-between;"><span class="k" style="font-size: 10px;">pace per km</span><span class="k" style="font-size: 10px;">fastest 5:25</span></div></div>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+      <div style="display: flex; gap: 6px; flex-wrap: wrap;"><span class="pill" style="color: #4f8a22;">On target</span><span class="pill" style="color: #b85f0f;">PB 10 km · 53:50</span><span class="pill" style="color: #1f6f9a;">Longest run</span></div>
+      <span class="k" style="font-size: 11px; white-space: nowrap;">+140 m · load 118</span>
     </div>
   </div>
   </div>
