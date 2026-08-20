@@ -35,7 +35,7 @@ export default tseslint.config(
     },
     plugins: { import: importPlugin },
     rules: {
-      "no-console": ["error", { allow: ["warn", "error"] }],
+      "no-console": "error",
       "import/order": [
         "error",
         {

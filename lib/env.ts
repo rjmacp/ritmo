@@ -1,9 +1,11 @@
+/** Reads a required env var, throwing a descriptive error if it is unset. */
 function require(name: string): string {
   const v = process.env[name];
   if (!v) throw new Error(`Missing env var ${name}`);
   return v;
 }
 
+/** Typed accessors for the app's required and optional environment variables. */
 export const env = {
   require,
   get DATABASE_URL() {

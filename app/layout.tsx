@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 };
 export const viewport: Viewport = { themeColor: "#16223d", width: "device-width", initialScale: 1 };
 
+/** App-wide HTML shell: loads the Manrope font and global styles for every route. */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={manrope.variable}>
