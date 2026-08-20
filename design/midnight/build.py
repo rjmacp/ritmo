@@ -4,6 +4,12 @@ AMB="#f08a24"; GRN="#7ab648"; STL="#2f9ad0"; RED="#d9534f"; ACC="#16223d"; GRN_T
 SH="none"; BOR="#e3e6eb"
 TYPE={"easy":"#7b8494","medium":STL,"tempo":AMB,"long":GRN,"race":TXT}
 TYPE_T={"easy":"#5f6776","medium":STL_T,"tempo":AMB_T,"long":GRN_T,"race":TXT}
+WX_SUN='<svg class="ic" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>'
+WX_CLOUD='<svg class="ic" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M7 18a4 4 0 0 1-.5-8 6 6 0 0 1 11.3 1.5A3.5 3.5 0 0 1 17.5 18z"/></svg>'
+WX_WIND='<svg class="ic" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M3 8h10a3 3 0 1 0-3-3M3 12h14a3 3 0 1 1-3 3M3 16h7a2 2 0 1 1-2 2"/></svg>'
+def wx(icon,text,col=None):
+    c=f" color: {col};" if col else ""
+    return f'<span style="display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; white-space: nowrap;{c}">{icon}{text}</span>'
 def tpill(t): return f'<span class="pill" style="color: {TYPE_T[t]}; text-transform: capitalize;">{t}</span>'
 ZONE=["#d0d5de",STL,GRN,AMB,"#d9534f"]
 ICONS={"home":'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>',
@@ -73,7 +79,7 @@ def pill(text,bg,fg="#fff"): return f'<span class="pill" style="color: {fg};">{t
 TINT={"#4f8a22":"#7ab64826","#b85f0f":"#f08a2426","#2f9ad0":"#2f9ad01f","#1f6f9a":"#2f9ad01f"}
 def stat(v,k,col=TXT,size=30):
     bg = TILE
-    return f'<div class="tile" style="padding: 14px; gap: 6px; background: {bg};"><span class="num" style="font-size: {size}px; color: {col};">{v}</span><span class="k">{k}</span></div>'
+    return f'<div class="tile" style="padding: 12px 14px; gap: 4px; background: {bg};"><span class="num" style="font-size: {size}px; color: {col};">{v}</span><span class="k">{k}</span></div>'
 
 # ---------------- HOME ----------------
 home = head()+header("Thursday 20 August","Today",f'<div style="height: 36px; padding: 0 14px; border-radius: 8px; background: {TILE}; border: 1px solid {BOR}; display: flex; align-items: center; font-size: 13px; font-weight: 700;">Sync</div>')+f'''  <div style="border-radius: 12px; padding: 20px; background: radial-gradient(120% 90% at 100% 0%, rgba(127,208,247,.18) 0%, rgba(127,208,247,0) 55%), linear-gradient(135deg, {GA} 0%, {GB} 100%); color: #fff; display: flex; flex-direction: column; gap: 14px;">
@@ -89,6 +95,7 @@ home = head()+header("Thursday 20 August","Today",f'<div style="height: 36px; pa
         <span style="font-size: 13px; opacity: .85; line-height: 1.4;">Your Mafra loop is ideal. See 150? Walk 30 s.</span>
       </div>
     </div>
+    <div style="display: flex; gap: 14px; align-items: center; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.14); opacity: .95;">{wx(WX_SUN,"24 °C at 18:00")}{wx(WX_WIND,"14 km/h NW")}<span style="font-size: 11px; font-weight: 700; color: {AMB_H}; white-space: nowrap;">heat: ceiling 150</span></div>
     <div style="height: 46px; display: flex; align-items: center; justify-content: center; background: #fff; color: {TXT}; border-radius: 8px; font-weight: 800; font-size: 14px;">Pre-session brief</div>
   </div>
   <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;">
@@ -160,15 +167,15 @@ def feedcard(date,name,t,km,time,pace,hr,climb,verdict,vcol,tags,route,planned):
     <div style="display: flex; flex-direction: column; gap: 4px;">{kmbars(route)}<div style="display: flex; justify-content: space-between;"><span class="k" style="font-size: 10px;">pace per km</span><span class="k" style="font-size: 10px;">fastest {min(route)[0]//60}:{min(route)[0]%60:02d}</span></div></div>
     <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
       <div style="display: flex; gap: 6px; flex-wrap: wrap;">{pill(verdict,"",vcol)}{tagchips}</div>
-      <span class="k" style="font-size: 11px; white-space: nowrap;">{climb}</span>
+      <span class="k" style="font-size: 11px; white-space: nowrap; display: inline-flex; gap: 10px;">{climb}</span>
     </div>
   </div>
 '''
 acts = head()+header("August · 91 km · 12 runs","Runs",f'<div style="height: 36px; padding: 0 14px; border-radius: 8px; background: {TILE}; border: 1px solid {BOR}; display: flex; align-items: center; font-size: 13px; font-weight: 700;">Upload</div>')
 acts += chips(["All","Easy","Medium","Tempo","Long","Race"],"All")
-acts += feedcard("Wed 19 Aug · 18:02","Mafra Corrida","tempo","7.4","40:12","5:26",158,"+71 m · load 84","On target",GRN_T,[("Best 2 km · 9:50",AMB_T)],[(347,STL),(331,GRN),(289,AMB),(301,AMB),(307,AMB),(369,GRN),(373,GRN),(380,GRN)],"Planned: 3 km @ 4:50–5:10 inside 7–8 km")
-acts += feedcard("Mon 17 Aug · 09:12","Mafra Corrida","easy","6.5","39:52","6:08",144,"+58 m · load 41","On target",GRN_T,[],[(372,STL),(366,STL),(360,GRN),(362,GRN),(375,STL),(380,STL),(390,STL)],"Planned: 6–7 km easy, under 145 bpm")
-acts += feedcard("Sun 16 Aug · 08:40","Mafra → Ericeira","long","16.1","1:28:50","5:31",153,"+140 m · load 118","On target",GRN_T,[("PB 10 km · 53:50",AMB_T),("Longest run",STL_T)],[(377,STL),(362,STL),(341,GRN),(341,GRN),(342,GRN),(356,GRN),(357,GRN),(355,GRN),(362,GRN),(362,GRN),(330,GRN),(325,AMB),(327,AMB),(335,AMB),(360,GRN),(380,STL)],"Planned: 15–16 km, last 3 km at HM effort")
+acts += feedcard("Wed 19 Aug · 18:02","Mafra Corrida","tempo","7.4","40:12","5:26",158,wx(WX_SUN,"26 °C")+wx(WX_WIND,"9 km/h")+"+71 m","On target",GRN_T,[("Best 2 km · 9:50",AMB_T)],[(347,STL),(331,GRN),(289,AMB),(301,AMB),(307,AMB),(369,GRN),(373,GRN),(380,GRN)],"Planned: 3 km @ 4:50–5:10 inside 7–8 km")
+acts += feedcard("Mon 17 Aug · 09:12","Mafra Corrida","easy","6.5","39:52","6:08",144,wx(WX_CLOUD,"18 °C")+wx(WX_WIND,"21 km/h")+"+58 m","On target",GRN_T,[],[(372,STL),(366,STL),(360,GRN),(362,GRN),(375,STL),(380,STL),(390,STL)],"Planned: 6–7 km easy, under 145 bpm")
+acts += feedcard("Sun 16 Aug · 08:40","Mafra → Ericeira","long","16.1","1:28:50","5:31",153,wx(WX_SUN,"19 °C")+wx(WX_WIND,"6 km/h")+"+140 m","On target",GRN_T,[("PB 10 km · 53:50",AMB_T),("Longest run",STL_T)],[(377,STL),(362,STL),(341,GRN),(341,GRN),(342,GRN),(356,GRN),(357,GRN),(355,GRN),(362,GRN),(362,GRN),(330,GRN),(325,AMB),(327,AMB),(335,AMB),(360,GRN),(380,STL)],"Planned: 15–16 km, last 3 km at HM effort")
 acts += END_BODY+tail("act")
 
 # ---------------- ACTIVITY DETAIL ----------------
@@ -178,7 +185,7 @@ for n,t,hr,e,c in laps:
     m,s=t.split(":"); sec=int(m)*60+int(s)
     w = 100 if n=="0.4" else int((420-sec)*100/160)
     w = 40 if n=="0.4" else w
-    laprows+=f'    <div style="display: grid; grid-template-columns: 30px 1fr 52px 44px 40px; gap: 8px; align-items: center; height: 20px;"><span class="k" style="font-size: 11px;">{n}</span><div style="height: 4px; background: #eef0f3; border-radius: 2px;"><div style="width: {w}%; height: 100%; background: {c}; border-radius: 3px; opacity: .85;"></div></div><span class="num" style="font-size: 13px; text-align: right;">{t}</span><span class="num" style="font-size: 13px; text-align: right; font-weight: 700;">{hr}</span><span class="k" style="font-size: 11px; text-align: right;">{e}</span></div>\n'
+    laprows+=f'    <div style="display: grid; grid-template-columns: 30px 1fr 52px 44px 40px; gap: 8px; align-items: center; height: 19px;"><span class="k" style="font-size: 11px;">{n}</span><div style="height: 4px; background: #eef0f3; border-radius: 2px;"><div style="width: {w}%; height: 100%; background: {c}; border-radius: 3px; opacity: .85;"></div></div><span class="num" style="font-size: 13px; text-align: right;">{t}</span><span class="num" style="font-size: 13px; text-align: right; font-weight: 700;">{hr}</span><span class="k" style="font-size: 11px; text-align: right;">{e}</span></div>\n'
 zones=[(7,"3m"),(30,"12m"),(22,"9m"),(33,"13m"),(8,"3m")]
 zbar="".join(f'<div style="width: {p}%; background: {ZONE[i]};"></div>' for i,(p,_) in enumerate(zones))
 zlab="".join(f'<span>Z{i+1} {l}</span>' for i,(_,l) in enumerate(zones))
@@ -188,6 +195,7 @@ detail += f'''  <div style="{HERO} flex-direction: row; justify-content: space-b
     <div style="text-align: right;"><div class="num" style="font-size: 26px;">40:12</div><div style="font-size: 11px; opacity: .85;">time</div></div>
     <div style="text-align: right;"><div class="num" style="font-size: 26px;">5:26</div><div style="font-size: 11px; opacity: .85;">/km</div></div>
   </div>
+  <div style="display: flex; gap: 14px; padding: 0 4px; color: {MUT}; margin: -4px 0;">{wx(WX_SUN,"26 °C · 48 %")}{wx(WX_WIND,"9 km/h headwind")}<span style="font-size: 11px; font-weight: 600; color: {AMB_T}; white-space: nowrap;">HR ~4 high · heat</span></div>
   <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;">
     {stat("158","avg bpm",STL_T,26)}
     {stat("84","load",AMB_T,26)}
@@ -348,13 +356,14 @@ session += f'''  <div style="{HERO} gap: 10px;">
       <div><div class="num" style="font-size: 20px; color: {AMB_H};">&lt; 145</div><div style="font-size: 11px; opacity: .85;">bpm until 9 km</div></div>
     </div>
     <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.14); font-size: 12px;"><span style="opacity: .85;">Route · Mafra → Ericeira road · 12.6 km · 140 m</span><span style="font-weight: 700;">Change</span></div>
+    <div style="display: flex; gap: 12px; font-size: 12px; opacity: .9;">{wx(WX_CLOUD,"Sun 08:00 · 17 °C")}{wx(WX_WIND,"12 km/h · tailwind home")}</div>
   </div>
   <div class="tile" style="gap: 0; padding: 4px 14px;">
 {seg("Warm-up","Easy, find the rhythm · Z1–Z2","2 km",ZONE[1])}{seg("Steady","Z2 · conversational · under 145","7 km",ZONE[1])}{seg("HM effort","5:25–5:35 /km · Z3, not harder","3 km",ZONE[2])}{seg("Cool-down","Jog / walk","1 km",ZONE[0])}  </div>
   <div class="tile" style="gap: 8px;">
     <div style="display: flex; justify-content: space-between; align-items: center;"><span class="k">Coach tips for this run</span><span class="k" style="font-size: 11px;">from your last 6 long runs</span></div>
     <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; line-height: 1.45;">
-{tip(1,"Start slower than feels right.","Your last two long runs opened at 5:40 and drifted over 145 by km 6. Aim for 6:15 early.")}{tip(2,"The finish is 3 km at HM effort, not a race.","If HR passes 170 before km 11, ease off.")}{tip(3,"Climb at km 4–6:","hold effort, let pace drop to 6:30+.")}    </div>
+{tip(1,"Start slower than feels right.","Your last two long runs opened at 5:40 and drifted over 145 by km 6. Aim for 6:15 early.")}{tip(2,"The finish is 3 km at HM effort, not a race.","If HR passes 170 before km 11, ease off.")}{tip(3,"Cool and a tailwind home:","good day for the HM-effort finish. Still drink at the turn.")}    </div>
   </div>
   <div style="display: flex; gap: 8px;">
     <div style="flex: 1; height: 46px; display: flex; align-items: center; justify-content: center; background: {ACC}; color: #fff; border-radius: 8px; font-weight: 800; font-size: 14px;">Brief me before the run</div>
