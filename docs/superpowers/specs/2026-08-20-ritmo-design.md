@@ -53,7 +53,7 @@ header icon. Sign-in and first-run Onboarding are separate.
 | Screen | Purpose | Content |
 |---|---|---|
 | **Home** | What do I do today? | Today's/next planned session (tap → pre-session brief); last run with plan-vs-actual verdict and debrief; "Add Garmin stats?" prompt on latest run; block progress (week n/N, days to benchmark); adherence streak (sessions at prescribed effort); new-PB badges; sync status / warnings; weekly review card on Sundays |
-| **Plan** | The current block | Week-by-week calendar with planned sessions and actuals overlaid; adherence per week; "Plan next week" / "Plan next block" actions with free-text note; session rationale inline; Insights history (debriefs, reviews); past blocks |
+| **Plan** | The current block | Week-by-week calendar with planned sessions and actuals overlaid; adherence per week; "Plan next week" / "Plan next block" actions with free-text note; session rationale inline; Insights history (debriefs, reviews); past blocks. **Editable**: hold a session to open the Move sheet — move to another day (days that would break a rule are shown disabled, with the reason), swap with another session, skip, or mark a date range unavailable (travel/illness); a one-line coach note explains the knock-on, and "Re-plan week" hands the constraint to the coach |
 | **Activities** | What I've done | Filterable list (type, surface, date); detail: laps table (time, pace, elev, HR), HR-zone bar, relative effort, best efforts found, matched planned session + verdict, debrief; Edit sheet (type, surface, notes, Garmin-only fields: aerobic/anaerobic Training Effect); planned-session override; Upload FIT/GPX/TCX entry point |
 | **Trends** | Am I getting fitter? | Selectable range; charts: pace, avg HR, aerobic efficiency (easy runs), cadence, weekly volume, weekly zone distribution, fitness/fatigue/form; benchmark markers on timeline |
 | **Records** | Best times & benchmarks | **Best times**: per distance (1, 2, 5, 10, 15, 21.1 km) a row per season with best + delta vs previous season, all-time highlighted, small season-best-over-years chart, tap to expand top-3 with 🥇🥈🥉 and `est*` flags; each links to its activity. **Benchmarks**: TT/race results over time, block-over-block comparison. **Predictions**: Riegel/VDOT estimates for 5k/10k/HM as a range |
@@ -150,6 +150,14 @@ target_pace_s_per_km (nullable), target_hr_zone (nullable), description,
 rationale, actual_activity_id (nullable), verdict
 (`on_target`|`short`|`over`|`too_hard`|`missed`|null)
 
+**athlete_unavailability** — athlete_id, start_date, end_date, reason
+(`travel`|`illness`|`other`), note. Fed to the coach context and the validator;
+planned sessions may not land inside a range.
+
+**plan_edits** — planned_session_id, edited_at, kind
+(`move`|`swap`|`skip`|`restore`), from_date, to_date, note. Audit trail, and
+shown to the coach so it knows which deviations were the athlete's choice.
+
 **coach_runs** — athlete_id, block_id (nullable), kind
 (`plan_block`|`plan_week`|`debrief`|`brief`|`review`), requested_at,
 athlete_note, context_json, response_json, model, prompt_version,
@@ -240,9 +248,21 @@ block plan vs actual; athlete note.
 | `brief` | Tap today's session on Home (cached per session) | `{summary, target_paces, hr_ceiling, focus, warmup, if_then[]}` |
 | `review` | Cron Sunday; block end | Longer narrative: efficiency/load/adherence trends, what improved, what didn't, benchmark expectation; block-end version compares TT to previous and proposes next focus |
 
+**Manual edits** (Plan → Move sheet): moving, swapping or skipping a session
+is a direct write to `planned_sessions` plus a `plan_edits` row — no coach call
+needed. The validator runs on the *edited* week: target days that would violate
+a rule (hard days back-to-back, inside an unavailable range, within 2 days of
+the benchmark) are disabled in the picker with the reason. A short
+deterministic explanation ("keeps 48 h after Saturday's medium run") is built
+from the validator result, not from Claude. "Re-plan week" calls `plan_week`
+with the unavailability and the athlete's edits as hard constraints. The
+weekly review treats athlete-moved sessions as adherent if completed on the
+new date.
+
 **Validator (code, not prompt faith)** — rejects plans with: weekly km +>10 %
 vs previous week; long run >35 % of weekly km; two hard days back-to-back;
-hard session within 2 days of benchmark; session on an unavailable day. On
+hard session within 2 days of benchmark; session inside an
+`athlete_unavailability` range. On
 failure: re-ask once with violations listed, then surface error; never store
 a bad plan.
 

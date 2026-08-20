@@ -128,7 +128,7 @@ plan = head()+header("Thursday 20 August","Plan")+f'''  <div style="{HERO}">
     <div style="display: flex; align-items: baseline; gap: 8px;"><span class="num" style="font-size: 40px;">141</span><span style="font-size: 14px; opacity: .8;">of 300 km · 24 days to go</span></div>
     <div style="height: 8px; background: rgba(255,255,255,.18); border-radius: 4px; overflow: hidden;"><div style="width: 47%; height: 100%; background: {AMB}; border-radius: 4px;"></div></div>
   </div>
-  <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 6px;"><span style="font-weight: 800;">This week · 17–23 Aug</span><span class="k">39 km · 2 of 2 at effort</span></div>
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 6px;"><span style="font-weight: 800;">This week · 17–23 Aug</span><span class="k">hold a run to move it</span></div>
   <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px;">
 {day("M",17,TYPE["easy"],"done")}{day("T",18,TILE,"rest")}{day("W",19,TYPE["tempo"],"done")}{day("T",20,TYPE["easy"],"today")}{day("F",21,TILE,"rest")}{day("S",22,TYPE["medium"],"plan")}{day("S",23,TYPE["long"],"plan")}  </div>
 {sess("Mon 17","Easy","easy","6 km Z2 · ran 6.1 at 6:08, 144 bpm","6.1","On target",GRN_T)}{sess("Wed 19","Tempo","tempo","3 km @ 4:50–5:10 · ran 7.4","7.4","On target",GRN_T)}{sess("Thu 20","Easy","easy","6 km Z2 · under 145 bpm","6","Today",TXT)}{sess("Sat 22","Medium","medium","8 km Z3 · 5:35–5:45 /km","8","Planned",MUT)}{sess("Sun 23","Long","long","12 km Z2 · last 3 km at HM effort","12","Planned",MUT)}  <div style="height: 46px; display: flex; align-items: center; justify-content: center; background: {ACC}; color: #fff; border-radius: 8px; font-weight: 800; font-size: 14px;">Plan week 6</div>
@@ -277,7 +277,53 @@ settings += section("Data",[("Sync log","last 10 · all ok"),("Upload FIT / GPX"
 settings += f'  <div style="display: flex; justify-content: center; font-size: 11px; color: {MUT}; font-weight: 600;">Powered by Strava</div>\n'
 settings += END_BODY+tail("none")
 
-for name,content in [("Main",home),("Plan",plan),("Runs",acts),("RunDetail",detail),("Trends",trends),("Records",records),("Settings",settings)]:
+
+# ---------------- MOVE SESSION SHEET ----------------
+def daypick(n,d,state):
+    if state=="sel": box=f'background: {TXT}; color: #fff;'
+    elif state=="busy": box=f'background: {TILE}; border: 1px solid {BOR}; color: {MUT}; opacity: .45; text-decoration: line-through;'
+    elif state=="away": box=f'background: repeating-linear-gradient(135deg, {BG} 0 4px, {BOR} 4px 6px); border: 1px solid {BOR}; color: {MUT};'
+    else: box=f'background: {TILE}; border: 1px solid {BOR}; color: {TXT};'
+    return f'      <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;"><span class="k">{n}</span><div style="width: 40px; height: 40px; border-radius: 50%; box-sizing: border-box; {box} display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800;">{d}</div></div>\n'
+sheet = head()+header("Thursday 20 August","Plan")
+sheet += f'''  <div style="{HERO} opacity: .35;">
+    <div style="display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 12px; font-weight: 700;">HM BUILD · WEEK 5 OF 8</span></div>
+    <div class="num" style="font-size: 40px;">141</div>
+  </div>
+  <div style="opacity: .35;">{sess("Mon 17","Easy","easy","6 km Z2 · ran 6.1 at 6:08, 144 bpm","6.1","On target",GRN_T)}</div>
+'''+END_BODY
+sheet += f'''  <div style="position: absolute; inset: 0; background: rgba(23,25,28,.35);"></div>
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; background: {BG}; border-radius: 16px 16px 0 0; padding: 12px 16px 24px; display: flex; flex-direction: column; gap: 14px;">
+    <div style="width: 40px; height: 4px; border-radius: 2px; background: {BOR}; align-self: center;"></div>
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; flex-direction: column; gap: 4px;"><div style="display: flex; align-items: center; gap: 8px;">{tpill("long")}<span class="k">Sun 23 Aug</span></div><span class="num" style="font-size: 22px;">12 km long · last 3 km at HM effort</span></div>
+    </div>
+    <div class="tile" style="gap: 10px;">
+      <span class="k">Move to</span>
+      <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px;">
+{daypick("T",20,"busy")}{daypick("F",21,"free")}{daypick("S",22,"busy")}{daypick("S",23,"away")}{daypick("M",24,"sel")}{daypick("T",25,"free")}{daypick("W",26,"free")}      </div>
+      <div style="font-size: 12px; color: {MUT}; line-height: 1.5;">Mon 24 works: it keeps 48 h after Saturday's medium run and still leaves 3 weeks before the HM. Tuesday's easy run will shift to Wednesday.</div>
+    </div>
+    <div class="tile" style="gap: 0; padding: 4px 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px; border-bottom: 1px solid {BG};"><span style="font-weight: 600;">Away · Sat 22 – Sun 23</span><div style="width: 40px; height: 24px; border-radius: 12px; background: {TXT}; position: relative;"><div style="position: absolute; top: 2px; right: 2px; width: 20px; height: 20px; border-radius: 50%; background: #fff;"></div></div></div>
+      <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px; border-bottom: 1px solid {BG};"><span style="font-weight: 600;">Swap with another session</span>{CHEV}</div>
+      <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px;"><span style="font-weight: 600; color: {RED};">Skip this session</span>{CHEV}</div>
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <div style="flex: 1; height: 46px; display: flex; align-items: center; justify-content: center; background: {ACC}; color: #fff; border-radius: 8px; font-weight: 800; font-size: 14px;">Move to Mon 24</div>
+      <div style="height: 46px; padding: 0 16px; display: flex; align-items: center; justify-content: center; background: {TILE}; border: 1px solid {BOR}; border-radius: 8px; font-weight: 700; font-size: 13px;">Re-plan week</div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{{}}'>
+class Component extends DCLogic {{ renderVals() {{ return {{}}; }} }}
+</script>
+</body>
+</html>
+'''
+
+for name,content in [("Main",home),("Plan",plan),("Runs",acts),("RunDetail",detail),("Trends",trends),("Records",records),("Settings",settings),("MoveSession",sheet)]:
     open(f"{name}.dc.html","w").write(content)
 json.dump({
  "artboards":[
@@ -287,7 +333,8 @@ json.dump({
   {"file":"RunDetail.dc.html","title":"Run detail","x":1410,"y":0,"w":390,"h":844},
   {"file":"Trends.dc.html","x":0,"y":940,"w":390,"h":844},
   {"file":"Records.dc.html","x":470,"y":940,"w":390,"h":844},
-  {"file":"Settings.dc.html","x":940,"y":940,"w":390,"h":844}],
- "annotations":[{"id":"note","x":1410,"y":960,"w":360,"text":"Ritmo · Graphite\nTop row is the daily loop (Home → Plan → Runs → Run detail); bottom row the review screens. Settings opens from the profile button.\n\nColour is data only: steel = HR/fitness, amber = load/fatigue/tempo, green = on target/form/long. Charcoal hero and black buttons carry the brand."}],
+  {"file":"Settings.dc.html","title":"Account","x":940,"y":940,"w":390,"h":844},
+  {"file":"MoveSession.dc.html","title":"Plan · move session","x":1410,"y":940,"w":390,"h":844}],
+ "annotations":[{"id":"note","x":1880,"y":0,"w":360,"text":"Ritmo · Graphite\nTop row is the daily loop (Home → Plan → Runs → Run detail); bottom row the review screens. Settings opens from the profile button.\n\nColour is data only: steel = HR/fitness, amber = load/fatigue/tempo, green = on target/form/long. Charcoal hero and black buttons carry the brand."}],
  "launch":{"view":"canvas"}}, open("canvas.json","w"), indent=2)
 print("ok")
