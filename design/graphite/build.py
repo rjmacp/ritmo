@@ -81,9 +81,9 @@ home = head()+header("Thursday 20 August","Today",f'<div style="height: 36px; pa
         <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;"><span class="num" style="font-size: 26px;">+3</span><span style="font-size: 10px; font-weight: 700; opacity: .8;">FORM</span></div>
       </div>
       <div style="display: flex; flex-direction: column; gap: 6px;">
-        <span class="num" style="font-size: 44px;">6 km</span>
+        <span class="num" style="font-size: 44px;">6–7 km</span>
         <span style="font-size: 13px; opacity: .9;">6:05–6:25 /km · under <strong>145 bpm</strong></span>
-        <span style="font-size: 13px; opacity: .75; line-height: 1.4;">Recovery, not pace. See 150? Walk 30 s.</span>
+        <span style="font-size: 13px; opacity: .75; line-height: 1.4;">Your Mafra loop is ideal. See 150? Walk 30 s.</span>
       </div>
     </div>
     <div style="height: 46px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.94); color: {TXT}; border-radius: 8px; font-weight: 800; font-size: 14px;">Pre-session brief</div>
@@ -131,7 +131,7 @@ plan = head()+header("Thursday 20 August","Plan")+f'''  <div style="{HERO}">
   <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 6px;"><span style="font-weight: 800;">This week · 17–23 Aug</span><span class="k">hold a run to move it</span></div>
   <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px;">
 {day("M",17,TYPE["easy"],"done")}{day("T",18,TILE,"rest")}{day("W",19,TYPE["tempo"],"done")}{day("T",20,TYPE["easy"],"today")}{day("F",21,TILE,"rest")}{day("S",22,TYPE["medium"],"plan")}{day("S",23,TYPE["long"],"plan")}  </div>
-{sess("Mon 17","Easy","easy","6 km Z2 · ran 6.1 at 6:08, 144 bpm","6.1","On target",GRN_T)}{sess("Wed 19","Tempo","tempo","3 km @ 4:50–5:10 · ran 7.4","7.4","On target",GRN_T)}{sess("Thu 20","Easy","easy","6 km Z2 · under 145 bpm","6","Today",TXT)}{sess("Sat 22","Medium","medium","8 km Z3 · 5:35–5:45 /km","8","Planned",MUT)}{sess("Sun 23","Long","long","12 km Z2 · last 3 km at HM effort","12","Planned",MUT)}  <div style="height: 46px; display: flex; align-items: center; justify-content: center; background: {ACC}; color: #fff; border-radius: 8px; font-weight: 800; font-size: 14px;">Plan week 6</div>
+{sess("Mon 17","Easy","easy","6–7 km Z2 · ran 6.5 at 6:08, 144 bpm","6.5","On target",GRN_T)}{sess("Wed 19","Tempo","tempo","3 km @ 4:50–5:10 · ran 7.4","7.4","On target",GRN_T)}{sess("Thu 20","Easy","easy","6–7 km Z2 · Mafra loop","6–7","Today",TXT)}{sess("Sat 22","Medium","medium","8–9 km Z3 · 5:35–5:45 /km","8–9","Planned",MUT)}{sess("Sun 23","Long","long","12–13 km Z2 · last 3 km at HM effort","12–13","Planned",MUT)}  <div style="height: 46px; display: flex; align-items: center; justify-content: center; background: {ACC}; color: #fff; border-radius: 8px; font-weight: 800; font-size: 14px;">Plan week 6</div>
 '''+END_BODY+tail("plan")
 
 # ---------------- ACTIVITIES ----------------
@@ -156,7 +156,7 @@ acts += f'''  <div style="{HERO} flex-direction: row; align-items: center; justi
 '''
 acts += chips(["All","Easy","Medium","Tempo","Long","Race"],"All")
 acts += run("Wed 19 Aug","Mafra Corrida","tempo","7.4","5:26",158)
-acts += run("Mon 17 Aug","Mafra Corrida","easy","6.1","6:08",144)
+acts += run("Mon 17 Aug","Mafra Corrida","easy","6.5","6:08",144)
 acts += run("Sun 16 Aug","Mafra Corrida","long","16.1","5:31",153,"PB 10 km")
 acts += run("Thu 13 Aug","Ferreira do Zêzere","medium","9.0","5:43",157)
 acts += run("Tue 11 Aug","Mafra Corrida","easy","6.5","6:12",141)
@@ -191,7 +191,7 @@ detail += f'''  <div style="{HERO} flex-direction: row; justify-content: space-b
     <div style="display: flex; justify-content: space-between; font-size: 11px; color: {MUT}; font-weight: 600;">{zlab}</div>
   </div>
   <div class="tile" style="gap: 8px;">
-    <div style="display: flex; justify-content: space-between; align-items: center;"><span class="k">Planned · 3 km @ 4:50–5:10 inside 7 km</span></div>
+    <div style="display: flex; justify-content: space-between; align-items: center;"><span class="k">Planned · 3 km @ 4:50–5:10 inside 7–8 km</span></div>
     <div style="font-size: 13px; color: {MUT}; line-height: 1.5;">Kilometres 3–5 at 4:49, 5:01, 5:07 — first a touch quick, last faded 4 %. HR 171–174 is squarely zone 4. The effort was the plan; keep Thursday easy.</div>
   </div>
   <div class="tile" style="gap: 6px;">
@@ -290,13 +290,13 @@ sheet += f'''  <div style="{HERO} opacity: .35;">
     <div style="display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 12px; font-weight: 700;">HM BUILD · WEEK 5 OF 8</span></div>
     <div class="num" style="font-size: 40px;">141</div>
   </div>
-  <div style="opacity: .35;">{sess("Mon 17","Easy","easy","6 km Z2 · ran 6.1 at 6:08, 144 bpm","6.1","On target",GRN_T)}</div>
+  <div style="opacity: .35;">{sess("Mon 17","Easy","easy","6–7 km Z2 · ran 6.5 at 6:08, 144 bpm","6.5","On target",GRN_T)}</div>
 '''+END_BODY
 sheet += f'''  <div style="position: absolute; inset: 0; background: rgba(23,25,28,.35);"></div>
   <div style="position: absolute; left: 0; right: 0; bottom: 0; background: {BG}; border-radius: 16px 16px 0 0; padding: 12px 16px 24px; display: flex; flex-direction: column; gap: 14px;">
     <div style="width: 40px; height: 4px; border-radius: 2px; background: {BOR}; align-self: center;"></div>
     <div style="display: flex; align-items: center; justify-content: space-between;">
-      <div style="display: flex; flex-direction: column; gap: 4px;"><div style="display: flex; align-items: center; gap: 8px;">{tpill("long")}<span class="k">Sun 23 Aug</span></div><span class="num" style="font-size: 22px;">12 km long · last 3 km at HM effort</span></div>
+      <div style="display: flex; flex-direction: column; gap: 4px;"><div style="display: flex; align-items: center; gap: 8px;">{tpill("long")}<span class="k">Sun 23 Aug</span></div><span class="num" style="font-size: 22px;">12–13 km long · last 3 km at HM effort</span></div>
     </div>
     <div class="tile" style="gap: 10px;">
       <span class="k">Move to</span>
@@ -305,6 +305,7 @@ sheet += f'''  <div style="position: absolute; inset: 0; background: rgba(23,25,
       <div style="font-size: 12px; color: {MUT}; line-height: 1.5;">Mon 24 works: it keeps 48 h after Saturday's medium run and still leaves 3 weeks before the HM. Tuesday's easy run will shift to Wednesday.</div>
     </div>
     <div class="tile" style="gap: 0; padding: 4px 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px; border-bottom: 1px solid {BG};"><span style="font-weight: 600;">Target</span><div style="display: flex; align-items: center; gap: 8px; color: {MUT}; font-size: 13px; font-weight: 600;"><span>Long · 12–13 km · Z2</span>{CHEV}</div></div>
       <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px; border-bottom: 1px solid {BG};"><span style="font-weight: 600;">Away · Sat 22 – Sun 23</span><div style="width: 40px; height: 24px; border-radius: 12px; background: {TXT}; position: relative;"><div style="position: absolute; top: 2px; right: 2px; width: 20px; height: 20px; border-radius: 50%; background: #fff;"></div></div></div>
       <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px; border-bottom: 1px solid {BG};"><span style="font-weight: 600;">Swap with another session</span>{CHEV}</div>
       <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px;"><span style="font-weight: 600; color: {RED};">Skip this session</span>{CHEV}</div>

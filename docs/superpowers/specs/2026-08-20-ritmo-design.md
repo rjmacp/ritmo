@@ -53,7 +53,7 @@ header icon. Sign-in and first-run Onboarding are separate.
 | Screen | Purpose | Content |
 |---|---|---|
 | **Home** | What do I do today? | Today's/next planned session (tap → pre-session brief); last run with plan-vs-actual verdict and debrief; "Add Garmin stats?" prompt on latest run; block progress (week n/N, days to benchmark); adherence streak (sessions at prescribed effort); new-PB badges; sync status / warnings; weekly review card on Sundays |
-| **Plan** | The current block | Week-by-week calendar with planned sessions and actuals overlaid; adherence per week; "Plan next week" / "Plan next block" actions with free-text note; session rationale inline; Insights history (debriefs, reviews); past blocks. **Editable**: hold a session to open the Move sheet — move to another day (days that would break a rule are shown disabled, with the reason), swap with another session, skip, or mark a date range unavailable (travel/illness); a one-line coach note explains the knock-on, and "Re-plan week" hands the constraint to the coach |
+| **Plan** | The current block | Week-by-week calendar (session targets shown as ranges, e.g. "6–7 km easy") with planned sessions and actuals overlaid; adherence per week; "Plan next week" / "Plan next block" actions with free-text note; session rationale inline; Insights history (debriefs, reviews); past blocks. **Editable**: hold a session to open the Move sheet — move to another day (days that would break a rule are shown disabled, with the reason), swap with another session, skip, or mark a date range unavailable (travel/illness); a one-line coach note explains the knock-on, and "Re-plan week" hands the constraint to the coach |
 | **Activities** | What I've done | Filterable list (type, surface, date); detail: laps table (time, pace, elev, HR), HR-zone bar, relative effort, best efforts found, matched planned session + verdict, debrief; Edit sheet (type, surface, notes, Garmin-only fields: aerobic/anaerobic Training Effect); planned-session override; Upload FIT/GPX/TCX entry point |
 | **Trends** | Am I getting fitter? | Selectable range; charts: pace, avg HR, aerobic efficiency (easy runs), cadence, weekly volume, weekly zone distribution, fitness/fatigue/form; benchmark markers on timeline |
 | **Records** | Best times & benchmarks | **Best times**: per distance (1, 2, 5, 10, 15, 21.1 km) a row per season with best + delta vs previous season, all-time highlighted, small season-best-over-years chart, tap to expand top-3 with 🥇🥈🥉 and `est*` flags; each links to its activity. **Benchmarks**: TT/race results over time, block-over-block comparison. **Predictions**: Riegel/VDOT estimates for 5k/10k/HM as a range |
@@ -145,10 +145,18 @@ status (`planned`|`active`|`done`)
 
 **block_weeks** — block_id, week_no, start_date, target_km, focus
 
-**planned_sessions** — block_week_id, date, type, target_distance_km,
-target_pace_s_per_km (nullable), target_hr_zone (nullable), description,
-rationale, actual_activity_id (nullable), verdict
-(`on_target`|`short`|`over`|`too_hard`|`missed`|null)
+**planned_sessions** — block_week_id, date, type, target_distance_min_km,
+target_distance_max_km, target_pace_s_per_km (nullable), target_hr_zone
+(nullable), suggested_route_id (nullable), description, rationale,
+athlete_edited (bool), actual_activity_id (nullable), verdict
+(`on_target`|`short`|`over`|`too_hard`|`missed`|null). Distance is always a
+range; a single figure from the coach is widened to ±15 % (min ±1 km) on save.
+
+**routes** — athlete_id, name, distance_km, elevation_gain_m, surface,
+times_run, last_run_at, sample_activity_id. Detected from history by
+clustering activities on start location + distance (±3 %) + elevation; the
+athlete can rename, merge or hide. The coach is given the route list and asked
+to plan in route-sized sessions where sensible.
 
 **athlete_unavailability** — athlete_id, start_date, end_date, reason
 (`travel`|`illness`|`other`), note. Fed to the coach context and the validator;
@@ -225,8 +233,12 @@ deletes, stay under rate limits (100/15 min, 1000/day).
 - **Predictions**: Riegel `t2 = t1 × (d2/d1)^1.06` from latest benchmark and
   best recent effort (shown as range); VDOT training paces for coach targets.
 - **Adherence**: per week sessions completed/planned, km actual vs target;
-  per session verdict incl. `too_hard` when avg HR exceeds the target zone.
-  **Headline metric: sessions at prescribed effort.**
+  per session verdict. **Effort decides the verdict, distance is a range**:
+  `on_target` if avg HR is within the target zone (or pace within target) and
+  distance is inside [min, max]; `too_hard` if HR exceeds the zone regardless
+  of distance; `short`/`over` only when distance falls outside the range by
+  more than 10 %. Running 6.5 km on a favourite loop against a "6–7 km" plan
+  is on target. **Headline metric: sessions at prescribed effort.**
 - **Adherence streak**: consecutive sessions with verdict `on_target`.
 
 ## 8. Coach (`lib/coach`)
@@ -242,13 +254,16 @@ block plan vs actual; athlete note.
 
 | Mode | Trigger | Output |
 |---|---|---|
-| `plan_block` | Plan screen, start of cycle / after benchmark | `{name, focus, weeks[{week_no, target_km, focus, sessions[{date, type, distance_km, pace_target?, hr_zone?, description, rationale}]}], benchmark{date, distance}, notes_to_athlete}` |
+| `plan_block` | Plan screen, start of cycle / after benchmark | `{name, focus, weeks[{week_no, target_km, focus, sessions[{date, type, distance_min_km, distance_max_km, route_id?, pace_target?, hr_zone?, description, rationale}]}], benchmark{date, distance}, notes_to_athlete}` |
 | `plan_week` | Plan screen, weekly or on demand | Same shape, one week; adjusts rather than restarts; replaces only future sessions |
 | `debrief` | Auto on sync (toggle) | `{summary, bullets[], verdict, suggested_adjustment?}` — leads with effort-vs-plan |
 | `brief` | Tap today's session on Home (cached per session) | `{summary, target_paces, hr_ceiling, focus, warmup, if_then[]}` |
 | `review` | Cron Sunday; block end | Longer narrative: efficiency/load/adherence trends, what improved, what didn't, benchmark expectation; block-end version compares TT to previous and proposes next focus |
 
-**Manual edits** (Plan → Move sheet): moving, swapping or skipping a session
+**Manual edits** (Plan → Move sheet): the sheet also exposes the session's
+target (type, distance range, zone) for direct editing — a plan is the coach's
+suggestion, the athlete owns it. Edits set `athlete_edited` and are shown to
+the coach in later context. Moving, swapping or skipping a session
 is a direct write to `planned_sessions` plus a `plan_edits` row — no coach call
 needed. The validator runs on the *edited* week: target days that would violate
 a rule (hard days back-to-back, inside an unavailable range, within 2 days of
@@ -277,6 +292,9 @@ a bad plan.
   deviation to correct, not an achievement ("you'll bank more by keeping this
   easy", never "nice pace!" on an easy day). Pre-session brief states the HR
   ceiling and a fallback ("if you see 150, walk 30 s").
+- **Ranges, not prescriptions**: distances are given as ranges and, where a
+  known route fits, named ("your 6.5 km Mafra loop, easy"). Never penalise
+  running a sensible route that lands inside or just past the range.
 - **Tone rules**: second person, short, specific; no reasonless platitudes;
   no diagnosis — persistent pain → "see a physio" and back off.
 
@@ -308,8 +326,8 @@ recorded per run.
 
 1. **Ingest** — skeleton, auth, Strava connect, history import, Activities
    list/detail. *Replaces screenshots.*
-2. **Insight** — metrics, Trends, Records (season/all-time, year-over-year).
-   *Replaces the dashboard.*
+2. **Insight** — metrics, Trends, Records (season/all-time, year-over-year),
+   route detection. *Replaces the dashboard.*
 3. **Coach** — blocks, block/week planner, validator, Plan screen, adherence
    verdicts. *Replaces Claude chat.*
 4. **Feedback** — debrief, brief, weekly/block review, Home cards, streak,
