@@ -1,7 +1,7 @@
 import json
-BG="#f3f3f1"; TILE="#ffffff"; TXT="#17191c"; MUT="#5f646b"; GA="#23272e"; GB="#4b535e"
+BG="#ffffff"; TILE="#f4f4f2"; TXT="#17191c"; MUT="#5f646b"; GA="#23272e"; GB="#4b535e"
 AMB="#e0a830"; GRN="#2f9d6b"; STL="#5b7ba8"; RED="#d9534f"; ACC="#17191c"; GRN_T="#1f7a4f"; AMB_T="#a8740f"
-SH="none"; BOR="#e4e4e1"
+SH="none"; BOR="#e8e8e5"
 TYPE={"easy":"#6b737d","medium":STL,"tempo":AMB,"long":GRN,"race":TXT}
 TYPE_T={"easy":"#5f646b","medium":"#3f5f8a","tempo":"#a8740f","long":"#1f7a4f","race":TXT}
 def tpill(t): return f'<span class="pill" style="background: {TYPE[t]}26; color: {TYPE_T[t]}; text-transform: capitalize;">{t}</span>'
@@ -31,7 +31,7 @@ def head():
     a {{ color: {ACC}; }} a:hover {{ opacity: .8; }}
     .num {{ font-weight: 800; line-height: 1; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }}
     .k {{ font-size: 12px; color: {MUT}; font-weight: 500; }}
-    .tile {{ background: {TILE}; border: 1px solid {BOR}; border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 8px; }}
+    .tile {{ background: {TILE}; border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 8px; }}
     .pill {{ font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 6px; }}
     svg.ic {{ width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }}
   </style>
@@ -67,13 +67,13 @@ def chips(items, active):
     s='  <div style="display: flex; gap: 8px; overflow: hidden;">\n'
     for it in items:
         if it==active: s+=f'    <span style="background: linear-gradient(135deg, {GA}, {GB}); color: #fff; font-size: 12px; font-weight: 700; padding: 8px 14px; border-radius: 8px; white-space: nowrap;">{it}</span>\n'
-        else: s+=f'    <span style="background: {TILE}; color: {MUT}; font-size: 12px; font-weight: 600; padding: 8px 14px; border-radius: 8px; white-space: nowrap; border: 1px solid {BOR};">{it}</span>\n'
+        else: s+=f'    <span style="background: {TILE}; color: {MUT}; font-size: 12px; font-weight: 600; padding: 8px 14px; border-radius: 8px; white-space: nowrap;">{it}</span>\n'
     return s+'  </div>\n'
 def pill(text,bg,fg="#fff"): return f'<span class="pill" style="background: {bg}; color: {fg};">{text}</span>'
 def stat(v,k,col=TXT,size=30): return f'<div class="tile" style="padding: 14px; gap: 6px;"><span class="num" style="font-size: {size}px; color: {col};">{v}</span><span class="k">{k}</span></div>'
 
 # ---------------- HOME ----------------
-home = head()+header("Thursday 20 August","Today",f'<div style="height: 36px; padding: 0 14px; border-radius: 8px; background: {TILE}; border: 1px solid {BOR}; display: flex; align-items: center; font-size: 13px; font-weight: 700;">Sync</div>')+f'''  <div style="border-radius: 12px; padding: 20px; background: linear-gradient(135deg, {GA} 0%, {GB} 100%); color: #fff; display: flex; flex-direction: column; gap: 14px;">
+home = head()+header("Thursday 20 August","Today",f'<div style="height: 36px; padding: 0 14px; border-radius: 8px; background: {TILE}; display: flex; align-items: center; font-size: 13px; font-weight: 700;">Sync</div>')+f'''  <div style="border-radius: 12px; padding: 20px; background: linear-gradient(135deg, {GA} 0%, {GB} 100%); color: #fff; display: flex; flex-direction: column; gap: 14px;">
     <div style="display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 12px; font-weight: 700; opacity: .85;">EASY RUN</span><span class="pill" style="background: rgba(255,255,255,.18);">HM Build · wk 5 of 8</span></div>
     <div style="display: flex; align-items: center; gap: 18px;">
       <div style="position: relative; width: 84px; height: 84px; flex-shrink: 0;">
@@ -111,7 +111,7 @@ def day(n,d,c,state):
     if state=="plan":
         box=f'background: {TILE}; border: 2px solid {c}; color: {c};'
     elif state=="rest":
-        box=f'background: {TILE}; border: 1px solid {BOR}; color: {MUT};'
+        box=f'background: {TILE}; color: {MUT};'
     else:
         fg = TXT if c==AMB else "#fff"
         box=f'background: {c}; color: {fg};'
@@ -146,7 +146,7 @@ def run(date,name,t,km,pace,hr,note=""):
     </div>
   </div>
 '''
-acts = head()+header("Thursday 20 August","Runs",f'<div style="height: 36px; padding: 0 14px; border-radius: 8px; background: {TILE}; border: 1px solid {BOR}; display: flex; align-items: center; font-size: 13px; font-weight: 700;">Upload</div>')
+acts = head()+header("Thursday 20 August","Runs",f'<div style="height: 36px; padding: 0 14px; border-radius: 8px; background: {TILE}; display: flex; align-items: center; font-size: 13px; font-weight: 700;">Upload</div>')
 acts += f'''  <div style="{HERO} flex-direction: row; align-items: center; justify-content: space-between; gap: 8px;">
     <div><div class="num" style="font-size: 34px;">91<span style="font-size: 14px; font-weight: 500; opacity: .8;"> km</span></div><div style="font-size: 12px; opacity: .8; margin-top: 4px;">August · 12 runs</div></div>
     <div style="text-align: right;"><div class="num" style="font-size: 22px;">5:44</div><div style="font-size: 11px; opacity: .8;">avg /km</div></div>
@@ -170,11 +170,11 @@ for n,t,hr,e,c in laps:
     m,s=t.split(":"); sec=int(m)*60+int(s)
     w = 100 if n=="0.4" else int((420-sec)*100/160)
     w = 40 if n=="0.4" else w
-    laprows+=f'    <div style="display: grid; grid-template-columns: 30px 1fr 52px 44px 40px; gap: 8px; align-items: center; height: 22px;"><span class="k" style="font-size: 11px;">{n}</span><div style="height: 6px; background: {BG}; border-radius: 3px;"><div style="width: {w}%; height: 100%; background: {c}; border-radius: 3px; opacity: .85;"></div></div><span class="num" style="font-size: 13px; text-align: right; color: {c};">{t}</span><span class="num" style="font-size: 13px; text-align: right; font-weight: 700;">{hr}</span><span class="k" style="font-size: 11px; text-align: right;">{e}</span></div>\n'
+    laprows+=f'    <div style="display: grid; grid-template-columns: 30px 1fr 52px 44px 40px; gap: 8px; align-items: center; height: 22px;"><span class="k" style="font-size: 11px;">{n}</span><div style="height: 6px; background: #fff; border-radius: 3px;"><div style="width: {w}%; height: 100%; background: {c}; border-radius: 3px; opacity: .85;"></div></div><span class="num" style="font-size: 13px; text-align: right; color: {c};">{t}</span><span class="num" style="font-size: 13px; text-align: right; font-weight: 700;">{hr}</span><span class="k" style="font-size: 11px; text-align: right;">{e}</span></div>\n'
 zones=[(7,"3m"),(30,"12m"),(22,"9m"),(33,"13m"),(8,"3m")]
 zbar="".join(f'<div style="width: {p}%; background: {ZONE[i]};"></div>' for i,(p,_) in enumerate(zones))
 zlab="".join(f'<span>Z{i+1} {l}</span>' for i,(_,l) in enumerate(zones))
-detail = head()+header("Wed 19 Aug · 18:02 · Tempo","Mafra Corrida",avatar=False,right=f'<div style="height: 36px; padding: 0 14px; border-radius: 8px; background: {TILE}; border: 1px solid {BOR}; display: flex; align-items: center; font-size: 13px; font-weight: 700;">Edit</div>')
+detail = head()+header("Wed 19 Aug · 18:02 · Tempo","Mafra Corrida",avatar=False,right=f'<div style="height: 36px; padding: 0 14px; border-radius: 8px; background: {TILE}; display: flex; align-items: center; font-size: 13px; font-weight: 700;">Edit</div>')
 detail += f'''  <div style="{HERO} flex-direction: row; justify-content: space-between; align-items: flex-end;">
     <div><div class="num" style="font-size: 40px;">7.4<span style="font-size: 14px; font-weight: 500; opacity: .8;"> km</span></div><div style="font-size: 12px; opacity: .8; margin-top: 4px;">{pill("On target","rgba(255,255,255,.18)")}</div></div>
     <div style="text-align: right;"><div class="num" style="font-size: 26px;">40:12</div><div style="font-size: 11px; opacity: .8;">time</div></div>
@@ -245,7 +245,7 @@ def rec(label, rows):
     for yr,t,d,pct,best in rows:
         col = AMB_T if best else STL
         dcol = GRN_T if d.startswith("−") else MUT
-        out+=f'      <div style="display: flex; align-items: center; gap: 10px;"><span class="k" style="width: 34px;">{yr}</span><div style="flex: 1; height: 8px; background: {BG}; border-radius: 4px;"><div style="width: {pct}%; height: 100%; background: {col}; border-radius: 4px;"></div></div><span class="num" style="font-size: 15px; width: 62px; text-align: right; color: {TXT if best else MUT};">{t}</span><span style="font-size: 11px; font-weight: 700; color: {dcol}; width: 44px; text-align: right;">{d}</span></div>\n'
+        out+=f'      <div style="display: flex; align-items: center; gap: 10px;"><span class="k" style="width: 34px;">{yr}</span><div style="flex: 1; height: 8px; background: #fff; border-radius: 4px;"><div style="width: {pct}%; height: 100%; background: {col}; border-radius: 4px;"></div></div><span class="num" style="font-size: 15px; width: 62px; text-align: right; color: {TXT if best else MUT};">{t}</span><span style="font-size: 11px; font-weight: 700; color: {dcol}; width: 44px; text-align: right;">{d}</span></div>\n'
     return out+"    </div>\n  </div>\n"
 records = head()+header("Thursday 20 August","Records")+f'''  <div style="{HERO} flex-direction: row; justify-content: space-between; align-items: flex-end;">
     <div><div style="font-size: 12px; font-weight: 700; opacity: .85;">LATEST BEST · 10 KM</div><div class="num" style="font-size: 40px; margin-top: 6px;">53:50</div><div style="font-size: 12px; opacity: .8; margin-top: 4px;">16 Aug · inside the 16 km long run · <span style="color: {GRN}; font-weight: 800;">−1:12</span> on 2025</div></div>
@@ -264,7 +264,7 @@ def row(k,v,last=False):
     return f'    <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px;{b}"><span style="font-weight: 600;">{k}</span><div style="display: flex; align-items: center; gap: 8px; color: {MUT}; font-size: 13px; font-weight: 600;"><span>{v}</span>{CHEV}</div></div>\n'
 def section(title, rows):
     return f'  <div class="k" style="padding: 4px 6px 0;">{title}</div>\n  <div class="tile" style="gap: 0; padding: 4px 18px;">\n'+"".join(row(k,v,i==len(rows)-1) for i,(k,v) in enumerate(rows))+"  </div>\n"
-settings = head()+header("Rob · rjmac","Account",avatar=False,right=f'<div style="width: 36px; height: 36px; border-radius: 8px; background: {TILE}; border: 1px solid {BOR}; display: flex; align-items: center; justify-content: center; color: {MUT};">{BACK}</div>')
+settings = head()+header("Rob · rjmac","Account",avatar=False,right=f'<div style="width: 36px; height: 36px; border-radius: 8px; background: {TILE}; display: flex; align-items: center; justify-content: center; color: {MUT};">{BACK}</div>')
 settings += f'''  <div style="{HERO} flex-direction: row; align-items: center; gap: 14px;">
     <div style="width: 40px; height: 40px; border-radius: 8px; background: rgba(255,255,255,.14); display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: #fff;"><path d="M10 2L4 14h4l2-4 2 4h4z"/><path d="M14 12l-2 4-2-4H7l5 9 5-9z" opacity=".55"/></svg></div>
     <div style="flex: 1;"><div style="font-weight: 800;">Strava connected</div><div style="font-size: 12px; opacity: .8;">Last sync 19 Aug 20:14 · 142 runs</div></div>
@@ -281,9 +281,9 @@ settings += END_BODY+tail("none")
 # ---------------- MOVE SESSION SHEET ----------------
 def daypick(n,d,state):
     if state=="sel": box=f'background: {TXT}; color: #fff;'
-    elif state=="busy": box=f'background: {TILE}; border: 1px solid {BOR}; color: {MUT}; opacity: .45; text-decoration: line-through;'
-    elif state=="away": box=f'background: repeating-linear-gradient(135deg, {BG} 0 4px, {BOR} 4px 6px); border: 1px solid {BOR}; color: {MUT};'
-    else: box=f'background: {TILE}; border: 1px solid {BOR}; color: {TXT};'
+    elif state=="busy": box=f'background: {TILE}; color: {MUT}; opacity: .5; text-decoration: line-through;'
+    elif state=="away": box=f'background: repeating-linear-gradient(135deg, {TILE} 0 4px, {BOR} 4px 6px); color: {MUT};'
+    else: box=f'background: {TILE}; color: {TXT};'
     return f'      <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;"><span class="k">{n}</span><div style="width: 40px; height: 40px; border-radius: 50%; box-sizing: border-box; {box} display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800;">{d}</div></div>\n'
 sheet = head()+header("Thursday 20 August","Plan")
 sheet += f'''  <div style="{HERO} opacity: .35;">
@@ -312,7 +312,7 @@ sheet += f'''  <div style="position: absolute; inset: 0; background: rgba(23,25,
     </div>
     <div style="display: flex; gap: 8px;">
       <div style="flex: 1; height: 46px; display: flex; align-items: center; justify-content: center; background: {ACC}; color: #fff; border-radius: 8px; font-weight: 800; font-size: 14px;">Move to Mon 24</div>
-      <div style="height: 46px; padding: 0 16px; display: flex; align-items: center; justify-content: center; background: {TILE}; border: 1px solid {BOR}; border-radius: 8px; font-weight: 700; font-size: 13px;">Re-plan week</div>
+      <div style="height: 46px; padding: 0 16px; display: flex; align-items: center; justify-content: center; background: {TILE}; border-radius: 8px; font-weight: 700; font-size: 13px;">Re-plan week</div>
     </div>
   </div>
 </div>
