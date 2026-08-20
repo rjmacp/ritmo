@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap">
+  <style>
+    body { margin: 0; background: #ffffff; color: #141a26; font-family: 'Manrope', system-ui, sans-serif; font-size: 14px; }
+    a { color: #16223d; } a:hover { opacity: .85; }
+    .num { font-weight: 800; line-height: 1; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+    .k { font-size: 12px; color: #5f6776; font-weight: 500; }
+    .tile { background: #f3f4f6; border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+    .pill { font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 6px; }
+    svg.ic { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; overflow: hidden; background: #ffffff; display: flex; flex-direction: column;">
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 22px 20px 14px;">
+    <div style="display: flex; align-items: center; gap: 12px;"><div style="width: 34px; height: 34px; border-radius: 50%; background: #141a26; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; flex-shrink: 0;">RM</div><div style="display: flex; flex-direction: column; gap: 2px;"><span class="k">Last 8 weeks</span><span class="num" style="font-size: 26px;">Trends</span></div></div>
+    
+  </div>
+  <div style="flex: 1; overflow: hidden; padding: 0 16px 72px; display: flex; flex-direction: column; gap: 12px;">
+  <div style="display: flex; gap: 8px; overflow: hidden;">
+    <span style="background: #f3f4f6; color: #5f6776; font-size: 12px; font-weight: 600; padding: 8px 14px; border-radius: 8px; white-space: nowrap;">4w</span>
+    <span style="background: linear-gradient(135deg, #16223d, #2c4570); color: #fff; font-size: 12px; font-weight: 700; padding: 8px 14px; border-radius: 8px; white-space: nowrap;">8w</span>
+    <span style="background: #f3f4f6; color: #5f6776; font-size: 12px; font-weight: 600; padding: 8px 14px; border-radius: 8px; white-space: nowrap;">12w</span>
+    <span style="background: #f3f4f6; color: #5f6776; font-size: 12px; font-weight: 600; padding: 8px 14px; border-radius: 8px; white-space: nowrap;">Block</span>
+    <span style="background: #f3f4f6; color: #5f6776; font-size: 12px; font-weight: 600; padding: 8px 14px; border-radius: 8px; white-space: nowrap;">Season</span>
+  </div>
+  <div style="border-radius: 12px; padding: 18px 20px; background: linear-gradient(135deg, #16223d 0%, #2c4570 100%); color: #fff; display: flex; flex-direction: column; gap: 12px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-weight: 800;">Fitness · Fatigue · Form</span><span style="font-size: 12px; opacity: .85; font-weight: 600;">41 · 38 · <span style="color: #b5e07a; font-weight: 800;">+3</span></span></div>
+    <svg viewBox="0 0 330 120" style="width: 100%; height: 120px; display: block;">
+      <line x1="0" y1="100" x2="330" y2="100" stroke="rgba(255,255,255,.12)" stroke-width="1"/><line x1="0" y1="60" x2="330" y2="60" stroke="rgba(255,255,255,.12)" stroke-width="1"/><line x1="0" y1="20" x2="330" y2="20" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+      <path d="M0 92 C40 88 70 84 110 78 S190 62 240 52 S300 40 330 36" fill="none" stroke="#9db4d8" stroke-width="3" stroke-linecap="round"/>
+      <path d="M0 96 L30 80 L55 90 L85 66 L115 76 L150 58 L180 70 L215 50 L245 62 L280 44 L310 56 L330 42" fill="none" stroke="#ffb25c" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M0 60 L30 72 L55 58 L85 76 L115 66 L150 80 L180 70 L215 82 L245 70 L280 82 L310 70 L330 58" fill="none" stroke="#b5e07a" stroke-width="2.5" stroke-dasharray="5 4"/>
+      <text x="0" y="116" fill="rgba(255,255,255,.6)" font-size="10" font-family="Manrope">Jun</text><text x="110" y="116" fill="rgba(255,255,255,.6)" font-size="10" font-family="Manrope">Jul</text><text x="220" y="116" fill="rgba(255,255,255,.6)" font-size="10" font-family="Manrope">Aug</text>
+    </svg>
+    <div style="display: flex; gap: 16px; font-size: 11px; opacity: .85; font-weight: 600;"><span style="display: flex; align-items: center; gap: 6px;"><i style="width: 10px; height: 10px; border-radius: 50%; background: #9db4d8;"></i>Fitness</span><span style="display: flex; align-items: center; gap: 6px;"><i style="width: 10px; height: 10px; border-radius: 50%; background: #ffb25c;"></i>Fatigue</span><span style="display: flex; align-items: center; gap: 6px;"><i style="width: 10px; height: 10px; border-radius: 50%; background: #b5e07a;"></i>Form</span></div>
+  </div>
+  <div class="tile" style="gap: 10px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-weight: 800;">Weekly km by zone</span><span class="k">Z2 · Z3 · Z4+</span></div>
+    <div style="display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 8px; align-items: end; height: 110px;">
+      <div style="height: 57%; display: flex; flex-direction: column; border-radius: 6px 6px 3px 3px; overflow: hidden; opacity: 1;"><div style="flex: 12; background: #f08a24;"></div><div style="flex: 28; background: #7ab648;"></div><div style="flex: 60; background: #2f9ad0;"></div></div>
+      <div style="height: 63%; display: flex; flex-direction: column; border-radius: 6px 6px 3px 3px; overflow: hidden; opacity: 1;"><div style="flex: 12; background: #f08a24;"></div><div style="flex: 28; background: #7ab648;"></div><div style="flex: 60; background: #2f9ad0;"></div></div>
+      <div style="height: 68%; display: flex; flex-direction: column; border-radius: 6px 6px 3px 3px; overflow: hidden; opacity: 1;"><div style="flex: 12; background: #f08a24;"></div><div style="flex: 28; background: #7ab648;"></div><div style="flex: 60; background: #2f9ad0;"></div></div>
+      <div style="height: 73%; display: flex; flex-direction: column; border-radius: 6px 6px 3px 3px; overflow: hidden; opacity: 1;"><div style="flex: 12; background: #f08a24;"></div><div style="flex: 28; background: #7ab648;"></div><div style="flex: 60; background: #2f9ad0;"></div></div>
+      <div style="height: 78%; display: flex; flex-direction: column; border-radius: 6px 6px 3px 3px; overflow: hidden; opacity: 1;"><div style="flex: 12; background: #f08a24;"></div><div style="flex: 28; background: #7ab648;"></div><div style="flex: 60; background: #2f9ad0;"></div></div>
+      <div style="height: 86%; display: flex; flex-direction: column; border-radius: 6px 6px 3px 3px; overflow: hidden; opacity: 1;"><div style="flex: 12; background: #f08a24;"></div><div style="flex: 28; background: #7ab648;"></div><div style="flex: 60; background: #2f9ad0;"></div></div>
+      <div style="height: 92%; display: flex; flex-direction: column; border-radius: 6px 6px 3px 3px; overflow: hidden; opacity: 1;"><div style="flex: 12; background: #f08a24;"></div><div style="flex: 28; background: #7ab648;"></div><div style="flex: 60; background: #2f9ad0;"></div></div>
+      <div style="height: 36%; display: flex; flex-direction: column; border-radius: 6px 6px 3px 3px; overflow: hidden; opacity: .45;"><div style="flex: 12; background: #f08a24;"></div><div style="flex: 28; background: #7ab648;"></div><div style="flex: 60; background: #2f9ad0;"></div></div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 8px; font-size: 11px; color: #5f6776; text-align: center; font-weight: 600;"><span style="">22</span><span style="">24</span><span style="">26</span><span style="">28</span><span style="">30</span><span style="">33</span><span style="">35</span><span style="color: #141a26; font-weight: 800;">14</span></div>
+  </div>
+  <div class="tile" style="gap: 10px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-weight: 800;">Aerobic efficiency</span><span class="k">easy runs · <span style="color: #4f8a22; font-weight: 800;">+6 %</span> vs June</span></div>
+    <svg viewBox="0 0 330 60" style="width: 100%; height: 60px; display: block;">
+      <line x1="0" y1="52" x2="330" y2="52" stroke="#ffffff" stroke-width="2"/>
+      <path d="M0 44 L40 48 L80 38 L120 40 L160 32 L200 34 L240 24 L280 22 L330 16" fill="none" stroke="#141a26" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="330" cy="16" r="4" fill="#7ab648"/>
+    </svg>
+  </div>
+  </div>
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 60px; background: #fff; border-top: 1px solid #e8e8e5; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: center;">
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #5f6776;"><svg class="ic" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span style="font-size: 10px; font-weight: 700;">Home</span></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #5f6776;"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span style="font-size: 10px; font-weight: 700;">Plan</span></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #5f6776;"><svg class="ic" viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8"/><path d="M15 8h5v5"/></svg><span style="font-size: 10px; font-weight: 700;">Runs</span></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #16223d;"><svg class="ic" viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 16l4-6 4 3 6-8"/></svg><span style="font-size: 10px; font-weight: 700;">Trends</span></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #5f6776;"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M9 13l-2 8 5-3 5 3-2-8"/></svg><span style="font-size: 10px; font-weight: 700;">Records</span></div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

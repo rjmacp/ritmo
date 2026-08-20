@@ -1,0 +1,84 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "title": "Home",
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Plan.dc.html",
+      "x": 470,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Runs.dc.html",
+      "x": 940,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "RunDetail.dc.html",
+      "title": "Run detail",
+      "x": 1410,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Trends.dc.html",
+      "x": 0,
+      "y": 940,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Records.dc.html",
+      "x": 470,
+      "y": 940,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Settings.dc.html",
+      "title": "Account",
+      "x": 940,
+      "y": 940,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Session.dc.html",
+      "title": "Plan \u00b7 session",
+      "x": 1410,
+      "y": 940,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "MoveSession.dc.html",
+      "title": "Plan \u00b7 move session",
+      "x": 1880,
+      "y": 940,
+      "w": 390,
+      "h": 844
+    }
+  ],
+  "annotations": [
+    {
+      "id": "note",
+      "x": 1880,
+      "y": 0,
+      "w": 360,
+      "text": "Ritmo \u00b7 Midnight Citrus\nTop row is the daily loop (Home \u2192 Plan \u2192 Runs \u2192 Run detail); bottom row the review screens. Settings opens from the profile button.\n\nNavy carries the brand (hero, buttons, active tab, avatar). Sky = HR/fitness/medium, tangerine = load/fatigue/tempo, lime = on target/form/long \u2014 used in tinted metric tiles, bars, zone strips and chart lines."
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

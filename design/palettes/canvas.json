@@ -1,0 +1,375 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "title": "P1 \u00b7 Midnight",
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Espresso.dc.html",
+      "title": "P2 \u00b7 Espresso",
+      "x": 470,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Pine.dc.html",
+      "title": "P3 \u00b7 Pine",
+      "x": 940,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Burgundy.dc.html",
+      "title": "P4 \u00b7 Burgundy",
+      "x": 0,
+      "y": 1000,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Indigo.dc.html",
+      "title": "P5 \u00b7 Indigo",
+      "x": 470,
+      "y": 1000,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Sand.dc.html",
+      "title": "P6 \u00b7 Sand",
+      "x": 940,
+      "y": 1000,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "CitrusMain.dc.html",
+      "title": "Pine \u00b7 Citrus \u00b7 Home",
+      "x": 0,
+      "y": 2200,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "CitrusTrends.dc.html",
+      "title": "Pine \u00b7 Citrus \u00b7 Trends",
+      "x": 0,
+      "y": 3100,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "CoralMain.dc.html",
+      "title": "Pine \u00b7 Coral \u00b7 Home",
+      "x": 470,
+      "y": 2200,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "CoralTrends.dc.html",
+      "title": "Pine \u00b7 Coral \u00b7 Trends",
+      "x": 470,
+      "y": 3100,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "BerryMain.dc.html",
+      "title": "Pine \u00b7 Berry \u00b7 Home",
+      "x": 940,
+      "y": 2200,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "BerryTrends.dc.html",
+      "title": "Pine \u00b7 Berry \u00b7 Trends",
+      "x": 940,
+      "y": 3100,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "CopperMain.dc.html",
+      "title": "Pine \u00b7 Copper \u00b7 Home",
+      "x": 1410,
+      "y": 2200,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "CopperTrends.dc.html",
+      "title": "Pine \u00b7 Copper \u00b7 Trends",
+      "x": 1410,
+      "y": 3100,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "MCitrusMain.dc.html",
+      "title": "Midnight \u00b7 Citrus \u00b7 Home",
+      "x": 0,
+      "y": 4200,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "MCitrusTrends.dc.html",
+      "title": "Midnight \u00b7 Citrus \u00b7 Trends",
+      "x": 0,
+      "y": 5100,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "MCoralMain.dc.html",
+      "title": "Midnight \u00b7 Coral \u00b7 Home",
+      "x": 470,
+      "y": 4200,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "MCoralTrends.dc.html",
+      "title": "Midnight \u00b7 Coral \u00b7 Trends",
+      "x": 470,
+      "y": 5100,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "MBerryMain.dc.html",
+      "title": "Midnight \u00b7 Berry \u00b7 Home",
+      "x": 940,
+      "y": 4200,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "MBerryTrends.dc.html",
+      "title": "Midnight \u00b7 Berry \u00b7 Trends",
+      "x": 940,
+      "y": 5100,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "MCopperMain.dc.html",
+      "title": "Midnight \u00b7 Copper \u00b7 Home",
+      "x": 1410,
+      "y": 4200,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "MCopperTrends.dc.html",
+      "title": "Midnight \u00b7 Copper \u00b7 Trends",
+      "x": 1410,
+      "y": 5100,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "XAuroraMain.dc.html",
+      "title": "Midnight \u00b7 Aurora \u00b7 Home",
+      "x": 0,
+      "y": 6200,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "XAuroraTrends.dc.html",
+      "title": "Midnight \u00b7 Aurora \u00b7 Trends",
+      "x": 0,
+      "y": 7100,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "XNeonMain.dc.html",
+      "title": "Midnight \u00b7 Neon \u00b7 Home",
+      "x": 470,
+      "y": 6200,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "XNeonTrends.dc.html",
+      "title": "Midnight \u00b7 Neon \u00b7 Trends",
+      "x": 470,
+      "y": 7100,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "XSunsetMain.dc.html",
+      "title": "Midnight \u00b7 Sunset \u00b7 Home",
+      "x": 940,
+      "y": 6200,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "XSunsetTrends.dc.html",
+      "title": "Midnight \u00b7 Sunset \u00b7 Trends",
+      "x": 940,
+      "y": 7100,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "XGlacierMain.dc.html",
+      "title": "Midnight \u00b7 Glacier \u00b7 Home",
+      "x": 1410,
+      "y": 6200,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "XGlacierTrends.dc.html",
+      "title": "Midnight \u00b7 Glacier \u00b7 Trends",
+      "x": 1410,
+      "y": 7100,
+      "w": 390,
+      "h": 844
+    }
+  ],
+  "annotations": [
+    {
+      "id": "p1",
+      "x": 0,
+      "y": 870,
+      "w": 390,
+      "text": "P1 \u00b7 Midnight\nDeep navy hero, white page, cool grey tiles. Serious, nautical; blue is the most 'trusted' colour for data apps. Risk: the most common choice."
+    },
+    {
+      "id": "p2",
+      "x": 470,
+      "y": 870,
+      "w": 390,
+      "text": "P2 \u00b7 Espresso\nWarm brown hero on cream, terracotta/olive/gold data colours. Cosy and distinctive \u2014 nobody's running app is brown. Risk: can read 'coffee shop'."
+    },
+    {
+      "id": "p3",
+      "x": 940,
+      "y": 870,
+      "w": 390,
+      "text": "P3 \u00b7 Pine\nDeep forest hero, white page. Outdoors without being 'trail-brown'; green as brand rather than as a data colour. Risk: 'on target' green needs to shift to lime so it stays distinct."
+    },
+    {
+      "id": "p4",
+      "x": 0,
+      "y": 1870,
+      "w": 390,
+      "text": "P4 \u00b7 Burgundy\nWine-red hero, blush page. Confident, premium, unusual for sport. Risk: red family \u2014 keep 'too hard' warnings amber rather than red to avoid clashing."
+    },
+    {
+      "id": "p5",
+      "x": 470,
+      "y": 1870,
+      "w": 390,
+      "text": "P5 \u00b7 Indigo\nElectric indigo hero, white page, cyan/orange/green data. The most energetic; reads 'tech'. Risk: least calm of the set."
+    },
+    {
+      "id": "p6",
+      "x": 940,
+      "y": 1870,
+      "w": 390,
+      "text": "P6 \u00b7 Sand\nInverts the idea: a light sand hero with dark text, black buttons, white page. Calm, editorial, very different feel from the charcoal. Risk: less contrast for the hero numbers at a glance."
+    },
+    {
+      "id": "v1",
+      "x": 0,
+      "y": 2100,
+      "w": 390,
+      "text": "Pine \u00b7 Citrus\nSky, tangerine, lime. Fresh and sporty; tangerine gives the warnings punch without reading as red."
+    },
+    {
+      "id": "v2",
+      "x": 470,
+      "y": 2100,
+      "w": 390,
+      "text": "Pine \u00b7 Coral\nAqua, gold, coral. Warmer and more playful; coral as 'on target' is unexpected but joyful."
+    },
+    {
+      "id": "v3",
+      "x": 940,
+      "y": 2100,
+      "w": 390,
+      "text": "Pine \u00b7 Berry\nLavender, mustard, raspberry. The most distinctive; strong contrast against the forest hero. Risk: least 'athletic'."
+    },
+    {
+      "id": "v4",
+      "x": 1410,
+      "y": 2100,
+      "w": 390,
+      "text": "Pine \u00b7 Copper\nTeal, sand, copper. Earthy and grown-up; pairs naturally with forest green. Risk: the quietest of the four."
+    },
+    {
+      "id": "m1",
+      "x": 0,
+      "y": 4100,
+      "w": 390,
+      "text": "Midnight \u00b7 Citrus\nSky, tangerine, lime. Fresh and sporty; tangerine gives the warnings punch without reading as red."
+    },
+    {
+      "id": "m2",
+      "x": 470,
+      "y": 4100,
+      "w": 390,
+      "text": "Midnight \u00b7 Coral\nAqua, gold, coral. Warmer and more playful; coral as 'on target' is unexpected but joyful."
+    },
+    {
+      "id": "m3",
+      "x": 940,
+      "y": 4100,
+      "w": 390,
+      "text": "Midnight \u00b7 Berry\nLavender, mustard, raspberry. The most distinctive; strong contrast against the forest hero. Risk: least 'athletic'."
+    },
+    {
+      "id": "m4",
+      "x": 1410,
+      "y": 4100,
+      "w": 390,
+      "text": "Midnight \u00b7 Copper\nTeal, sand, copper. Earthy and grown-up; pairs naturally with forest green. Risk: the quietest of the four."
+    },
+    {
+      "id": "x1",
+      "x": 0,
+      "y": 6100,
+      "w": 390,
+      "text": "Midnight \u00b7 Aurora\nHero shifts navy\u2192teal. Mint, amber, violet secondaries; metric tiles tinted with their own colour. Northern-lights feel."
+    },
+    {
+      "id": "x2",
+      "x": 470,
+      "y": 6100,
+      "w": 390,
+      "text": "Midnight \u00b7 Neon\nHero navy\u2192indigo. Cyan, lime, magenta \u2014 the loud one. Tinted tiles keep the page from feeling cold."
+    },
+    {
+      "id": "x3",
+      "x": 940,
+      "y": 6100,
+      "w": 390,
+      "text": "Midnight \u00b7 Sunset\nHero navy\u2192plum. Coral, gold, turquoise; warm data on a cool hero. The most 'evening run' of the set."
+    },
+    {
+      "id": "x4",
+      "x": 1410,
+      "y": 6100,
+      "w": 390,
+      "text": "Midnight \u00b7 Glacier\nHero navy\u2192steel blue. Ice blue, lilac, peach; softer and more tonal, no tinting. Calmest of the four."
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

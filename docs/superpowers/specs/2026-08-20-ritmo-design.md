@@ -62,16 +62,19 @@ header icon. Sign-in and first-run Onboarding are separate.
 | **Sign in** | Gate | Email magic link (Auth.js); single allowed email via env |
 | **Onboarding** | First run | Connect Strava → import history (progress) → set max HR → define first block & benchmark |
 
-Visual direction — **"Graphite"** (chosen 2026-08-20 from 14 candidates; see
-`design/`): light theme, white `#ffffff` page, tiles as flat light-grey `#f4f4f2` fills
-(no border, no shadow, 10 px radius), charcoal→graphite gradient hero
-(`#23272e`→`#4b535e`) for today's session with a form ring, black primary
-buttons, plain bottom tab bar, Manrope (800 for numerals). Type pills are
-tinted (type colour at 15 %) — no left colour bars. Colour is reserved
-for data: steel `#5b7ba8` (HR, fitness, medium), amber `#e0a830` (load,
-fatigue, tempo), green `#2f9d6b` (on target, form, long), red `#d9534f`
-(Z5 / too hard), grey `#8a929c` (easy). Reference feel: Apple Health tiles ×
-Oura calm, kept deliberately unfussy.
+Visual direction — **"Midnight Citrus"** (chosen 2026-08-20 after four
+exploration rounds; see `design/midnight/`, superseding Graphite): light
+theme, white `#ffffff` page, flat light-grey `#f3f4f6` tiles (no border, no
+shadow, 10 px radius), **navy** hero gradient `#16223d`→`#2c4570` on every
+screen, navy primary buttons, active tab and avatar; plain bottom tab bar;
+Manrope (800 numerals). Three secondaries with fixed roles, used in tinted
+metric tiles (colour at ~12 %), bars, zone strips and chart lines:
+**sky** `#2f9ad0` (HR, fitness, medium runs; text `#1f6f9a`, on-navy
+`#7fd0f7`), **tangerine** `#f08a24` (load, fatigue, tempo, warnings; text
+`#b85f0f`, on-navy `#ffb25c`), **lime** `#7ab648` (on target, form, long runs,
+progress; text `#4f8a22`, on-navy `#b5e07a`). Red `#d9534f` only for Z5 and
+"skip". Type pills are tinted, no left colour bars. Reference feel: Apple
+Health tiles × Oura calm, kept flat and professional.
 
 ## 4. Architecture
 
