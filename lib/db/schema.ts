@@ -192,3 +192,5 @@ export type Lap = typeof laps.$inferSelect;
 export type NewLap = typeof laps.$inferInsert;
 /** Row shape returned when selecting from {@link stravaConnections}. */
 export type StravaConnection = typeof stravaConnections.$inferSelect;
+/** Row shape returned when selecting from {@link syncLog}. */
+export type SyncLog = typeof syncLog.$inferSelect;

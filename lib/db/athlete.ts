@@ -14,3 +14,8 @@ export async function ensureAthlete(dbc: AnyDb, email: string, name?: string | n
   if (!created) throw new Error("failed to create athlete");
   return created;
 }
+
+/** Sets an athlete's max HR and clears any explicit zone-boundary override so zones re-derive from the new max. */
+export async function setMaxHr(dbc: AnyDb, athleteId: string, maxHr: number): Promise<void> {
+  await dbc.update(athletes).set({ maxHr, hrZoneBoundaries: null }).where(eq(athletes.id, athleteId));
+}
