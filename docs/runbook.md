@@ -17,4 +17,4 @@
 
 ## Local dev
 
-`cp .env.example .env.local`, fill values, `npm run db:migrate`, `npm run dev`. For webhooks locally use `vercel dev` + a tunnel, or just use Sync.
+`cp .env.example .env.local`, fill values, `npm run db:migrate`, `npm run dev`. For webhooks locally use `vercel dev` + a tunnel, or just use Sync. `npm run e2e` reads `.env.local` automatically.
