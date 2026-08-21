@@ -5,6 +5,7 @@ import { env } from "@/lib/env";
 import { continueImport } from "@/lib/pipeline/continueImport";
 import { startSyncLog } from "@/lib/pipeline/syncLog";
 import { syncRecent } from "@/lib/pipeline/syncRecent";
+import { safeEqual } from "@/lib/security";
 import { clientForAthlete, setConnectionFields } from "@/lib/strava/connection";
 
 /** Vercel Hobby caps serverless functions at 60 s; the import budget is sized to fit inside it. */
@@ -15,7 +16,7 @@ const STALL_MS = 24 * 60 * 60 * 1000;
 
 /** Nightly cron sweep: fails stalled imports, resumes unfinished ones, then re-syncs the last 30 days for every connected athlete. Requires the cron bearer secret. */
 export async function GET(req: Request): Promise<NextResponse> {
-  if (req.headers.get("authorization") !== `Bearer ${env.CRON_SECRET}`)
+  if (!safeEqual(req.headers.get("authorization") ?? "", `Bearer ${env.CRON_SECRET}`))
     return new NextResponse("unauthorized", { status: 401 });
   const conns = await db.select().from(stravaConnections);
   const results: Record<string, number | string> = {};

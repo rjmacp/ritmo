@@ -4,5 +4,6 @@ process.env.ALLOWED_EMAIL ??= "athlete@example.com";
 process.env.STRAVA_CLIENT_ID ??= "1";
 process.env.STRAVA_CLIENT_SECRET ??= "s";
 process.env.STRAVA_WEBHOOK_VERIFY_TOKEN ??= "verify";
+process.env.STRAVA_WEBHOOK_SECRET ??= "hooksecret";
 process.env.CRON_SECRET ??= "cron";
 process.env.NEXT_PUBLIC_APP_URL ??= "http://localhost:3000";

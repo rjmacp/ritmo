@@ -25,5 +25,6 @@ jobs:
           STRAVA_CLIENT_ID: "1"
           STRAVA_CLIENT_SECRET: ci
           STRAVA_WEBHOOK_VERIFY_TOKEN: ci
+          STRAVA_WEBHOOK_SECRET: ci
           CRON_SECRET: ci
           NEXT_PUBLIC_APP_URL: http://localhost:3000

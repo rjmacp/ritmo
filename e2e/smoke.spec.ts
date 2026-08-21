@@ -6,8 +6,11 @@ test("unauthenticated /runs redirects to sign-in", async ({ page }) => {
 });
 test("webhook challenge answers with the right token", async ({ request }) => {
   const token = process.env.STRAVA_WEBHOOK_VERIFY_TOKEN ?? "";
-  test.skip(!token, "STRAVA_WEBHOOK_VERIFY_TOKEN not set");
-  const r = await request.get(`/api/strava/webhook?hub.mode=subscribe&hub.verify_token=${token}&hub.challenge=abc`);
+  const secret = process.env.STRAVA_WEBHOOK_SECRET ?? "";
+  test.skip(!token || !secret, "STRAVA_WEBHOOK_VERIFY_TOKEN / STRAVA_WEBHOOK_SECRET not set");
+  const r = await request.get(
+    `/api/strava/webhook/${secret}?hub.mode=subscribe&hub.verify_token=${token}&hub.challenge=abc`,
+  );
   expect(r.status()).toBe(200);
   expect(await r.json()).toEqual({ "hub.challenge": "abc" });
 });

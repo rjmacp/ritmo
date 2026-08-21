@@ -26,6 +26,9 @@ export const env = {
   get STRAVA_WEBHOOK_VERIFY_TOKEN() {
     return require("STRAVA_WEBHOOK_VERIFY_TOKEN");
   },
+  get STRAVA_WEBHOOK_SECRET() {
+    return require("STRAVA_WEBHOOK_SECRET");
+  },
   get CRON_SECRET() {
     return require("CRON_SECRET");
   },

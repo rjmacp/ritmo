@@ -7,7 +7,12 @@
 3. **Strava app**: https://www.strava.com/settings/api → create app. Authorization Callback Domain = your Vercel domain (no scheme). Copy Client ID/Secret → `STRAVA_CLIENT_ID/SECRET`.
 4. **Vercel**: import the GitHub repo, framework Next.js. Add every var from `.env.example` (generate `AUTH_SECRET` with `npx auth secret`, random strings for `STRAVA_WEBHOOK_VERIFY_TOKEN` and `CRON_SECRET`, `NEXT_PUBLIC_APP_URL=https://<your-domain>`). Build command: `npm run db:migrate && next build`.
 5. Deploy. Sign in with `ALLOWED_EMAIL`, go to Account → Connect Strava. History import starts; watch the Account page.
-6. **Webhook**: locally, with `.env.local` filled, run `npm run strava:subscribe` once. Strava calls `GET /api/strava/webhook` to verify, then sends events on every new run.
+6. **Webhook**: the callback lives at `/api/strava/webhook/$STRAVA_WEBHOOK_SECRET` — an unguessable
+   path segment is the only credential Strava can carry, so treat `STRAVA_WEBHOOK_SECRET` like a
+   password (any random URL-safe string; rotate by changing the var and re-running the subscribe
+   script). A wrong segment returns 404, not 403. Locally, with `.env.local` filled, run
+   `npm run strava:subscribe` once; Strava GETs that URL to verify the `hub.verify_token`, then
+   POSTs events on every new run.
 
 ## Database driver
 
