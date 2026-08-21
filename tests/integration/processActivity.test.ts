@@ -64,6 +64,20 @@ describe("processActivity", () => {
     await deleteActivityByStravaId(db, athleteId, newStravaId);
   });
 
+  it("rolls back the lap changes when afterUpsert fails", async () => {
+    const r = await processActivity(db, athleteId, normaliseStrava(detailTyped, lapsFx));
+    const before = await db.select().from(laps).where(eq(laps.activityId, r.activityId));
+    expect(before).toHaveLength(8);
+    await expect(
+      processActivity(db, athleteId, normaliseStrava({ ...detailTyped, name: "Rolled back" }, lapsFx.slice(0, 3)), {
+        afterUpsert: () => Promise.reject(new Error("metrics blew up")),
+      }),
+    ).rejects.toThrow("metrics blew up");
+    expect(await db.select().from(laps).where(eq(laps.activityId, r.activityId))).toHaveLength(8);
+    const [a] = await db.select().from(activities).where(eq(activities.id, r.activityId));
+    expect(a!.name).not.toBe("Rolled back");
+  });
+
   it("deletes by strava id", async () => {
     await deleteActivityByStravaId(db, athleteId, 15000000019n);
     expect(await db.select().from(activities).where(eq(activities.athleteId, athleteId))).toHaveLength(0);

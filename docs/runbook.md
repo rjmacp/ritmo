@@ -9,6 +9,15 @@
 5. Deploy. Sign in with `ALLOWED_EMAIL`, go to Account → Connect Strava. History import starts; watch the Account page.
 6. **Webhook**: locally, with `.env.local` filled, run `npm run strava:subscribe` once. Strava calls `GET /api/strava/webhook` to verify, then sends events on every new run.
 
+## Database driver
+
+The app talks to Neon over the **WebSocket** driver (`drizzle-orm/neon-serverless` + `Pool`), not
+neon-http: the ingest pipeline wraps each activity's writes in a real transaction, which HTTP
+cannot do. Vercel's Node.js runtime (and local Node 20) has no global `WebSocket`, so
+`lib/db/client.ts` sets `neonConfig.webSocketConstructor = ws` — the `ws` package is a **runtime
+dependency**, not a dev one. Migrations (`lib/db/migrate.ts`) stay on neon-http; they are a single
+batch and need no session.
+
 ## Day to day
 
 - New run → Strava → webhook → appears on Runs within a minute or two.
