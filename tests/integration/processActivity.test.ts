@@ -53,6 +53,17 @@ describe("processActivity", () => {
     expect(after!.trainingEffectAerobic).toBe(3.7);
   });
 
+  it("is race-free when two concurrent upserts create the same activity", async () => {
+    const newStravaId = 15000000099n;
+    const n = normaliseStrava({ ...detailTyped, id: Number(newStravaId) }, lapsFx);
+    const [r1, r2] = await Promise.all([processActivity(db, athleteId, n), processActivity(db, athleteId, n)]);
+    expect(r1.activityId).toBe(r2.activityId);
+    const rows = await db.select().from(activities).where(eq(activities.stravaId, newStravaId));
+    expect(rows).toHaveLength(1);
+    expect(await db.select().from(laps).where(eq(laps.activityId, r1.activityId))).toHaveLength(8);
+    await deleteActivityByStravaId(db, athleteId, newStravaId);
+  });
+
   it("deletes by strava id", async () => {
     await deleteActivityByStravaId(db, athleteId, 15000000019n);
     expect(await db.select().from(activities).where(eq(activities.athleteId, athleteId))).toHaveLength(0);
