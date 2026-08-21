@@ -84,11 +84,11 @@ EOF
 }
 SH="0 6px 24px rgba(60,40,20,.07)"
 # I · Glow — cream, peach→rose hero, Apple-Health multi-colour numbers
-warm Glow "#faf5ee" "#ffffff" "#2a2420" "#8a7f74" "#f6b89a" "#e88aa6" "#3a2320" "#ffffff" "rgba(255,255,255,.35)" "#2f9e6b" "#c2589a" "#d89b2b" "#c2589a" "'Figtree', system-ui, sans-serif" "family=Figtree:wght@400;500;700" "$SH" "Good morning, Rob" > Glow.dc.html
+warm Glow "#faf5ee" "#ffffff" "#2a2420" "#8a7f74" "#f6b89a" "#e88aa6" "#3a2320" "#ffffff" "rgba(255,255,255,.35)" "#2f9e6b" "#c2589a" "#d89b2b" "#c2589a" "'Figtree', system-ui, sans-serif" "family=Figtree:wght@400;500;700" "$SH" "Good morning, Ryan" > Glow.dc.html
 # J · Clay — sand, terracotta-free: ochre→sage hero, earthy
-warm Clay "#f3ede3" "#fbf8f2" "#2b2621" "#8c8273" "#d9b46a" "#8fae8b" "#2b2621" "#2b2621" "rgba(43,38,33,.15)" "#5f8a5a" "#b88a2e" "#7a6a9c" "#5f8a5a" "'Albert Sans', system-ui, sans-serif" "family=Albert+Sans:wght@400;500;700" "0 4px 18px rgba(43,38,33,.06)" "Good morning, Rob" > Clay.dc.html
+warm Clay "#f3ede3" "#fbf8f2" "#2b2621" "#8c8273" "#d9b46a" "#8fae8b" "#2b2621" "#2b2621" "rgba(43,38,33,.15)" "#5f8a5a" "#b88a2e" "#7a6a9c" "#5f8a5a" "'Albert Sans', system-ui, sans-serif" "family=Albert+Sans:wght@400;500;700" "0 4px 18px rgba(43,38,33,.06)" "Good morning, Ryan" > Clay.dc.html
 # K · Bloom — Oura-like: warm white, lavender→rose hero, deep plum text
-warm Bloom "#fbf7f7" "#ffffff" "#2d2233" "#8b7f91" "#b8a0e8" "#f0a6b4" "#2d2233" "#ffffff" "rgba(255,255,255,.4)" "#3f9d7a" "#7c5cc4" "#d97a6a" "#7c5cc4" "'Outfit', system-ui, sans-serif" "family=Outfit:wght@400;500;700" "0 8px 28px rgba(80,50,90,.08)" "Good morning, Rob" > Bloom.dc.html
+warm Bloom "#fbf7f7" "#ffffff" "#2d2233" "#8b7f91" "#b8a0e8" "#f0a6b4" "#2d2233" "#ffffff" "rgba(255,255,255,.4)" "#3f9d7a" "#7c5cc4" "#d97a6a" "#7c5cc4" "'Outfit', system-ui, sans-serif" "family=Outfit:wght@400;500;700" "0 8px 28px rgba(80,50,90,.08)" "Good morning, Ryan" > Bloom.dc.html
 python3 - <<'PY'
 import json
 c=json.load(open('canvas.json'))

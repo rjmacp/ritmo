@@ -611,11 +611,11 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Security issues: [SECURITY.md](SECURITY.
 
 ## Licence
 
-MIT © Rob MacPherson. Powered by Strava.
+MIT © Ryan Macpherson. Powered by Strava.
 
 ````
 
-`LICENSE`: standard MIT text, `Copyright (c) 2026 Rob MacPherson`.
+`LICENSE`: standard MIT text, `Copyright (c) 2026 Ryan Macpherson`.
 
 `CONTRIBUTING.md`:
 
@@ -740,7 +740,7 @@ afterAll(() => close());
 
 describe("schema", () => {
   it("stores an athlete, an activity and its laps", async () => {
-    const [a] = await db.insert(athletes).values({ email: "athlete@example.com", name: "Rob" }).returning();
+    const [a] = await db.insert(athletes).values({ email: "athlete@example.com", name: "Ryan" }).returning();
     const [act] = await db
       .insert(activities)
       .values({
@@ -1073,10 +1073,10 @@ beforeAll(async () => ({ db, close } = await createTestDb()));
 afterAll(() => close());
 
 it("creates an athlete once and returns the same row after", async () => {
-  const a = await ensureAthlete(db, "athlete@example.com", "Rob");
+  const a = await ensureAthlete(db, "athlete@example.com", "Ryan");
   const b = await ensureAthlete(db, "ATHLETE@example.com");
   expect(a.id).toBe(b.id);
-  expect(b.name).toBe("Rob");
+  expect(b.name).toBe("Ryan");
 });
 ```
 

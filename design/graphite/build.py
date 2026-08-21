@@ -264,7 +264,7 @@ def row(k,v,last=False):
     return f'    <div style="display: flex; align-items: center; justify-content: space-between; min-height: 44px;{b}"><span style="font-weight: 600;">{k}</span><div style="display: flex; align-items: center; gap: 8px; color: {MUT}; font-size: 13px; font-weight: 600;"><span>{v}</span>{CHEV}</div></div>\n'
 def section(title, rows):
     return f'  <div class="k" style="padding: 4px 6px 0;">{title}</div>\n  <div class="tile" style="gap: 0; padding: 4px 18px;">\n'+"".join(row(k,v,i==len(rows)-1) for i,(k,v) in enumerate(rows))+"  </div>\n"
-settings = head()+header("Rob · rjmac","Account",avatar=False,right=f'<div style="width: 36px; height: 36px; border-radius: 8px; background: {TILE}; display: flex; align-items: center; justify-content: center; color: {MUT};">{BACK}</div>')
+settings = head()+header("Ryan · rjmac","Account",avatar=False,right=f'<div style="width: 36px; height: 36px; border-radius: 8px; background: {TILE}; display: flex; align-items: center; justify-content: center; color: {MUT};">{BACK}</div>')
 settings += f'''  <div style="{HERO} flex-direction: row; align-items: center; gap: 14px;">
     <div style="width: 40px; height: 40px; border-radius: 8px; background: rgba(255,255,255,.14); display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: #fff;"><path d="M10 2L4 14h4l2-4 2 4h4z"/><path d="M14 12l-2 4-2-4H7l5 9 5-9z" opacity=".55"/></svg></div>
     <div style="flex: 1;"><div style="font-weight: 800;">Strava connected</div><div style="font-size: 12px; opacity: .85;">Last sync 19 Aug 20:14 · 142 runs</div></div>

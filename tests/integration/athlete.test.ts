@@ -8,8 +8,8 @@ beforeAll(async () => ({ db, close } = await createTestDb()));
 afterAll(() => close());
 
 it("creates an athlete once and returns the same row after", async () => {
-  const a = await ensureAthlete(db, "athlete@example.com", "Rob");
+  const a = await ensureAthlete(db, "athlete@example.com", "Ryan");
   const b = await ensureAthlete(db, "ATHLETE@example.com");
   expect(a.id).toBe(b.id);
-  expect(b.name).toBe("Rob");
+  expect(b.name).toBe("Ryan");
 });

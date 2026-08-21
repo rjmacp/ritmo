@@ -69,4 +69,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Security issues: [SECURITY.md](SECURITY.
 
 ## Licence
 
-MIT © Rob MacPherson. Powered by Strava.
+MIT © Ryan Macpherson. Powered by Strava.

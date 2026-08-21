@@ -10,7 +10,7 @@ afterAll(() => close());
 
 describe("schema", () => {
   it("stores an athlete, an activity and its laps", async () => {
-    const [a] = await db.insert(athletes).values({ email: "athlete@example.com", name: "Rob" }).returning();
+    const [a] = await db.insert(athletes).values({ email: "athlete@example.com", name: "Ryan" }).returning();
     if (!a) throw new Error("expected inserted athlete");
     const [act] = await db
       .insert(activities)
