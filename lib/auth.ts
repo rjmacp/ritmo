@@ -19,9 +19,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   pages: { signIn: "/signin", verifyRequest: "/signin?sent=1" },
   callbacks: {
     signIn: ({ user }) => isAllowedEmail(user.email),
-    // `authorized` is what the exported `auth` middleware consults: without it every
-    // matched route is allowed through and the pages themselves are the only guard.
-    authorized: ({ auth: session }) => !!session?.user,
   },
   events: {
     signIn: async ({ user }) => {

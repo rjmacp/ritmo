@@ -38,6 +38,17 @@ batch and need no session.
   in Lisbon during summer time and 03:00 in winter; Vercel cron schedules are always UTC.
 - Sync log on Account shows the last 10 jobs and any error (429 = rate limit, 401 = reconnect Strava).
 
+## Route protection
+
+Route protection is per-route via `requireAthlete()`; there is **no Edge middleware**,
+because sessions live in Postgres. A middleware `authorized` callback would have to read the
+session table from the Edge runtime, and the app talks to Neon over the WebSocket driver with
+the Node-only `ws` package — that combination cannot run on Edge. So every page and API route
+that needs a session calls `requireAthlete()` itself (it redirects to `/signin` when there is
+none). The deliberate exceptions are `/signin` and `/api/auth/*` (public by definition),
+`/api/cron/sync` (bearer secret) and `/api/strava/webhook/[secret]` (secret path segment).
+**When you add a route, add the check** — nothing else will.
+
 ## Timeouts and the import budget
 
 Vercel's Hobby plan caps a serverless function at **60 s**, so every long-running route sets
