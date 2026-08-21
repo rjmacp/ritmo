@@ -35,6 +35,15 @@ export default async function Account({
       </header>
       <div className="px-4 flex flex-col gap-3">
         {sp.error && <p className="card p-3 text-red text-sm">Strava connection failed ({sp.error}). Try again.</p>}
+        {sp.warn === "revoke" && (
+          <p className="card p-3 text-sm">
+            Could not revoke on Strava — remove Ritmo at{" "}
+            <a className="underline" href="https://www.strava.com/settings/apps">
+              strava.com/settings/apps
+            </a>
+            .
+          </p>
+        )}
         {sp.sync === "started" && <p className="card p-3 text-sm">Sync started — refresh in a minute.</p>}
         {sp.import === "started" && (
           <p className="card p-3 text-sm">

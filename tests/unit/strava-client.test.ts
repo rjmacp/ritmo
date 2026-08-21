@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { StravaClient, StravaRateLimitError, type StravaTokens } from "@/lib/strava/client";
+import { StravaClient, StravaAuthError, StravaRateLimitError, type StravaTokens } from "@/lib/strava/client";
 import activity from "../fixtures/strava/activity-19aug.json";
 import laps from "../fixtures/strava/laps-19aug.json";
 
@@ -41,6 +41,37 @@ describe("StravaClient", () => {
     const fetchImpl = vi.fn(() => Promise.resolve(json({ message: "Rate Limit Exceeded" }, 429)));
     const c = new StravaClient(fresh(), noRefresh, fetchImpl);
     await expect(c.getActivity(1)).rejects.toBeInstanceOf(StravaRateLimitError);
+  });
+
+  it("throws StravaAuthError on 401", async () => {
+    const fetchImpl = vi.fn(() => Promise.resolve(json({ message: "Authorization Error" }, 401)));
+    const c = new StravaClient(fresh(), noRefresh, fetchImpl);
+    await expect(c.getActivity(1)).rejects.toBeInstanceOf(StravaAuthError);
+  });
+
+  it("throws StravaAuthError when the refresh itself is rejected", async () => {
+    const fetchImpl = vi.fn(() => Promise.resolve(json({ message: "Bad Request" }, 400)));
+    const c = new StravaClient(expired(), noRefresh, fetchImpl);
+    await expect(c.getActivity(1)).rejects.toBeInstanceOf(StravaAuthError);
+  });
+
+  it("refreshes an expired token before revoking, so the revocation is not ignored", async () => {
+    const onRefresh = vi.fn(() => Promise.resolve());
+    const calls: { url: string; auth: string | undefined }[] = [];
+    const fetchImpl = vi.fn((url: string | URL, init?: RequestInit) => {
+      calls.push({ url: String(url), auth: (init?.headers as Record<string, string> | undefined)?.Authorization });
+      if (String(url).includes("/oauth/token")) {
+        return Promise.resolve(
+          json({ access_token: "new", refresh_token: "r2", expires_at: Math.floor(Date.now() / 1000) + 21600 }),
+        );
+      }
+      return Promise.resolve(json({}));
+    });
+    const c = new StravaClient(expired(), onRefresh, fetchImpl as unknown as typeof fetch);
+    await c.deauthorize();
+    expect(calls[0]?.url).toBe("https://www.strava.com/oauth/token");
+    expect(calls[1]).toEqual({ url: "https://www.strava.com/oauth/deauthorize", auth: "Bearer new" });
+    expect(onRefresh).toHaveBeenCalledOnce();
   });
 
   it("lists activities with paging params", async () => {

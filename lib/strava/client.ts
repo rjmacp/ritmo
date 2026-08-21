@@ -106,6 +106,9 @@ export class StravaClient {
 
   /** Revokes Ritmo's access to the athlete's Strava account. */
   async deauthorize(): Promise<void> {
+    // A stale access token would make Strava ignore the revocation, leaving Ritmo
+    // authorised on the athlete's account after they disconnected.
+    await this.ensureFresh();
     await this.fetchImpl(DEAUTHORIZE_URL, {
       method: "POST",
       headers: { Authorization: `Bearer ${this.tokens.accessToken}` },
