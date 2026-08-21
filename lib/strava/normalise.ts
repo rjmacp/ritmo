@@ -94,6 +94,6 @@ export function normaliseStrava(a: StravaDetailedActivity, laps: StravaLap[]): N
         avgCadence: cadence(l.average_cadence),
         elevationGainM: l.total_elevation_gain ?? null,
       })),
-    raw: a,
+    raw: { activity: a, laps },
   };
 }

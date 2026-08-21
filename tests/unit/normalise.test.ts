@@ -25,7 +25,9 @@ describe("normaliseStrava", () => {
     expect(n.laps[2]).toMatchObject({ index: 3, movingS: 289, avgHr: 171, elevationGainM: 1 });
   });
   it("keeps the raw payload", () => {
-    expect((n.raw as { id: number }).id).toBe(15000000019);
+    const raw = n.raw as { activity: { id: number }; laps: unknown[] };
+    expect(raw.activity.id).toBe(15000000019);
+    expect(raw.laps).toHaveLength(8);
   });
 });
 
