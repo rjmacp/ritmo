@@ -10,7 +10,7 @@ export default async function SignIn({ searchParams }: { searchParams: Promise<{
         <span className="num text-3xl">Your running, planned and explained.</span>
       </div>
       {sent ? (
-        <p className="card p-4">Check your inbox — the sign-in link is on its way.</p>
+        <p className="card p-4">If that address is registered, a sign-in link is on its way.</p>
       ) : (
         <form className="card p-4 flex flex-col gap-3" action={sendSignInLink}>
           <label className="k" htmlFor="email">

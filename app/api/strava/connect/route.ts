@@ -7,6 +7,12 @@ import { authorizeUrl } from "@/lib/strava/oauth";
 export async function GET(): Promise<NextResponse> {
   await requireAthlete();
   const state = crypto.randomUUID();
-  (await cookies()).set("strava_oauth_state", state, { httpOnly: true, sameSite: "lax", maxAge: 600, path: "/" });
+  (await cookies()).set("strava_oauth_state", state, {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    maxAge: 600,
+    path: "/",
+  });
   return NextResponse.redirect(authorizeUrl(state));
 }

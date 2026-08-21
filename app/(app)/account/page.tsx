@@ -28,9 +28,10 @@ export default async function Account({
         </div>
         <Link
           href="/runs"
-          className="w-9 h-9 rounded-lg bg-white border border-line grid place-items-center text-muted"
+          aria-label="Back to runs"
+          className="h-9 px-3 rounded-lg bg-white border border-line flex items-center gap-1 text-muted text-[13px] font-bold"
         >
-          ←
+          ← Runs
         </Link>
       </header>
       <div className="px-4 flex flex-col gap-3">
@@ -95,10 +96,13 @@ export default async function Account({
 
         <span className="k px-[6px]">Athlete</span>
         <form action={updateAthlete} className="card px-4 py-1">
-          <label className="flex items-center justify-between min-h-11 border-b border-line">
-            <span className="font-semibold">Max heart rate</span>
+          <div className="flex items-center justify-between min-h-11 border-b border-line">
+            <label className="font-semibold" htmlFor="maxHr">
+              Max heart rate
+            </label>
             <span className="flex items-center gap-2">
               <input
+                id="maxHr"
                 name="maxHr"
                 type="number"
                 defaultValue={athlete.maxHr ?? ""}
@@ -107,7 +111,7 @@ export default async function Account({
               />
               <button className="text-xs font-bold">Save</button>
             </span>
-          </label>
+          </div>
           <div className="flex items-center justify-between min-h-11">
             <span className="font-semibold">HR zones</span>
             <span className="text-muted text-[13px] font-semibold">{b.join(" · ")}</span>
