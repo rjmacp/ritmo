@@ -8,6 +8,9 @@ import { importHistory } from "@/lib/pipeline/importHistory";
 import { exchangeCode } from "@/lib/strava/client";
 import { saveConnection, clientForAthlete } from "@/lib/strava/connection";
 
+/** Vercel Hobby caps serverless functions at 60 s; the import budget is sized to fit inside it. */
+export const maxDuration = 60;
+
 /** Completes the Strava OAuth flow: validates state/scope, stores tokens, and kicks off a background history import. */
 export async function GET(req: Request): Promise<NextResponse> {
   const athlete = await requireAthlete();

@@ -97,6 +97,8 @@ export const stravaConnections = pgTable("strava_connections", {
   lastSyncAt: timestamp("last_sync_at", { withTimezone: true }),
   importStatus: text("import_status").notNull().default("idle"), // idle | running | done | failed
   importedCount: integer("imported_count").notNull().default(0),
+  importCursorPage: integer("import_cursor_page").notNull().default(1),
+  importStartedAt: timestamp("import_started_at", { withTimezone: true }),
 });
 
 /** Coach-facing workout classifications assignable to an activity. */

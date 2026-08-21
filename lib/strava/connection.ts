@@ -1,4 +1,5 @@
 import { eq } from "drizzle-orm";
+import type { PgUpdateSetSource } from "drizzle-orm/pg-core";
 import { stravaConnections, type StravaConnection } from "@/lib/db/schema";
 import type { AnyDb } from "@/lib/db/types";
 import { StravaClient, type StravaTokens } from "./client";
@@ -30,12 +31,22 @@ export async function saveConnection(
     });
 }
 
+/** Updates the given columns on an athlete's `strava_connections` row; the one place that owns that UPDATE. */
+export async function setConnectionFields(
+  dbc: AnyDb,
+  athleteId: string,
+  patch: PgUpdateSetSource<typeof stravaConnections>,
+): Promise<void> {
+  await dbc.update(stravaConnections).set(patch).where(eq(stravaConnections.athleteId, athleteId));
+}
+
 /** Overwrites an athlete's stored access/refresh tokens, e.g. after `StravaClient` refreshes them. */
-export async function updateTokens(dbc: AnyDb, athleteId: string, t: StravaTokens): Promise<void> {
-  await dbc
-    .update(stravaConnections)
-    .set({ accessToken: t.accessToken, refreshToken: t.refreshToken, expiresAt: t.expiresAt })
-    .where(eq(stravaConnections.athleteId, athleteId));
+export function updateTokens(dbc: AnyDb, athleteId: string, t: StravaTokens): Promise<void> {
+  return setConnectionFields(dbc, athleteId, {
+    accessToken: t.accessToken,
+    refreshToken: t.refreshToken,
+    expiresAt: t.expiresAt,
+  });
 }
 
 /** Fetches an athlete's Strava connection row, or `null` if they haven't connected. */

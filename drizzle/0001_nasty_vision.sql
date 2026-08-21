@@ -1,0 +1,2 @@
+ALTER TABLE "strava_connections" ADD COLUMN "import_cursor_page" integer DEFAULT 1 NOT NULL;--> statement-breakpoint
+ALTER TABLE "strava_connections" ADD COLUMN "import_started_at" timestamp with time zone;

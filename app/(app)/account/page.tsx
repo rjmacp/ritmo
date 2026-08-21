@@ -50,7 +50,7 @@ export default async function Account({
               {conn ? (
                 <>
                   {conn.importStatus === "running"
-                    ? `Importing… ${conn.importedCount} runs so far`
+                    ? `Importing… ${conn.importedCount} runs so far — continues automatically`
                     : conn.lastSyncAt
                       ? `Synced ${conn.lastSyncAt.toLocaleString("en-GB")} · ${conn.importedCount} runs`
                       : "Ready"}
@@ -61,9 +61,18 @@ export default async function Account({
             </div>
           </div>
           {conn ? (
-            <form action="/api/strava/disconnect" method="post">
-              <button className="text-xs font-bold opacity-85">Disconnect</button>
-            </form>
+            <div className="flex flex-col items-end gap-1">
+              {conn.importStatus === "running" && (
+                <form action="/api/strava/import" method="post">
+                  <button className="h-9 px-4 rounded-lg bg-white text-ink text-[13px] font-extrabold grid place-items-center">
+                    Continue now
+                  </button>
+                </form>
+              )}
+              <form action="/api/strava/disconnect" method="post">
+                <button className="text-xs font-bold opacity-85">Disconnect</button>
+              </form>
+            </div>
           ) : (
             <a
               href="/api/strava/connect"
