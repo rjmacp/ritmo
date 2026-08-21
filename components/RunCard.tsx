@@ -30,7 +30,7 @@ export function RunCard({ a, boundaries }: { a: ActivityWithLaps; boundaries: Bo
         <Stat v={formatKm(a.distanceM)} k="km" />
         <Stat v={formatDuration(a.movingS)} k="time" />
         <Stat v={formatPace(a.avgPaceSPerKm)} k="/km" />
-        <Stat v={a.avgHr ? Math.round(a.avgHr).toString() : "—"} k="avg bpm" color="text-sky-text" />
+        <Stat v={a.avgHr != null ? Math.round(a.avgHr).toString() : "—"} k="avg bpm" color="text-sky-text" />
       </div>
       <KmBars laps={a.laps} boundaries={boundaries} />
       <div className="flex justify-between items-center">

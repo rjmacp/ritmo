@@ -34,7 +34,7 @@ export default async function RunsPage({
   return (
     <>
       <Header
-        kicker={`${now.toLocaleString("en-GB", { month: "long" })} · ${month.km} km · ${month.runs} runs`}
+        kicker={`${new Intl.DateTimeFormat("en-GB", { month: "long", timeZone: "UTC" }).format(now)} · ${month.km} km · ${month.runs} runs`}
         title="Runs"
         initials={initials}
         right={
