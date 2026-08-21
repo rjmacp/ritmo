@@ -13,7 +13,7 @@ export const dynamic = "force-dynamic";
 export default async function Account({
   searchParams,
 }: {
-  searchParams: Promise<{ import?: string; error?: string }>;
+  searchParams: Promise<{ import?: string; sync?: string; error?: string; warn?: string }>;
 }) {
   const sp = await searchParams;
   const athlete = await requireAthlete();
@@ -35,6 +35,7 @@ export default async function Account({
       </header>
       <div className="px-4 flex flex-col gap-3">
         {sp.error && <p className="card p-3 text-red text-sm">Strava connection failed ({sp.error}). Try again.</p>}
+        {sp.sync === "started" && <p className="card p-3 text-sm">Sync started — refresh in a minute.</p>}
         {sp.import === "started" && (
           <p className="card p-3 text-sm">
             Importing your Strava history — runs will appear on the Runs tab as they land.

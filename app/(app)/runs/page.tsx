@@ -11,12 +11,8 @@ import { zoneBoundaries } from "@/lib/metrics/zones";
 export const dynamic = "force-dynamic";
 
 /** Runs feed: month summary header, type filter chips and the athlete's recent runs (or an empty state). */
-export default async function RunsPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ type?: string; synced?: string }>;
-}) {
-  const { type, synced } = await searchParams;
+export default async function RunsPage({ searchParams }: { searchParams: Promise<{ type?: string }> }) {
+  const { type } = await searchParams;
   const athlete = await requireAthlete();
   const t = ACTIVITY_TYPES.includes(type as ActivityType) ? (type as ActivityType) : undefined;
   const now = new Date();
@@ -44,11 +40,6 @@ export default async function RunsPage({
         }
       />
       <div className="px-4 flex flex-col gap-3">
-        {synced && (
-          <p className="k">
-            Synced {synced} run{synced === "1" ? "" : "s"} from Strava.
-          </p>
-        )}
         <div className="flex gap-2 overflow-x-auto shrink-0">
           {["all", ...ACTIVITY_TYPES.filter((x) => x !== "other" && x !== "tt")].map((x) => (
             <Link
