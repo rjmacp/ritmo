@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "vercel-build": "npm run db:migrate:prod && next build",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
@@ -19,6 +20,7 @@
     "e2e": "playwright test",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "tsx lib/db/migrate.ts",
+    "db:migrate:prod": "node -e \"process.exit(process.env.VERCEL_ENV==='production'?0:1)\" && tsx lib/db/migrate.ts || echo 'skip migrate (non-production)'",
     "strava:subscribe": "tsx --env-file=.env.local scripts/strava-subscribe.ts",
     "prepare": "husky"
   },
