@@ -22,12 +22,21 @@ export async function GET(req: Request): Promise<NextResponse> {
   if (!code || !state || state !== expected) return NextResponse.redirect(`${env.APP_URL}/account?error=state`);
   if (!scope.includes("activity:read_all")) return NextResponse.redirect(`${env.APP_URL}/account?error=scope`);
 
-  const { tokens, stravaAthleteId } = await exchangeCode(code);
-  await saveConnection(db, athlete.id, tokens, stravaAthleteId);
+  try {
+    const { tokens, stravaAthleteId } = await exchangeCode(code);
+    await saveConnection(db, athlete.id, tokens, stravaAthleteId);
+  } catch (e: unknown) {
+    log.error("strava token exchange failed", e);
+    return NextResponse.redirect(`${env.APP_URL}/account?error=auth`);
+  }
 
   after(async () => {
-    const client = await clientForAthlete(db, athlete.id);
-    if (client) await importHistory(db, athlete.id, client).catch((e: unknown) => log.error("import failed", e));
+    try {
+      const client = await clientForAthlete(db, athlete.id);
+      if (client) await importHistory(db, athlete.id, client);
+    } catch (e: unknown) {
+      log.error("import failed", e);
+    }
   });
   return NextResponse.redirect(`${env.APP_URL}/account?import=started`);
 }
