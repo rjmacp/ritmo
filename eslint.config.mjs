@@ -18,6 +18,7 @@ export default tseslint.config(
       "drizzle/**",
       "coverage/**",
       "playwright-report/**",
+      "test-results/**",
       "design/**",
       ".superpowers/**",
       "next-env.d.ts",

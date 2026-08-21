@@ -15,7 +15,7 @@ Ritmo syncs every run from Strava, computes the metrics free apps hide (fitness/
 
 ## Status
 
-Stage 1 — **Ingest** (auth, Strava sync, Runs feed, Run detail). See [build stages](docs/superpowers/specs/2026-08-20-ritmo-design.md#11-build-stages).
+Stage 1 — Ingest: complete (auth, Strava sync, Runs feed, Run detail, PWA manifest, CI, Playwright smoke). See [build stages](docs/superpowers/specs/2026-08-20-ritmo-design.md#11-build-stages) and the [deployment runbook](docs/runbook.md).
 
 ## Stack
 
@@ -32,6 +32,8 @@ npm run dev
 ```
 
 Then sign in with `ALLOWED_EMAIL`, open **Account → Connect Strava**. Full setup (Strava app, webhook subscription, Vercel) is in [docs/runbook.md](docs/runbook.md).
+
+The app is installable as a PWA (`public/manifest.webmanifest`); the icons under `public/icons` are a solid-navy placeholder pending a real mark.
 
 ## Architecture
 

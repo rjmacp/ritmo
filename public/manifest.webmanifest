@@ -1,0 +1,12 @@
+{
+  "name": "Ritmo",
+  "short_name": "Ritmo",
+  "start_url": "/runs",
+  "display": "standalone",
+  "background_color": "#f7f8fa",
+  "theme_color": "#16223d",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

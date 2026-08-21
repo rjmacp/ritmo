@@ -1,0 +1,29 @@
+name: CI
+on:
+  push: { branches: [main] }
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm }
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run format:check
+      - run: npm test
+      - run: npm run build
+        env:
+          DATABASE_URL: postgres://ci:ci@localhost/ci
+          AUTH_SECRET: ci
+          AUTH_RESEND_KEY: ci
+          ALLOWED_EMAIL: ci@example.com
+          STRAVA_CLIENT_ID: "1"
+          STRAVA_CLIENT_SECRET: ci
+          STRAVA_WEBHOOK_VERIFY_TOKEN: ci
+          CRON_SECRET: ci
+          NEXT_PUBLIC_APP_URL: http://localhost:3000
